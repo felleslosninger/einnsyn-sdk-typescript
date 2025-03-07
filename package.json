@@ -1,0 +1,22 @@
+{
+  "name": "@einnsyn/einnsyn-sdk",
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/node": "^16.11.0",
+    "typescript": "^5.7.3"
+  },
+  "description": "TypeScript client library for the eInnsyn API",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "homepage": "https://github.com/felleslosninger/einnsyn-sdk-typescript",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/felleslosninger/einnsyn-sdk-typescript.git"
+  },
+  "files": ["dist"],
+  "license": "BSD-3-Clause"
+}
