@@ -65,7 +65,7 @@ export class EInnsynRequester {
 
     const baseUrl = this.options.baseUrl;
     const url = baseUrl + path + queryString;
-    const response = await fetch(url, requestInit);
+    const response = await this.fetchWithRetry(url, requestInit);
 
     if (response.status >= 400) {
       const error = resolveError(await response.json());
@@ -73,6 +73,40 @@ export class EInnsynRequester {
     }
 
     return await response.json();
+  }
+
+  /**
+   * Wrapper around fetch() that retries on 429 responses
+   *
+   * @param args - Arguments to pass to fetch()
+   * @returns
+   */
+  public async fetchWithRetry(
+    ...args: Parameters<typeof fetch>
+  ): ReturnType<typeof fetch> {
+    const maxRetries = this.options.maxThrottleRetries ?? 10;
+    let retries = 0;
+    async function attemptFetch() {
+      // Requests can only be read once, so create a clone:
+      const [input, ...rest] = args;
+      const inputClone = input instanceof Request ? input.clone() : input;
+      const response = await fetch(inputClone, ...rest);
+      if (response.status === 429 && retries++ <= maxRetries) {
+        const retryAfter = response.headers.get('Retry-After');
+        if (retryAfter) {
+          const delay = Number.parseInt(retryAfter) * 1000;
+          await sleep(delay);
+          return await attemptFetch();
+        }
+        const baseDelay = 500;
+        const maxDelay = baseDelay * 2 ** retries;
+        const delay = baseDelay / 2 + Math.random() * maxDelay;
+        await sleep(delay);
+        return await attemptFetch();
+      }
+      return response;
+    }
+    return await attemptFetch();
   }
 
   public async *iterate<T extends Base>(initial: PaginatedList<T> | string) {
@@ -102,3 +136,6 @@ export class EInnsynRequester {
     }
   }
 }
+
+const sleep = (duration: number) =>
+  new Promise((resolve) => setTimeout(resolve, duration));
