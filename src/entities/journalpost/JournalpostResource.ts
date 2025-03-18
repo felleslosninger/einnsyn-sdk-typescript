@@ -62,7 +62,10 @@ export class JournalpostResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: JournalpostRequest): Promise<Journalpost> {
+  async update(
+    id: string,
+    body: Partial<JournalpostRequest>,
+  ): Promise<Journalpost> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/journalpost/${id}`,

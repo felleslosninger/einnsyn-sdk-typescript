@@ -62,7 +62,7 @@ export class TilbakemeldingResource extends Resource {
 
   async update(
     id: string,
-    body: TilbakemeldingRequest,
+    body: Partial<TilbakemeldingRequest>,
   ): Promise<Tilbakemelding> {
     const response = await this.requester.request({
       method: 'patch',

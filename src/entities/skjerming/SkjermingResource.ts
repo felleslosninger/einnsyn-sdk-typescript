@@ -57,7 +57,10 @@ export class SkjermingResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: SkjermingRequest): Promise<Skjerming> {
+  async update(
+    id: string,
+    body: Partial<SkjermingRequest>,
+  ): Promise<Skjerming> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/skjerming/${id}`,

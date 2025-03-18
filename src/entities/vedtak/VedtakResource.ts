@@ -56,7 +56,7 @@ export class VedtakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: VedtakRequest): Promise<Vedtak> {
+  async update(id: string, body: Partial<VedtakRequest>): Promise<Vedtak> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/vedtak/${id}`,

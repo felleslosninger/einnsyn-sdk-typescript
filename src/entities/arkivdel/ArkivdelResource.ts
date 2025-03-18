@@ -63,7 +63,7 @@ export class ArkivdelResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: ArkivdelRequest): Promise<Arkivdel> {
+  async update(id: string, body: Partial<ArkivdelRequest>): Promise<Arkivdel> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/arkivdel/${id}`,

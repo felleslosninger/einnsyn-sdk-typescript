@@ -55,7 +55,7 @@ export class KorrespondansepartResource extends Resource {
 
   async update(
     id: string,
-    body: KorrespondansepartRequest,
+    body: Partial<KorrespondansepartRequest>,
   ): Promise<Korrespondansepart> {
     const response = await this.requester.request({
       method: 'patch',

@@ -45,7 +45,10 @@ export class MoetedeltakerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: MoetedeltakerRequest): Promise<Moetedeltaker> {
+  async update(
+    id: string,
+    body: Partial<MoetedeltakerRequest>,
+  ): Promise<Moetedeltaker> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/moetedeltaker/${id}`,

@@ -75,7 +75,7 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: BrukerRequest): Promise<Bruker> {
+  async update(id: string, body: Partial<BrukerRequest>): Promise<Bruker> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/bruker/${id}`,

@@ -55,7 +55,7 @@ export class BehandlingsprotokollResource extends Resource {
 
   async update(
     id: string,
-    body: BehandlingsprotokollRequest,
+    body: Partial<BehandlingsprotokollRequest>,
   ): Promise<Behandlingsprotokoll> {
     const response = await this.requester.request({
       method: 'patch',
