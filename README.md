@@ -4,13 +4,13 @@ TypeScript SDK for the eInnsyn API
 
 ## Usage
 
-To use the eInnsyn SDK, you need to install it via npm:
+Install the package via npm:
 
 ```sh
-npm install einnyn-sdk
+npm install https://github.com/felleslosninger/einnsyn-sdk-typescript
 ```
 
-Then, you can import and use it in your TypeScript project:
+Import and use it in your TypeScript project:
 
 ```typescript
 import { EInnsynClient } from 'einnsyn-sdk';
