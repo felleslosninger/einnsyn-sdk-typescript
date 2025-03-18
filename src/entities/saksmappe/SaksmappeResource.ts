@@ -54,7 +54,10 @@ export class SaksmappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: SaksmappeRequest): Promise<Saksmappe> {
+  async update(
+    id: string,
+    body: Partial<SaksmappeRequest>,
+  ): Promise<Saksmappe> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/saksmappe/${id}`,

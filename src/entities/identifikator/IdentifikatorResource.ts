@@ -45,7 +45,10 @@ export class IdentifikatorResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: IdentifikatorRequest): Promise<Identifikator> {
+  async update(
+    id: string,
+    body: Partial<IdentifikatorRequest>,
+  ): Promise<Identifikator> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/identifikator/${id}`,

@@ -45,7 +45,7 @@ export class VoteringResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: VoteringRequest): Promise<Votering> {
+  async update(id: string, body: Partial<VoteringRequest>): Promise<Votering> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/votering/${id}`,

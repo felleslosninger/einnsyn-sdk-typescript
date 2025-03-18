@@ -55,7 +55,7 @@ export class MoetesaksbeskrivelseResource extends Resource {
 
   async update(
     id: string,
-    body: MoetesaksbeskrivelseRequest,
+    body: Partial<MoetesaksbeskrivelseRequest>,
   ): Promise<Moetesaksbeskrivelse> {
     const response = await this.requester.request({
       method: 'patch',

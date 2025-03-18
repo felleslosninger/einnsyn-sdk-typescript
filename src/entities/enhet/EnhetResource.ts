@@ -64,7 +64,7 @@ export class EnhetResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: EnhetRequest): Promise<Enhet> {
+  async update(id: string, body: Partial<EnhetRequest>): Promise<Enhet> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/enhet/${id}`,

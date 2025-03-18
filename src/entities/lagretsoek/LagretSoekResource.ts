@@ -45,7 +45,10 @@ export class LagretSoekResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: LagretSoekRequest): Promise<LagretSoek> {
+  async update(
+    id: string,
+    body: Partial<LagretSoekRequest>,
+  ): Promise<LagretSoek> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/lagretSoek/${id}`,

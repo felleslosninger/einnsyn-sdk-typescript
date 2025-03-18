@@ -45,7 +45,10 @@ export class InnsynskravResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: InnsynskravRequest): Promise<Innsynskrav> {
+  async update(
+    id: string,
+    body: Partial<InnsynskravRequest>,
+  ): Promise<Innsynskrav> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/innsynskrav/${id}`,

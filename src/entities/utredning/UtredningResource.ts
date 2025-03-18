@@ -54,7 +54,10 @@ export class UtredningResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: UtredningRequest): Promise<Utredning> {
+  async update(
+    id: string,
+    body: Partial<UtredningRequest>,
+  ): Promise<Utredning> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/utredning/${id}`,

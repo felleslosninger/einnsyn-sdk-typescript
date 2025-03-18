@@ -72,7 +72,7 @@ export class InnsynskravBestillingResource extends Resource {
 
   async update(
     id: string,
-    body: InnsynskravBestillingRequest,
+    body: Partial<InnsynskravBestillingRequest>,
   ): Promise<InnsynskravBestilling> {
     const response = await this.requester.request({
       method: 'patch',

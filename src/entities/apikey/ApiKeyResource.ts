@@ -45,7 +45,7 @@ export class ApiKeyResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: ApiKeyRequest): Promise<ApiKey> {
+  async update(id: string, body: Partial<ApiKeyRequest>): Promise<ApiKey> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/apiKey/${id}`,
