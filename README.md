@@ -2,14 +2,74 @@
 
 TypeScript SDK for the eInnsyn API
 
-## Examples
-Create a client
-```
-const client = new EInnsynClient('secret_apikey');
+## Usage
+
+To use the eInnsyn SDK, you need to install it via npm:
+
+```sh
+npm install einnyn-sdk
 ```
 
-Get / list data:
+Then, you can import and use it in your TypeScript project:
+
+```typescript
+import { EInnsynClient } from 'einnsyn-sdk';
 ```
+
+## Authentication
+
+The SDK supports multiple authentication methods:
+
+- JWT
+- Username/Password
+- API Key
+
+## Examples
+
+### Creating a client instance
+
+```typescript
+// Client set-up (all options are optional)
+const client = new EInnsynClient({
+  baseUrl: 'https://api.einnsyn.no',
+  appInfo: 'My eInnsyn client',
+  username: 'eInnsynUser@example.com',
+  password: 'myPassword',
+  jwtToken: '...',
+  apiKey: 'secret_apikey',
+});
+```
+
+### Authenticating using JWT
+
+When authenticating as an organization through Ansattporten, you would supply your JWT like this:
+
+```typescript
+const authenticatedClient = new EInnsynClient({
+  jwt: '...',
+});
+```
+
+### Authenticating using an eInnsyn username / password
+
+```typescript
+const authenticatedClient = new EInnsynClient({
+  username: 'eInnsynUser@example.com',
+  password: '...',
+});
+```
+
+### Authenticating using an API key
+
+```typescript
+const authenticatedClient = new EInnsynClient({
+  apiKey: 'secret_...',
+});
+```
+
+### Fetching content
+
+```typescript
 // Get a saksmappe
 const saksmappe = await client.saksmappe.get('sm_...');
 console.log(saksmappe.offentligTittel);
@@ -23,8 +83,62 @@ for await (const journalpost of client.iterate(journalpostList)) {
 }
 ```
 
-Add / update data:
+## Iterating over paginated lists
+You can automatically iterate over paginates lists like this:
 ```
+const journalpostList = await client.saksmappe.getJournalpost('sm_...');
+
+// Iterate over all journalposts
+for await (const journalpost of client.iterate(journalpostList)) {
+  console.log(`${journalpost.offentligTittel}`);
+}
+```
+
+### Expanding fields
+
+You can expand fields in your queries to include related entities:
+
+```typescript
+// Non-expanded:
+const saksmappe = await client.saksmappe.get('sm_...');
+console.log(saksmappe);
+// Example output:
+// {
+//   entity: 'Saksmappe',
+//   id: 'sm_...',
+//   offentligTittel: 'Saksmappe title',
+//   offentligTittelSensitiv: 'Saksmappe title with sensitive data',
+//   saksaar: 2025,
+//   sakssekvensnummer: 1,
+//   journalpost: ['jp_...'],
+// }
+
+// Expanded:
+const expandedSaksmappe = await client.saksmappe.get('sm_...', { expand: ['journalpost'] });
+console.log(expandedSaksmappe);
+// Example output:
+// {
+//   entity: 'Saksmappe',
+//   id: 'sm_...',
+//   offentligTittel: 'Saksmappe title',
+//   offentligTittelSensitiv: 'Saksmappe title with sensitive data',
+//   saksaar: 2025,
+//   sakssekvensnummer: 1,
+//   journalpost: [{
+//     offentligTittel: 'Journalpost title',
+//     offentligTittelSensitiv: 'Journalpost title with sensitive data',
+//     journalaar: 2025,
+//     journalsekvensnummer: 1,
+//     journalpostnummer: 1,
+//     journalposttype: 'inngaaende_dokument',
+//     journaldato: '2025-01-01',
+//   }],
+// }
+```
+
+### Adding / updating content
+
+```typescript
 // Create a containing Arkiv
 const arkiv = await client.arkiv.add({
   tittel: 'Arkiv title',
@@ -75,8 +189,15 @@ const updatedSaksmappe = await client.saksmappe.update(saksmappe.id, {
 });
 ```
 
-Search:
+### Deleting content
+
+```typescript
+const deletedSaksmappe = client.saksmappe.delete(saksmappe.id);
 ```
+
+### Search
+
+```typescript
 // Search for "robot"
 const searchResultList = client.search({
   query: 'robot',
@@ -117,3 +238,11 @@ const advancedSearch = client.search({
   sortOrder: 'asc',
 });
 ```
+
+## API Documentation
+
+For detailed API documentation, please refer to the [eInnsyn API Specification](https://github.com/felleslosninger/einnsyn-api-spec).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
