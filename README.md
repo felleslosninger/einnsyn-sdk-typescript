@@ -103,6 +103,7 @@ for await (const journalpost of client.iterate(journalpostList)) {
 ```
 
 ### Iterating over paginated lists
+
 You can automatically iterate over paginates lists like this:
 ```
 const journalpostList = await client.saksmappe.getJournalpost('sm_...');
