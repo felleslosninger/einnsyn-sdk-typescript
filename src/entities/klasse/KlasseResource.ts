@@ -50,7 +50,7 @@ export class KlasseResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: KlasseRequest): Promise<Klasse> {
+  async update(id: string, body: Partial<KlasseRequest>): Promise<Klasse> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/klasse/${id}`,

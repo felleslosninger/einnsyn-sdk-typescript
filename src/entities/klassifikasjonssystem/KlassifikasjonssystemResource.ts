@@ -58,7 +58,7 @@ export class KlassifikasjonssystemResource extends Resource {
 
   async update(
     id: string,
-    body: KlassifikasjonssystemRequest,
+    body: Partial<KlassifikasjonssystemRequest>,
   ): Promise<Klassifikasjonssystem> {
     const response = await this.requester.request({
       method: 'patch',

@@ -56,7 +56,10 @@ export class MoetemappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: MoetemappeRequest): Promise<Moetemappe> {
+  async update(
+    id: string,
+    body: Partial<MoetemappeRequest>,
+  ): Promise<Moetemappe> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/moetemappe/${id}`,

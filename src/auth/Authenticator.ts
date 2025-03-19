@@ -2,7 +2,7 @@ import { version } from '..';
 import type { EInnsynOptions } from '../EInnsynOptions';
 
 export class Authenticator {
-  constructor(private eInnsynOptions: EInnsynOptions) {}
+  constructor(protected eInnsynOptions: EInnsynOptions) {}
 
   public async addAuthHeaders(
     method: string | undefined,

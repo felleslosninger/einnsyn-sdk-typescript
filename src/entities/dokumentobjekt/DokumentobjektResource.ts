@@ -50,7 +50,7 @@ export class DokumentobjektResource extends Resource {
 
   async update(
     id: string,
-    body: DokumentobjektRequest,
+    body: Partial<DokumentobjektRequest>,
   ): Promise<Dokumentobjekt> {
     const response = await this.requester.request({
       method: 'patch',

@@ -60,7 +60,7 @@ export class ArkivResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: ArkivRequest): Promise<Arkiv> {
+  async update(id: string, body: Partial<ArkivRequest>): Promise<Arkiv> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/arkiv/${id}`,

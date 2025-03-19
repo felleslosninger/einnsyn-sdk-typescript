@@ -71,7 +71,7 @@ export class MoetesakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
-  async update(id: string, body: MoetesakRequest): Promise<Moetesak> {
+  async update(id: string, body: Partial<MoetesakRequest>): Promise<Moetesak> {
     const response = await this.requester.request({
       method: 'patch',
       path: `/moetesak/${id}`,
