@@ -2,7 +2,26 @@
 
 TypeScript SDK for the eInnsyn API
 
-## Usage
+## Table of Contents
+
+- [Installation](#installation)
+- [Authentication](#authentication)
+- [Usage](#usage)
+  - [Creating a client instance](#creating-a-client-instance)
+  - [Authenticating using JWT](#authenticating-using-jwt)
+  - [Authenticating using an eInnsyn username / password](#authenticating-using-an-einnsyn-username--password)
+  - [Authenticating using an API key](#authenticating-using-an-api-key)
+  - [Fetching content](#fetching-content)
+  - [Iterating over paginated lists](#iterating-over-paginated-lists)
+  - [Expanding fields](#expanding-fields)
+  - [Adding / updating content](#adding--updating-content)
+  - [Deleting content](#deleting-content)
+  - [Search](#search)
+- [API Documentation](#api-documentation)
+- [License](#license)
+- [References](#references)
+
+## Installation
 
 Install the package via npm:
 
@@ -24,7 +43,7 @@ The SDK supports multiple authentication methods:
 - Username/Password
 - API Key
 
-## Examples
+## Usage
 
 ### Creating a client instance
 
@@ -246,3 +265,8 @@ For detailed API documentation, please refer to the [eInnsyn API Specification](
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## References
+
+- [eInnsyn API Specification](https://github.com/felleslosninger/einnsyn-api-spec/)
+- [eInnsyn Backend](https://github.com/felleslosninger/einnsyn-backend/)
