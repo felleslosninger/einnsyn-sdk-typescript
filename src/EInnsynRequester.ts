@@ -65,7 +65,18 @@ export class EInnsynRequester {
 
     const baseUrl = this.options.baseUrl;
     const url = baseUrl + path + queryString;
-    const response = await this.fetchWithRetry(url, requestInit);
+    let response: Response;
+    try {
+      response = await this.fetchWithRetry(url, requestInit);
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new NetworkError(
+          `Could not fetch ${baseUrl}: ${error.message}`,
+          baseUrl,
+        );
+      }
+      throw new NetworkError(`Could not fetch ${baseUrl}`, baseUrl);
+    }
 
     if (response.status >= 400) {
       const error = resolveError(await response.json());
