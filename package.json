@@ -10,13 +10,14 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "tsc",
+    "prepare": "tsc"
   },
   "homepage": "https://github.com/felleslosninger/einnsyn-sdk-typescript",
   "repository": {
     "type": "git",
     "url": "git://github.com/felleslosninger/einnsyn-sdk-typescript.git"
   },
-  "files": ["dist"],
+  "files": ["dist", "src", "README.md", "LICENSE"],
   "license": "BSD-3-Clause"
 }

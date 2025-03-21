@@ -5,7 +5,10 @@
     "lib": ["dom", "es2018"],
     "strict": true,
     "moduleResolution": "node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "declaration": true,
+    "outDir": "./dist"
   },
   "include": ["src/**/*.ts"]
 }
