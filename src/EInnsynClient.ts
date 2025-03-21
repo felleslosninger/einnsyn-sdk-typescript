@@ -16,3 +16,8 @@ export default class EInnsynClient extends EInnsynClientBase {
     this.iterate = requester.iterate.bind(requester);
   }
 }
+
+export {
+  PaginatedList,
+  isPaginatedList,
+} from './common/responses/PaginatedList';
