@@ -98,4 +98,18 @@ export class MoetedokumentResource extends Resource {
     }
     throw new NetworkError('Unknown response type');
   }
+
+  async deleteDokumentbeskrivelse(
+    id: string,
+    dokumentbeskrivelseId: string,
+  ): Promise<Dokumentbeskrivelse> {
+    const response = await this.requester.request({
+      method: 'delete',
+      path: `/moetedokument/${id}/dokumentbeskrivelse/${dokumentbeskrivelseId}`,
+    });
+    if (isDokumentbeskrivelse(response)) {
+      return response;
+    }
+    throw new NetworkError('Unknown response type');
+  }
 }
