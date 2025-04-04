@@ -1,7 +1,7 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
-export type {
+export {
   AuthenticationError,
   AuthorizationError,
   BadRequestError,
