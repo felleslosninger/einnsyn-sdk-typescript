@@ -113,6 +113,20 @@ export class MoetesakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  async deleteDokumentbeskrivelse(
+    id: string,
+    dokumentbeskrivelseId: string,
+  ): Promise<Dokumentbeskrivelse> {
+    const response = await this.requester.request({
+      method: 'delete',
+      path: `/moetesak/${id}/dokumentbeskrivelse/${dokumentbeskrivelseId}`,
+    });
+    if (isDokumentbeskrivelse(response)) {
+      return response;
+    }
+    throw new NetworkError('Unknown response type');
+  }
+
   async getUtredning(
     id: string,
     query?: GetByMoetesakParameters,
