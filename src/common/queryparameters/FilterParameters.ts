@@ -19,4 +19,5 @@ export interface FilterParameters extends QueryParameters {
   ids?: Array<string>;
   externalIds?: Array<string>;
   journalenhet?: string;
+  fulltext?: boolean;
 }
