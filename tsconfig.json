@@ -6,6 +6,7 @@
     "strict": true,
     "moduleResolution": "node16",
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "declaration": true,
     "outDir": "./dist"
