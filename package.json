@@ -5,8 +5,8 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/esm/index.d.ts",
-        "default": "./dist/esm/index.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
       },
       "require": {
         "types": "./dist/cjs/index.d.ts",
@@ -14,18 +14,29 @@
       }
     }
   },
-  "main": "dist/cjs/index.js",
-  "types": "dist/cjs/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@types/node": "^22.15.3",
+    "tsup": "^8.4.0",
     "typescript": "^5.8.3"
   },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "minify": true,
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true
+  },
   "scripts": {
-    "clean": "rm -rf dist",
-    "build:cjs": "tsc -p tsconfig.cjs.json",
-    "build:esm": "tsc -p tsconfig.json",
-    "build": "npm run clean && npm run build:cjs && npm run build:esm",
+    "build": "tsup",
     "prepublishOnly": "npm run build",
     "prepare": "npm run build"
   },
