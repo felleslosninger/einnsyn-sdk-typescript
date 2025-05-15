@@ -15,6 +15,13 @@ export interface FilterParameters extends QueryParameters {
   oppdatertDatoAfter?: string;
   moetedatoBefore?: string;
   moetedatoAfter?: string;
+  saksaar?: Array<string>;
+  sakssekvensnummer?: Array<string>;
+  saksnummer?: Array<string>;
+  journalpostnummer?: Array<string>;
+  journalsekvensnummer?: Array<string>;
+  moetesaksaar?: Array<string>;
+  moetesakssekvensnummer?: Array<string>;
   entity?: Array<'Journalpost' | 'Moetemappe' | 'Moetesak' | 'Saksmappe'>;
   ids?: Array<string>;
   externalIds?: Array<string>;
