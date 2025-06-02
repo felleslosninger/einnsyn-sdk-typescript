@@ -2,6 +2,7 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import type { Enhet, EnhetRequest } from '../enhet/Enhet';
+import type { Bruker, BrukerRequest } from '../bruker/Bruker';
 import type { Base, BaseRequest } from '../base/Base';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
 
@@ -10,11 +11,15 @@ export interface ApiKey extends Base {
   readonly name?: string;
   readonly secretKey: string;
   readonly enhet?: Enhet | string;
+  readonly bruker?: Bruker | string;
+  readonly expiresAt?: string;
 }
 
 export interface ApiKeyRequest extends BaseRequest {
   name?: string;
   enhet?: EnhetRequest | string;
+  bruker?: BrukerRequest | string;
+  expiresAt?: string;
 }
 
 export function isApiKey(obj: unknown): obj is ApiKey {

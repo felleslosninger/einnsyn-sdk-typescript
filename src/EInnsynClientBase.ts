@@ -32,6 +32,7 @@ import { LagretSoekResource } from './entities/lagretsoek/LagretSoekResource';
 import { TilbakemeldingResource } from './entities/tilbakemelding/TilbakemeldingResource';
 import { SearchResource } from './common/search/SearchResource';
 import { StatisticsResource } from './common/statistics/StatisticsResource';
+import { AuthInfoResource } from './common/authinfo/AuthInfoResource';
 
 export class EInnsynClientBase {
   readonly apikey: ApiKeyResource;
@@ -64,6 +65,7 @@ export class EInnsynClientBase {
   readonly tilbakemelding: TilbakemeldingResource;
   readonly search: SearchResource;
   readonly statistics: StatisticsResource;
+  readonly authinfo: AuthInfoResource;
 
   constructor(requester: EInnsynRequester) {
     this.apikey = new ApiKeyResource(requester);
@@ -96,5 +98,6 @@ export class EInnsynClientBase {
     this.tilbakemelding = new TilbakemeldingResource(requester);
     this.search = new SearchResource(requester);
     this.statistics = new StatisticsResource(requester);
+    this.authinfo = new AuthInfoResource(requester);
   }
 }
