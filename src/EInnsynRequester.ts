@@ -3,6 +3,7 @@ import type { EInnsynOptions } from './EInnsynOptions';
 import { Authenticator } from './auth/Authenticator';
 import { AuthenticatorApiKey } from './auth/AuthenticatorApiKey';
 import { AuthenticatorBruker } from './auth/AuthenticatorBruker';
+import { AuthenticatorJWT } from './auth/AuthenticatorJWT';
 import { NetworkError, resolveError } from './common/error/EInnsynError';
 import type { QueryParameters } from './common/queryparameters/QueryParameters';
 import {
@@ -27,6 +28,8 @@ export class EInnsynRequester {
       this.authenticator = new AuthenticatorApiKey(options);
     } else if (options.username !== undefined) {
       this.authenticator = new AuthenticatorBruker(options);
+    } else if (options.jwt !== undefined) {
+      this.authenticator = new AuthenticatorJWT(options);
     } else {
       // Anonymous authenticator
       this.authenticator = new Authenticator(options);
