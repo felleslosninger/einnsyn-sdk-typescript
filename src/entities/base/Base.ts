@@ -19,6 +19,7 @@ export function isBase(obj: unknown): obj is Base {
   switch ((obj as { entity: string })?.entity) {
     case 'ApiKey':
     case 'Enhet':
+    case 'Bruker':
     case 'Arkiv':
     case 'Arkivdel':
     case 'Klasse':
@@ -41,7 +42,6 @@ export function isBase(obj: unknown): obj is Base {
     case 'Behandlingsprotokoll':
     case 'Innsynskrav':
     case 'InnsynskravBestilling':
-    case 'Bruker':
     case 'LagretSak':
     case 'LagretSoek':
     case 'Tilbakemelding':

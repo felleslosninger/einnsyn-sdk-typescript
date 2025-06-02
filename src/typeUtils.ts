@@ -1,6 +1,7 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
+export type { AuthInfo } from './common/authinfo/AuthInfo';
 export {
   AuthenticationError,
   AuthorizationError,
