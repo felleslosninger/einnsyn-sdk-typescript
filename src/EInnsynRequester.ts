@@ -123,6 +123,11 @@ export class EInnsynRequester {
     return await attemptFetch();
   }
 
+  /**
+   * Iterates over a paginated list of items, yielding each item one by one.
+   *
+   * @param initial - The initial paginated list or URL to start iterating from.
+   */
   public async *iterate<T extends Base>(initial: PaginatedList<T> | string) {
     let url: string | undefined;
 
@@ -148,6 +153,38 @@ export class EInnsynRequester {
 
       url = response.next;
     }
+  }
+
+  /**
+   * Fetch the next batch of items in a paginated list.
+   *
+   * @param currentPage
+   * @returns
+   */
+  public async fetchNextPage<T extends Base>(
+    currentPage: PaginatedList<T>,
+  ): Promise<PaginatedList<T> | undefined> {
+    const nextUrl = currentPage.next;
+    if (!nextUrl) {
+      return undefined;
+    }
+    return (await this.request({ path: nextUrl })) as PaginatedList<T>;
+  }
+
+  /**
+   * Fetch the previous batch of items in a paginated list.
+   *
+   * @param currentPage
+   * @returns
+   */
+  public async fetchPreviousPage<T extends Base>(
+    currentPage: PaginatedList<T>,
+  ): Promise<PaginatedList<T> | undefined> {
+    const previousUrl = currentPage.previous;
+    if (!previousUrl) {
+      return undefined;
+    }
+    return (await this.request({ path: previousUrl })) as PaginatedList<T>;
   }
 }
 
