@@ -158,13 +158,13 @@ export class EInnsynRequester {
   /**
    * Fetch the next batch of items in a paginated list.
    *
-   * @param currentPage
-   * @returns
+   * @param pageOrUrl - The current paginated list or the next page URL string
+   * @returns The next page of items, or undefined if there is no next page
    */
   public async fetchNextPage<T extends Base>(
-    currentPage: PaginatedList<T>,
+    pageOrUrl: PaginatedList<T> | string,
   ): Promise<PaginatedList<T> | undefined> {
-    const nextUrl = currentPage.next;
+    const nextUrl = typeof pageOrUrl === 'string' ? pageOrUrl : pageOrUrl.next;
     if (!nextUrl) {
       return undefined;
     }
@@ -174,13 +174,13 @@ export class EInnsynRequester {
   /**
    * Fetch the previous batch of items in a paginated list.
    *
-   * @param currentPage
-   * @returns
+   * @param pageOrUrl - The current paginated list or the previous page URL string
+   * @returns The previous page of items, or undefined if there is no previous page
    */
   public async fetchPreviousPage<T extends Base>(
-    currentPage: PaginatedList<T>,
+    pageOrUrl: PaginatedList<T> | string,
   ): Promise<PaginatedList<T> | undefined> {
-    const previousUrl = currentPage.previous;
+    const previousUrl = typeof pageOrUrl === 'string' ? pageOrUrl : pageOrUrl.previous;
     if (!previousUrl) {
       return undefined;
     }
