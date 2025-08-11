@@ -180,7 +180,8 @@ export class EInnsynRequester {
   public async fetchPreviousPage<T extends Base>(
     pageOrUrl: PaginatedList<T> | string,
   ): Promise<PaginatedList<T> | undefined> {
-    const previousUrl = typeof pageOrUrl === 'string' ? pageOrUrl : pageOrUrl.previous;
+    const previousUrl =
+      typeof pageOrUrl === 'string' ? pageOrUrl : pageOrUrl.previous;
     if (!previousUrl) {
       return undefined;
     }
