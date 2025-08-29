@@ -9,12 +9,12 @@ export interface FilterParameters extends QueryParameters {
   administrativEnhetExact?: Array<string>;
   excludeAdministrativEnhet?: Array<string>;
   excludeAdministrativEnhetExact?: Array<string>;
-  publisertDatoBefore?: string;
-  publisertDatoAfter?: string;
-  oppdatertDatoBefore?: string;
-  oppdatertDatoAfter?: string;
-  moetedatoBefore?: string;
-  moetedatoAfter?: string;
+  publisertDatoFrom?: string;
+  publisertDatoTo?: string;
+  oppdatertDatoFrom?: string;
+  oppdatertDatoTo?: string;
+  moetedatoFrom?: string;
+  moetedatoTo?: string;
   saksaar?: Array<string>;
   sakssekvensnummer?: Array<string>;
   saksnummer?: Array<string>;
@@ -22,6 +22,17 @@ export interface FilterParameters extends QueryParameters {
   journalsekvensnummer?: Array<string>;
   moetesaksaar?: Array<string>;
   moetesakssekvensnummer?: Array<string>;
+  journalposttype?: Array<
+    | 'inngaaende_dokument'
+    | 'utgaaende_dokument'
+    | 'organinternt_dokument_uten_oppfoelging'
+    | 'organinternt_dokument_for_oppfoelging'
+    | 'saksframlegg'
+    | 'sakskart'
+    | 'moeteprotokoll'
+    | 'moetebok'
+    | 'ukjent'
+  >;
   entity?: Array<'Journalpost' | 'Moetemappe' | 'Moetesak' | 'Saksmappe'>;
   ids?: Array<string>;
   externalIds?: Array<string>;
