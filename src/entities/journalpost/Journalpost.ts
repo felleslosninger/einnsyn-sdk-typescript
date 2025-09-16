@@ -3,7 +3,7 @@
 
 import type { Skjerming, SkjermingRequest } from '../skjerming/Skjerming';
 import type { Enhet, EnhetRequest } from '../enhet/Enhet';
-import type { Saksmappe } from '../saksmappe/Saksmappe';
+import type { Saksmappe, SaksmappeRequest } from '../saksmappe/Saksmappe';
 import type {
   Registrering,
   RegistreringRequest,
@@ -32,7 +32,7 @@ export interface Journalpost extends Registrering {
   readonly legacyFoelgsakenReferanse?: Array<string>;
   readonly administrativEnhet?: string;
   readonly administrativEnhetObjekt?: Enhet | string;
-  readonly saksmappe: Saksmappe | string;
+  readonly saksmappe?: Saksmappe | string;
 }
 
 export interface JournalpostRequest extends RegistreringRequest {
@@ -56,6 +56,7 @@ export interface JournalpostRequest extends RegistreringRequest {
   legacyFoelgsakenReferanse?: Array<string>;
   administrativEnhet?: string;
   administrativEnhetObjekt?: EnhetRequest | string;
+  saksmappe?: SaksmappeRequest | string;
 }
 
 export function isJournalpost(obj: unknown): obj is Journalpost {
