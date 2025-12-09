@@ -61,6 +61,12 @@ export class NotFoundError extends EInnsynError {
   }
 }
 
+export class TooManyUnverifiedOrdersError extends EInnsynError {
+  constructor(message: string) {
+    super(message, 'tooManyUnverifiedOrders');
+  }
+}
+
 export class ValidationError extends EInnsynError {
   fieldError: Array<{
     fieldName: string;
@@ -108,6 +114,10 @@ export function resolveError(json: unknown) {
       );
     case 'notFound':
       return new NotFoundError((json as NotFoundError).message);
+    case 'tooManyUnverifiedOrders':
+      return new TooManyUnverifiedOrdersError(
+        (json as TooManyUnverifiedOrdersError).message,
+      );
     case 'validationError':
       return new ValidationError(
         (json as ValidationError).message,
