@@ -12,6 +12,7 @@ export {
   MethodNotAllowedError,
   NetworkError,
   NotFoundError,
+  TooManyUnverifiedOrdersError,
   ValidationError,
 } from './common/error/EInnsynError';
 export type { FilterParameters } from './common/queryparameters/FilterParameters';
