@@ -14,6 +14,7 @@ import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
 
 export interface Registrering extends ArkivBase {
+  readonly slug?: string;
   readonly offentligTittel: string;
   readonly offentligTittelSensitiv: string;
   readonly beskrivelse?: string;
@@ -25,6 +26,7 @@ export interface Registrering extends ArkivBase {
 }
 
 export interface RegistreringRequest extends ArkivBaseRequest {
+  slug?: string;
   offentligTittel: string;
   offentligTittelSensitiv: string;
   beskrivelse?: string;

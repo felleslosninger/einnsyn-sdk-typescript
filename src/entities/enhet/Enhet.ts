@@ -6,6 +6,7 @@ import type { PaginatedList } from '../../common/responses/PaginatedList';
 
 export interface Enhet extends Base {
   readonly entity: 'Enhet';
+  readonly slug?: string;
   readonly navn: string;
   readonly navnNynorsk?: string;
   readonly navnEngelsk?: string;
@@ -41,6 +42,7 @@ export interface Enhet extends Base {
 }
 
 export interface EnhetRequest extends BaseRequest {
+  slug?: string;
   navn: string;
   navnNynorsk?: string;
   navnEngelsk?: string;
