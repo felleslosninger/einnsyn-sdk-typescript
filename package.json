@@ -19,7 +19,7 @@
   "sideEffects": false,
   "devDependencies": {
     "@biomejs/biome": "2.3.8",
-    "@types/node": "24.10.2",
+    "@types/node": "25.0.2",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3"
   },
