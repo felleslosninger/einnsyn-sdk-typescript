@@ -61,6 +61,12 @@ export class NotFoundError extends EInnsynError {
   }
 }
 
+export class TooManyRequestsError extends EInnsynError {
+  constructor(message: string) {
+    super(message, 'tooManyRequests');
+  }
+}
+
 export class TooManyUnverifiedOrdersError extends EInnsynError {
   constructor(message: string) {
     super(message, 'tooManyUnverifiedOrders');
@@ -114,6 +120,8 @@ export function resolveError(json: unknown) {
       );
     case 'notFound':
       return new NotFoundError((json as NotFoundError).message);
+    case 'tooManyRequests':
+      return new TooManyRequestsError((json as TooManyRequestsError).message);
     case 'tooManyUnverifiedOrders':
       return new TooManyUnverifiedOrdersError(
         (json as TooManyUnverifiedOrdersError).message,

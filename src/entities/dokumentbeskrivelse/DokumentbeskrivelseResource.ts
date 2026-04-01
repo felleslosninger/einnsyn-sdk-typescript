@@ -14,6 +14,11 @@ import {
 } from './Dokumentbeskrivelse';
 import { NetworkError } from '../../common/error/EInnsynError';
 import type { GetParameters } from '../../common/queryparameters/GetParameters';
+import type {
+  DokumentobjektRequest,
+  Dokumentobjekt,
+} from '../dokumentobjekt/Dokumentobjekt';
+import { isDokumentobjekt } from '../dokumentobjekt/Dokumentobjekt';
 
 export class DokumentbeskrivelseResource extends Resource {
   async list(
@@ -63,6 +68,21 @@ export class DokumentbeskrivelseResource extends Resource {
       body: body,
     });
     if (isDokumentbeskrivelse(response)) {
+      return response;
+    }
+    throw new NetworkError('Unknown response type');
+  }
+
+  async addDokumentobjekt(
+    id: string,
+    body: DokumentobjektRequest | string | 'string',
+  ): Promise<Dokumentobjekt> {
+    const response = await this.requester.request({
+      method: 'post',
+      path: `/dokumentbeskrivelse/${id}/dokumentobjekt`,
+      body: body,
+    });
+    if (isDokumentobjekt(response)) {
       return response;
     }
     throw new NetworkError('Unknown response type');

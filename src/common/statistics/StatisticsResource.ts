@@ -6,22 +6,24 @@ import type { StatisticsParameters } from './StatisticsParameters';
 
 export class StatisticsResource extends Resource {
   async query(query?: StatisticsParameters): Promise<{
-    readonly innsynskrav?: {
-      readonly count: number;
-      readonly interval: number;
-      readonly bucket: Array<{
-        readonly time: string;
-        readonly count: number;
-      }>;
+    readonly summary: {
+      readonly createdCount: number;
+      readonly createdWithFulltextCount: number;
+      readonly createdInnsynskravCount: number;
+      readonly downloadCount: number;
     };
-    readonly download?: {
-      readonly count: number;
-      readonly interval: number;
-      readonly bucket: Array<{
-        readonly time: string;
-        readonly count: number;
-      }>;
+    readonly metadata: {
+      readonly aggregateInterval: string;
+      readonly aggregateFrom?: string;
+      readonly aggregateTo?: string;
     };
+    readonly timeSeries?: Array<{
+      readonly time: string;
+      readonly createdCount: number;
+      readonly createdWithFulltextCount: number;
+      readonly createdInnsynskravCount: number;
+      readonly downloadCount: number;
+    }>;
   }> {
     const response = await this.requester.request({
       method: 'get',
@@ -29,22 +31,24 @@ export class StatisticsResource extends Resource {
       query: query,
     });
     return response as {
-      readonly innsynskrav?: {
-        readonly count: number;
-        readonly interval: number;
-        readonly bucket: Array<{
-          readonly time: string;
-          readonly count: number;
-        }>;
+      readonly summary: {
+        readonly createdCount: number;
+        readonly createdWithFulltextCount: number;
+        readonly createdInnsynskravCount: number;
+        readonly downloadCount: number;
       };
-      readonly download?: {
-        readonly count: number;
-        readonly interval: number;
-        readonly bucket: Array<{
-          readonly time: string;
-          readonly count: number;
-        }>;
+      readonly metadata: {
+        readonly aggregateInterval: string;
+        readonly aggregateFrom?: string;
+        readonly aggregateTo?: string;
       };
+      readonly timeSeries?: Array<{
+        readonly time: string;
+        readonly createdCount: number;
+        readonly createdWithFulltextCount: number;
+        readonly createdInnsynskravCount: number;
+        readonly downloadCount: number;
+      }>;
     };
   }
 }
