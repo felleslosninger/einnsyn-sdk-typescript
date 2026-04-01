@@ -25,6 +25,8 @@ import {
   isPaginatedKorrespondansepartList,
   isKorrespondansepart,
 } from '../korrespondansepart/Korrespondansepart';
+import type { SkjermingRequest, Skjerming } from '../skjerming/Skjerming';
+import { isSkjerming } from '../skjerming/Skjerming';
 
 export class JournalpostResource extends Resource {
   async list(query?: ListParameters): Promise<PaginatedList<Journalpost>> {
@@ -146,6 +148,32 @@ export class JournalpostResource extends Resource {
       body: body,
     });
     if (isKorrespondansepart(response)) {
+      return response;
+    }
+    throw new NetworkError('Unknown response type');
+  }
+
+  async addSkjerming(
+    id: string,
+    body: SkjermingRequest | string | 'string',
+  ): Promise<Skjerming> {
+    const response = await this.requester.request({
+      method: 'post',
+      path: `/journalpost/${id}/skjerming`,
+      body: body,
+    });
+    if (isSkjerming(response)) {
+      return response;
+    }
+    throw new NetworkError('Unknown response type');
+  }
+
+  async deleteSkjerming(id: string, skjermingId: string): Promise<Skjerming> {
+    const response = await this.requester.request({
+      method: 'delete',
+      path: `/journalpost/${id}/skjerming/${skjermingId}`,
+    });
+    if (isSkjerming(response)) {
       return response;
     }
     throw new NetworkError('Unknown response type');

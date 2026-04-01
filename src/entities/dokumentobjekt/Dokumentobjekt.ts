@@ -15,6 +15,7 @@ export interface Dokumentobjekt extends ArkivBase {
   readonly sjekksum?: string;
   readonly sjekksumAlgoritme?: string;
   readonly dokumentbeskrivelse?: Dokumentbeskrivelse | string;
+  readonly url: string;
 }
 
 export interface DokumentobjektRequest extends ArkivBaseRequest {

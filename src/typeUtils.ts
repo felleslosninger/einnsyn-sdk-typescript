@@ -12,6 +12,7 @@ export {
   MethodNotAllowedError,
   NetworkError,
   NotFoundError,
+  TooManyRequestsError,
   TooManyUnverifiedOrdersError,
   ValidationError,
 } from './common/error/EInnsynError';

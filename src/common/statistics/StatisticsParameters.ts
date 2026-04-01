@@ -6,4 +6,5 @@ import type { FilterParameters } from '../queryparameters/FilterParameters';
 export interface StatisticsParameters extends FilterParameters {
   aggregateFrom?: string;
   aggregateTo?: string;
+  aggregateInterval?: 'hour' | 'day' | 'week' | 'month' | 'year';
 }

@@ -10,12 +10,20 @@ export interface SearchParameters extends FilterParameters {
   startingAfter?: Array<string>;
   endingBefore?: Array<string>;
   sortBy?:
-    | 'score'
-    | 'id'
+    | 'administrativEnhetNavn'
+    | 'dokumentetsDato'
     | 'entity'
-    | 'publisertDato'
-    | 'oppdatertDato'
-    | 'moetedato'
     | 'fulltekst'
-    | 'type';
+    | 'id'
+    | 'journaldato'
+    | 'journalpostnummer'
+    | 'journalposttype'
+    | 'korrespondansepartNavn'
+    | 'moetedato'
+    | 'oppdatertDato'
+    | 'publisertDato'
+    | 'standardDato'
+    | 'sakssekvensnummer'
+    | 'score'
+    | 'tittel';
 }
