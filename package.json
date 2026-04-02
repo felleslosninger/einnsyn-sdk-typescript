@@ -21,7 +21,7 @@
     "@biomejs/biome": "2.4.10",
     "@types/node": "25.4.0",
     "tsup": "^8.5.0",
-    "typescript": "^5.8.3"
+    "typescript": "^6.0.2"
   },
   "tsup": {
     "entry": [
