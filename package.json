@@ -18,12 +18,26 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "devDependencies": {
-    "@biomejs/biome": "2.4.10",
-    "@types/node": "25.4.0",
+    "@biomejs/biome": "^2.4.11",
+    "@types/node": "^25.5.2",
     "@vitest/coverage-v8": "^4.1.2",
     "tsup": "^8.5.0",
-    "typescript": "^5.8.3",
+    "typescript": "^6.0.2",
     "vitest": "^4.1.2"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "minify": true,
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true,
+    "dts": true
   },
   "scripts": {
     "build": "tsup",
