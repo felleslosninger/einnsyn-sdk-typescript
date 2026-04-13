@@ -1,4 +1,3 @@
-import { version } from '.';
 import type { EInnsynOptions } from './EInnsynOptions';
 import { Authenticator } from './auth/Authenticator';
 import { AuthenticatorApiKey } from './auth/AuthenticatorApiKey';
@@ -12,6 +11,7 @@ import {
 } from './common/responses/PaginatedList';
 import type { Base } from './entities/base/Base';
 import { searchQuerySerializer } from './utils/searchQuerySerializer';
+import { version } from './version';
 
 type RequestOptions = {
   method?: 'get' | 'post' | 'patch' | 'delete';

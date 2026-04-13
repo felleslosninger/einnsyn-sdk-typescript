@@ -1,4 +1,3 @@
-import { version } from '..';
 import type { EInnsynOptions } from '../EInnsynOptions';
 
 export class Authenticator {

@@ -20,25 +20,18 @@
   "devDependencies": {
     "@biomejs/biome": "2.4.10",
     "@types/node": "25.4.0",
+    "@vitest/coverage-v8": "^4.1.2",
     "tsup": "^8.5.0",
-    "typescript": "^5.8.3"
-  },
-  "tsup": {
-    "entry": [
-      "src/index.ts"
-    ],
-    "format": [
-      "cjs",
-      "esm"
-    ],
-    "minify": true,
-    "splitting": false,
-    "sourcemap": true,
-    "clean": true,
-    "dts": true
+    "typescript": "^5.8.3",
+    "vitest": "^4.1.2"
   },
   "scripts": {
     "build": "tsup",
+    "format": "biome format --write .",
+    "test": "npm run test:typecheck && npm run test:run",
+    "test:run": "vitest run",
+    "test:typecheck": "tsc -p tsconfig.test.json --noEmit",
+    "test:coverage": "npm run test:typecheck && vitest run --coverage",
     "prepublishOnly": "npm run build",
     "prepare": "npm run build"
   },
