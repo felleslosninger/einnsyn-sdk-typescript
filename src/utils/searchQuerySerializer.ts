@@ -7,8 +7,9 @@ function serializeQueryParameterValue(params: unknown, prefix = ''): string[] {
       str.push(...serializeQueryParameterValue(param, prefix));
     }
   } else if (typeof params === 'object' && params !== null) {
-    for (const paramName of Object.keys(params).sort()) {
-      const param = (params as QueryParameters)[paramName];
+    const record = params as Record<string, unknown>;
+    for (const paramName of Object.keys(record).sort()) {
+      const param = record[paramName];
       str.push(
         ...serializeQueryParameterValue(
           param,
