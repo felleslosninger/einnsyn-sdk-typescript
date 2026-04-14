@@ -2,17 +2,17 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
-import type { ListParameters } from '../../common/queryparameters/ListParameters';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
-import type { Klasse, KlasseRequest } from './Klasse';
-import { isPaginatedKlasseList, isKlasse } from './Klasse';
 import { NetworkError } from '../../common/error/EInnsynError';
 import type { GetParameters } from '../../common/queryparameters/GetParameters';
-import type { ListByKlasseParameters } from './ListByKlasseParameters';
+import type { ListParameters } from '../../common/queryparameters/ListParameters';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { Moetemappe } from '../moetemappe/Moetemappe';
 import { isPaginatedMoetemappeList } from '../moetemappe/Moetemappe';
 import type { Saksmappe } from '../saksmappe/Saksmappe';
 import { isPaginatedSaksmappeList } from '../saksmappe/Saksmappe';
+import type { Klasse, KlasseRequest } from './Klasse';
+import { isKlasse, isPaginatedKlasseList } from './Klasse';
+import type { ListByKlasseParameters } from './ListByKlasseParameters';
 
 export class KlasseResource extends Resource {
   async list(query?: ListParameters): Promise<PaginatedList<Klasse>> {

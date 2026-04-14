@@ -1,6 +1,9 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
+import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { Base, BaseRequest } from '../base/Base';
+import type { Enhet, EnhetRequest } from '../enhet/Enhet';
 import type {
   InnsynskravBestilling,
   InnsynskravBestillingRequest,
@@ -9,9 +12,6 @@ import type {
   Journalpost,
   JournalpostRequest,
 } from '../journalpost/Journalpost';
-import type { Enhet, EnhetRequest } from '../enhet/Enhet';
-import type { Base, BaseRequest } from '../base/Base';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
 
 export interface Innsynskrav extends Base {
   readonly entity: 'Innsynskrav';

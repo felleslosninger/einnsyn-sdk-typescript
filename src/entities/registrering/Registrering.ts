@@ -1,17 +1,17 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
-import type {
-  Korrespondansepart,
-  KorrespondansepartRequest,
-} from '../korrespondansepart/Korrespondansepart';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
 import type {
   Dokumentbeskrivelse,
   DokumentbeskrivelseRequest,
 } from '../dokumentbeskrivelse/Dokumentbeskrivelse';
 import type { Enhet, EnhetRequest } from '../enhet/Enhet';
-import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type {
+  Korrespondansepart,
+  KorrespondansepartRequest,
+} from '../korrespondansepart/Korrespondansepart';
 
 export interface Registrering extends ArkivBase {
   readonly slug?: string;

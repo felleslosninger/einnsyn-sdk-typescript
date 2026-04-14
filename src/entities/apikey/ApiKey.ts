@@ -1,10 +1,10 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
-import type { Enhet, EnhetRequest } from '../enhet/Enhet';
-import type { Bruker, BrukerRequest } from '../bruker/Bruker';
-import type { Base, BaseRequest } from '../base/Base';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { Base, BaseRequest } from '../base/Base';
+import type { Bruker, BrukerRequest } from '../bruker/Bruker';
+import type { Enhet, EnhetRequest } from '../enhet/Enhet';
 
 export interface ApiKey extends Base {
   readonly entity: 'ApiKey';

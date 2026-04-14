@@ -2,23 +2,23 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
+import { NetworkError } from '../../common/error/EInnsynError';
+import type { GetParameters } from '../../common/queryparameters/GetParameters';
 import type { ListParameters } from '../../common/queryparameters/ListParameters';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type {
+  Dokumentobjekt,
+  DokumentobjektRequest,
+} from '../dokumentobjekt/Dokumentobjekt';
+import { isDokumentobjekt } from '../dokumentobjekt/Dokumentobjekt';
 import type {
   Dokumentbeskrivelse,
   DokumentbeskrivelseRequest,
 } from './Dokumentbeskrivelse';
 import {
-  isPaginatedDokumentbeskrivelseList,
   isDokumentbeskrivelse,
+  isPaginatedDokumentbeskrivelseList,
 } from './Dokumentbeskrivelse';
-import { NetworkError } from '../../common/error/EInnsynError';
-import type { GetParameters } from '../../common/queryparameters/GetParameters';
-import type {
-  DokumentobjektRequest,
-  Dokumentobjekt,
-} from '../dokumentobjekt/Dokumentobjekt';
-import { isDokumentobjekt } from '../dokumentobjekt/Dokumentobjekt';
 
 export class DokumentbeskrivelseResource extends Resource {
   async list(

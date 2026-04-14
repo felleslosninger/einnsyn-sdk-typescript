@@ -1,12 +1,12 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { Moetemappe, MoetemappeRequest } from '../moetemappe/Moetemappe';
 import type {
   Registrering,
   RegistreringRequest,
 } from '../registrering/Registrering';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
 
 export interface Moetedokument extends Registrering {
   readonly entity: 'Moetedokument';

@@ -1,5 +1,5 @@
 import { EInnsynClientBase } from './EInnsynClientBase';
-import { type EInnsynOptions, defaultOptions } from './EInnsynOptions';
+import { defaultOptions, type EInnsynOptions } from './EInnsynOptions';
 import { EInnsynRequester } from './EInnsynRequester';
 
 export default class EInnsynClient extends EInnsynClientBase {

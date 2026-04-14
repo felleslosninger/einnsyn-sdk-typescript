@@ -1,12 +1,12 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
-import type { Klasse, KlasseRequest } from '../klasse/Klasse';
-import type { Saksmappe } from '../saksmappe/Saksmappe';
-import type { Moetemappe } from '../moetemappe/Moetemappe';
-import type { Arkivdel } from '../arkivdel/Arkivdel';
-import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
+import type { Arkivdel } from '../arkivdel/Arkivdel';
+import type { Klasse, KlasseRequest } from '../klasse/Klasse';
+import type { Moetemappe } from '../moetemappe/Moetemappe';
+import type { Saksmappe } from '../saksmappe/Saksmappe';
 
 export interface Mappe extends ArkivBase {
   readonly slug?: string;
