@@ -1,10 +1,10 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
-import type { Enhet } from '../enhet/Enhet';
-import type { Mappe, MappeRequest } from '../mappe/Mappe';
-import type { JournalpostRequest } from '../journalpost/Journalpost';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { Enhet } from '../enhet/Enhet';
+import type { JournalpostRequest } from '../journalpost/Journalpost';
+import type { Mappe, MappeRequest } from '../mappe/Mappe';
 
 export interface Saksmappe extends Mappe {
   readonly entity: 'Saksmappe';

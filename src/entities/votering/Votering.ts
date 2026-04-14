@@ -1,16 +1,16 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
-import type {
-  Moetedeltaker,
-  MoetedeltakerRequest,
-} from '../moetedeltaker/Moetedeltaker';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
 import type {
   Identifikator,
   IdentifikatorRequest,
 } from '../identifikator/Identifikator';
-import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type {
+  Moetedeltaker,
+  MoetedeltakerRequest,
+} from '../moetedeltaker/Moetedeltaker';
 
 export interface Votering extends ArkivBase {
   readonly entity: 'Votering';

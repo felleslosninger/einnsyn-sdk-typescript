@@ -2,31 +2,31 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
-import type { ListParameters } from '../../common/queryparameters/ListParameters';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
-import type { Journalpost, JournalpostRequest } from './Journalpost';
-import { isPaginatedJournalpostList, isJournalpost } from './Journalpost';
 import { NetworkError } from '../../common/error/EInnsynError';
 import type { GetParameters } from '../../common/queryparameters/GetParameters';
-import type { ListByJournalpostParameters } from './ListByJournalpostParameters';
+import type { ListParameters } from '../../common/queryparameters/ListParameters';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type {
   Dokumentbeskrivelse,
   DokumentbeskrivelseRequest,
 } from '../dokumentbeskrivelse/Dokumentbeskrivelse';
 import {
-  isPaginatedDokumentbeskrivelseList,
   isDokumentbeskrivelse,
+  isPaginatedDokumentbeskrivelseList,
 } from '../dokumentbeskrivelse/Dokumentbeskrivelse';
 import type {
   Korrespondansepart,
   KorrespondansepartRequest,
 } from '../korrespondansepart/Korrespondansepart';
 import {
-  isPaginatedKorrespondansepartList,
   isKorrespondansepart,
+  isPaginatedKorrespondansepartList,
 } from '../korrespondansepart/Korrespondansepart';
-import type { SkjermingRequest, Skjerming } from '../skjerming/Skjerming';
+import type { Skjerming, SkjermingRequest } from '../skjerming/Skjerming';
 import { isSkjerming } from '../skjerming/Skjerming';
+import type { Journalpost, JournalpostRequest } from './Journalpost';
+import { isJournalpost, isPaginatedJournalpostList } from './Journalpost';
+import type { ListByJournalpostParameters } from './ListByJournalpostParameters';
 
 export class JournalpostResource extends Resource {
   async list(query?: ListParameters): Promise<PaginatedList<Journalpost>> {

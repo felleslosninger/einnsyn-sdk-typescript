@@ -2,12 +2,12 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
+import { NetworkError } from '../../common/error/EInnsynError';
+import type { GetParameters } from '../../common/queryparameters/GetParameters';
 import type { ListParameters } from '../../common/queryparameters/ListParameters';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { Innsynskrav, InnsynskravRequest } from './Innsynskrav';
-import { isPaginatedInnsynskravList, isInnsynskrav } from './Innsynskrav';
-import { NetworkError } from '../../common/error/EInnsynError';
-import type { GetParameters } from '../../common/queryparameters/GetParameters';
+import { isInnsynskrav, isPaginatedInnsynskravList } from './Innsynskrav';
 
 export class InnsynskravResource extends Resource {
   async list(query?: ListParameters): Promise<PaginatedList<Innsynskrav>> {

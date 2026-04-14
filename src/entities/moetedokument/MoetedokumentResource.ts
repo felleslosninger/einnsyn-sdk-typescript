@@ -2,21 +2,21 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
-import type { ListParameters } from '../../common/queryparameters/ListParameters';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
-import type { Moetedokument, MoetedokumentRequest } from './Moetedokument';
-import { isPaginatedMoetedokumentList, isMoetedokument } from './Moetedokument';
 import { NetworkError } from '../../common/error/EInnsynError';
 import type { GetParameters } from '../../common/queryparameters/GetParameters';
-import type { ListByMoetedokumentParameters } from './ListByMoetedokumentParameters';
+import type { ListParameters } from '../../common/queryparameters/ListParameters';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type {
   Dokumentbeskrivelse,
   DokumentbeskrivelseRequest,
 } from '../dokumentbeskrivelse/Dokumentbeskrivelse';
 import {
-  isPaginatedDokumentbeskrivelseList,
   isDokumentbeskrivelse,
+  isPaginatedDokumentbeskrivelseList,
 } from '../dokumentbeskrivelse/Dokumentbeskrivelse';
+import type { ListByMoetedokumentParameters } from './ListByMoetedokumentParameters';
+import type { Moetedokument, MoetedokumentRequest } from './Moetedokument';
+import { isMoetedokument, isPaginatedMoetedokumentList } from './Moetedokument';
 
 export class MoetedokumentResource extends Resource {
   async list(query?: ListParameters): Promise<PaginatedList<Moetedokument>> {

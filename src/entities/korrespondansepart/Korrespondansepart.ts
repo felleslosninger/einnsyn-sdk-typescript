@@ -1,11 +1,11 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
+import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
 import type { Journalpost } from '../journalpost/Journalpost';
 import type { Moetedokument } from '../moetedokument/Moetedokument';
 import type { Moetesak } from '../moetesak/Moetesak';
-import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
 
 export interface Korrespondansepart extends ArkivBase {
   readonly entity: 'Korrespondansepart';
