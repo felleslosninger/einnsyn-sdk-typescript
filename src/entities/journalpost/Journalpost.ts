@@ -1,14 +1,14 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
-import type { Skjerming, SkjermingRequest } from '../skjerming/Skjerming';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { Enhet, EnhetRequest } from '../enhet/Enhet';
-import type { Saksmappe, SaksmappeRequest } from '../saksmappe/Saksmappe';
 import type {
   Registrering,
   RegistreringRequest,
 } from '../registrering/Registrering';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { Saksmappe, SaksmappeRequest } from '../saksmappe/Saksmappe';
+import type { Skjerming, SkjermingRequest } from '../skjerming/Skjerming';
 
 export interface Journalpost extends Registrering {
   readonly entity: 'Journalpost';

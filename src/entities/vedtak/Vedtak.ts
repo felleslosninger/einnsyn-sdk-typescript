@@ -1,11 +1,8 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
-import type {
-  Moetesaksbeskrivelse,
-  MoetesaksbeskrivelseRequest,
-} from '../moetesaksbeskrivelse/Moetesaksbeskrivelse';
-import type { Votering, VoteringRequest } from '../votering/Votering';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
 import type {
   Behandlingsprotokoll,
   BehandlingsprotokollRequest,
@@ -14,8 +11,11 @@ import type {
   Dokumentbeskrivelse,
   DokumentbeskrivelseRequest,
 } from '../dokumentbeskrivelse/Dokumentbeskrivelse';
-import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type {
+  Moetesaksbeskrivelse,
+  MoetesaksbeskrivelseRequest,
+} from '../moetesaksbeskrivelse/Moetesaksbeskrivelse';
+import type { Votering, VoteringRequest } from '../votering/Votering';
 
 export interface Vedtak extends ArkivBase {
   readonly entity: 'Vedtak';

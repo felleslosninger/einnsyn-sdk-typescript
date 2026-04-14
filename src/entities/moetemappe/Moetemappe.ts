@@ -1,14 +1,14 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { Enhet } from '../enhet/Enhet';
+import type { Mappe, MappeRequest } from '../mappe/Mappe';
 import type {
   Moetedokument,
   MoetedokumentRequest,
 } from '../moetedokument/Moetedokument';
 import type { Moetesak, MoetesakRequest } from '../moetesak/Moetesak';
-import type { Mappe, MappeRequest } from '../mappe/Mappe';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
 
 export interface Moetemappe extends Mappe {
   readonly entity: 'Moetemappe';

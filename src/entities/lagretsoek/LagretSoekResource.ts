@@ -2,12 +2,12 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
+import { NetworkError } from '../../common/error/EInnsynError';
+import type { GetParameters } from '../../common/queryparameters/GetParameters';
 import type { ListParameters } from '../../common/queryparameters/ListParameters';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { LagretSoek, LagretSoekRequest } from './LagretSoek';
-import { isPaginatedLagretSoekList, isLagretSoek } from './LagretSoek';
-import { NetworkError } from '../../common/error/EInnsynError';
-import type { GetParameters } from '../../common/queryparameters/GetParameters';
+import { isLagretSoek, isPaginatedLagretSoekList } from './LagretSoek';
 
 export class LagretSoekResource extends Resource {
   async list(query?: ListParameters): Promise<PaginatedList<LagretSoek>> {

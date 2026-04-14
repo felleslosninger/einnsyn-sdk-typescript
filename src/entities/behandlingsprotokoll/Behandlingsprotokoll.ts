@@ -1,8 +1,8 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
-import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
 
 export interface Behandlingsprotokoll extends ArkivBase {
   readonly entity: 'Behandlingsprotokoll';

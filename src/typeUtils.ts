@@ -83,105 +83,105 @@ export {
 } from './entities/innsynskravbestilling/InnsynskravBestilling';
 export type { ListByInnsynskravBestillingParameters } from './entities/innsynskravbestilling/ListByInnsynskravBestillingParameters';
 export {
+  isJournalpost,
   type Journalpost,
   type JournalpostRequest,
-  isJournalpost,
 } from './entities/journalpost/Journalpost';
 export type { ListByJournalpostParameters } from './entities/journalpost/ListByJournalpostParameters';
 export {
+  isKlasse,
   type Klasse,
   type KlasseRequest,
-  isKlasse,
 } from './entities/klasse/Klasse';
 export type { ListByKlasseParameters } from './entities/klasse/ListByKlasseParameters';
 export {
+  isKlassifikasjonssystem,
   type Klassifikasjonssystem,
   type KlassifikasjonssystemRequest,
-  isKlassifikasjonssystem,
 } from './entities/klassifikasjonssystem/Klassifikasjonssystem';
 export type { ListByKlassifikasjonssystemParameters } from './entities/klassifikasjonssystem/ListByKlassifikasjonssystemParameters';
 export {
+  isKorrespondansepart,
   type Korrespondansepart,
   type KorrespondansepartRequest,
-  isKorrespondansepart,
 } from './entities/korrespondansepart/Korrespondansepart';
 export {
+  isLagretSak,
   type LagretSak,
   type LagretSakRequest,
-  isLagretSak,
 } from './entities/lagretsak/LagretSak';
 export {
+  isLagretSoek,
   type LagretSoek,
   type LagretSoekRequest,
-  isLagretSoek,
 } from './entities/lagretsoek/LagretSoek';
-export { type Mappe, type MappeRequest, isMappe } from './entities/mappe/Mappe';
+export { isMappe, type Mappe, type MappeRequest } from './entities/mappe/Mappe';
 export {
+  isMoetedeltaker,
   type Moetedeltaker,
   type MoetedeltakerRequest,
-  isMoetedeltaker,
 } from './entities/moetedeltaker/Moetedeltaker';
 export type { ListByMoetedokumentParameters } from './entities/moetedokument/ListByMoetedokumentParameters';
 export {
+  isMoetedokument,
   type Moetedokument,
   type MoetedokumentRequest,
-  isMoetedokument,
 } from './entities/moetedokument/Moetedokument';
 export type { ListByMoetemappeParameters } from './entities/moetemappe/ListByMoetemappeParameters';
 export {
+  isMoetemappe,
   type Moetemappe,
   type MoetemappeRequest,
-  isMoetemappe,
 } from './entities/moetemappe/Moetemappe';
 export type { GetByMoetesakParameters } from './entities/moetesak/GetByMoetesakParameters';
 export type { ListByMoetesakParameters } from './entities/moetesak/ListByMoetesakParameters';
 export {
+  isMoetesak,
   type Moetesak,
   type MoetesakRequest,
-  isMoetesak,
 } from './entities/moetesak/Moetesak';
 export {
+  isMoetesaksbeskrivelse,
   type Moetesaksbeskrivelse,
   type MoetesaksbeskrivelseRequest,
-  isMoetesaksbeskrivelse,
 } from './entities/moetesaksbeskrivelse/Moetesaksbeskrivelse';
 export {
+  isRegistrering,
   type Registrering,
   type RegistreringRequest,
-  isRegistrering,
 } from './entities/registrering/Registrering';
 export type { ListBySaksmappeParameters } from './entities/saksmappe/ListBySaksmappeParameters';
 export {
+  isSaksmappe,
   type Saksmappe,
   type SaksmappeRequest,
-  isSaksmappe,
 } from './entities/saksmappe/Saksmappe';
 export {
+  isSkjerming,
   type Skjerming,
   type SkjermingRequest,
-  isSkjerming,
 } from './entities/skjerming/Skjerming';
 export {
+  isTilbakemelding,
   type Tilbakemelding,
   type TilbakemeldingRequest,
-  isTilbakemelding,
 } from './entities/tilbakemelding/Tilbakemelding';
 export type { ListByUtredningParameters } from './entities/utredning/ListByUtredningParameters';
 export {
+  isUtredning,
   type Utredning,
   type UtredningRequest,
-  isUtredning,
 } from './entities/utredning/Utredning';
 export type { ListByVedtakParameters } from './entities/vedtak/ListByVedtakParameters';
 export {
+  isVedtak,
   type Vedtak,
   type VedtakRequest,
-  isVedtak,
 } from './entities/vedtak/Vedtak';
 export {
+  isVotering,
   type Votering,
   type VoteringRequest,
-  isVotering,
 } from './entities/votering/Votering';
 
 export class EInnsynClientBase {}

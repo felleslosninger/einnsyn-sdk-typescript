@@ -1,9 +1,9 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
-import type { Enhet, EnhetRequest } from '../enhet/Enhet';
-import type { Base, BaseRequest } from '../base/Base';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { Base, BaseRequest } from '../base/Base';
+import type { Enhet, EnhetRequest } from '../enhet/Enhet';
 
 export interface ArkivBase extends Base {
   readonly systemId?: string;

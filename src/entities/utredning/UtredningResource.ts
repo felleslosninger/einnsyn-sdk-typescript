@@ -2,21 +2,21 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
-import type { ListParameters } from '../../common/queryparameters/ListParameters';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
-import type { Utredning, UtredningRequest } from './Utredning';
-import { isPaginatedUtredningList, isUtredning } from './Utredning';
 import { NetworkError } from '../../common/error/EInnsynError';
 import type { GetParameters } from '../../common/queryparameters/GetParameters';
-import type { ListByUtredningParameters } from './ListByUtredningParameters';
+import type { ListParameters } from '../../common/queryparameters/ListParameters';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type {
   Dokumentbeskrivelse,
   DokumentbeskrivelseRequest,
 } from '../dokumentbeskrivelse/Dokumentbeskrivelse';
 import {
-  isPaginatedDokumentbeskrivelseList,
   isDokumentbeskrivelse,
+  isPaginatedDokumentbeskrivelseList,
 } from '../dokumentbeskrivelse/Dokumentbeskrivelse';
+import type { ListByUtredningParameters } from './ListByUtredningParameters';
+import type { Utredning, UtredningRequest } from './Utredning';
+import { isPaginatedUtredningList, isUtredning } from './Utredning';
 
 export class UtredningResource extends Resource {
   async list(query?: ListParameters): Promise<PaginatedList<Utredning>> {

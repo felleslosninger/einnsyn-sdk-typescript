@@ -1,13 +1,13 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
+import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
+import type { Arkivdel, ArkivdelRequest } from '../arkivdel/Arkivdel';
 import type {
   Klassifikasjonssystem,
   KlassifikasjonssystemRequest,
 } from '../klassifikasjonssystem/Klassifikasjonssystem';
-import type { Arkivdel, ArkivdelRequest } from '../arkivdel/Arkivdel';
-import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
 
 export interface Klasse extends ArkivBase {
   readonly entity: 'Klasse';

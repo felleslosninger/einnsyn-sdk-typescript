@@ -2,15 +2,15 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
-import type { ListParameters } from '../../common/queryparameters/ListParameters';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
-import type { Arkiv, ArkivRequest } from './Arkiv';
-import { isPaginatedArkivList, isArkiv } from './Arkiv';
 import { NetworkError } from '../../common/error/EInnsynError';
 import type { GetParameters } from '../../common/queryparameters/GetParameters';
-import type { ListByArkivParameters } from './ListByArkivParameters';
+import type { ListParameters } from '../../common/queryparameters/ListParameters';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { Arkivdel, ArkivdelRequest } from '../arkivdel/Arkivdel';
-import { isPaginatedArkivdelList, isArkivdel } from '../arkivdel/Arkivdel';
+import { isArkivdel, isPaginatedArkivdelList } from '../arkivdel/Arkivdel';
+import type { Arkiv, ArkivRequest } from './Arkiv';
+import { isArkiv, isPaginatedArkivList } from './Arkiv';
+import type { ListByArkivParameters } from './ListByArkivParameters';
 
 export class ArkivResource extends Resource {
   async list(query?: ListParameters): Promise<PaginatedList<Arkiv>> {
