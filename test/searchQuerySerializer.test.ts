@@ -39,3 +39,14 @@ test('searchQuerySerializer skips undefined optional query parameters', () => {
 
   expect(result).toStrictEqual(['query=archive']);
 });
+
+test('searchQuerySerializer serializes boolean query parameters', () => {
+  const params: SearchParameters = {
+    fulltext: true,
+    query: 'minutes',
+  };
+
+  const result = searchQuerySerializer(params);
+
+  expect(result).toStrictEqual(['fulltext=true', 'query=minutes']);
+});

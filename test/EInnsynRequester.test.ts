@@ -1,11 +1,10 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
-
-import { EInnsynRequester } from '../src/EInnsynRequester.ts';
 import {
   NetworkError,
   NotFoundError,
 } from '../src/common/error/EInnsynError.ts';
 import type { PaginatedList } from '../src/common/responses/PaginatedList.ts';
+import { EInnsynRequester } from '../src/EInnsynRequester.ts';
 import type { Base } from '../src/entities/base/Base.ts';
 import {
   createJsonResponse,

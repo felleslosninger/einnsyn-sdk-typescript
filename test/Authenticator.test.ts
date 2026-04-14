@@ -162,7 +162,7 @@ describe('AuthenticatorBruker', () => {
   });
 
   test('gets and reuses a token for authenticated requests', async () => {
-    let now = 1_000;
+    const now = 1_000;
     vi.spyOn(Date, 'now').mockImplementation(() => now);
 
     fetchMock.mockResolvedValueOnce(

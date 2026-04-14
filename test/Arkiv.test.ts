@@ -1,6 +1,7 @@
 // Representative smoke coverage for a generated top-level resource with add() and nested routes.
-import { isArkiv, isPaginatedArkivList } from '../src/entities/arkiv/Arkiv.ts';
+
 import type { Arkiv } from '../src/entities/arkiv/Arkiv.ts';
+import { isArkiv, isPaginatedArkivList } from '../src/entities/arkiv/Arkiv.ts';
 import type {
   Arkivdel,
   ArkivdelRequest,

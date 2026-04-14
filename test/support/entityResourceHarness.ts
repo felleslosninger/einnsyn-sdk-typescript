@@ -1,7 +1,6 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
-
-import EInnsynClient from '../../src/EInnsynClient.ts';
 import { NetworkError } from '../../src/common/error/EInnsynError.ts';
+import EInnsynClient from '../../src/EInnsynClient.ts';
 
 type FetchInput = string | URL | Request;
 

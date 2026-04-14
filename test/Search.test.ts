@@ -1,7 +1,6 @@
 import { describe, expect, test } from 'vitest';
-
-import type EInnsynClient from '../src/EInnsynClient.ts';
 import { NetworkError } from '../src/common/error/EInnsynError.ts';
+import type EInnsynClient from '../src/EInnsynClient.ts';
 import {
   createJsonResponse,
   getFetchUrl,

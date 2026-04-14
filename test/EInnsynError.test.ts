@@ -10,10 +10,10 @@ import {
   MethodNotAllowedError,
   NetworkError,
   NotFoundError,
+  resolveError,
   TooManyRequestsError,
   TooManyUnverifiedOrdersError,
   ValidationError,
-  resolveError,
 } from '../src/common/error/EInnsynError.ts';
 
 describe('resolveError', () => {

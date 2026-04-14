@@ -42,6 +42,8 @@
   "scripts": {
     "build": "tsup",
     "format": "biome format --write .",
+    "lint": "biome check src test .github/workflows package.json biome.json tsconfig.json tsconfig.test.json vitest.config.ts",
+    "lint:fix": "biome check --write src test .github/workflows package.json biome.json tsconfig.json tsconfig.test.json vitest.config.ts",
     "test": "npm run test:typecheck && npm run test:run",
     "test:run": "vitest run",
     "test:typecheck": "tsc -p tsconfig.test.json --noEmit",
