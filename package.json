@@ -18,7 +18,7 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "devDependencies": {
-    "@biomejs/biome": "2.4.10",
+    "@biomejs/biome": "^2.4.11",
     "@types/node": "25.5.2",
     "tsup": "^8.5.0",
     "typescript": "^6.0.2"
@@ -39,6 +39,8 @@
   },
   "scripts": {
     "build": "tsup",
+    "lint": "biome check src .github/workflows package.json biome.json tsconfig.json",
+    "lint:fix": "biome check --write src .github/workflows package.json biome.json tsconfig.json",
     "prepublishOnly": "npm run build",
     "prepare": "npm run build"
   },
