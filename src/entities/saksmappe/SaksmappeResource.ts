@@ -2,21 +2,21 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
-import type { ListParameters } from '../../common/queryparameters/ListParameters';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
-import type { Saksmappe, SaksmappeRequest } from './Saksmappe';
-import { isPaginatedSaksmappeList, isSaksmappe } from './Saksmappe';
 import { NetworkError } from '../../common/error/EInnsynError';
 import type { GetParameters } from '../../common/queryparameters/GetParameters';
-import type { ListBySaksmappeParameters } from './ListBySaksmappeParameters';
+import type { ListParameters } from '../../common/queryparameters/ListParameters';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type {
   Journalpost,
   JournalpostRequest,
 } from '../journalpost/Journalpost';
 import {
-  isPaginatedJournalpostList,
   isJournalpost,
+  isPaginatedJournalpostList,
 } from '../journalpost/Journalpost';
+import type { ListBySaksmappeParameters } from './ListBySaksmappeParameters';
+import type { Saksmappe, SaksmappeRequest } from './Saksmappe';
+import { isPaginatedSaksmappeList, isSaksmappe } from './Saksmappe';
 
 export class SaksmappeResource extends Resource {
   async list(query?: ListParameters): Promise<PaginatedList<Saksmappe>> {

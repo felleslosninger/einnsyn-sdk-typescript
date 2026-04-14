@@ -1,10 +1,10 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
-import type { Bruker, BrukerRequest } from '../bruker/Bruker';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { SearchParameters } from '../../common/search/SearchParameters';
 import type { Base, BaseRequest } from '../base/Base';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { Bruker, BrukerRequest } from '../bruker/Bruker';
 
 export interface LagretSoek extends Base {
   readonly entity: 'LagretSoek';

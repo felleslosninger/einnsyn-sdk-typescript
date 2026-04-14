@@ -2,30 +2,30 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
-import type { ListParameters } from '../../common/queryparameters/ListParameters';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
-import type { Arkivdel, ArkivdelRequest } from './Arkivdel';
-import { isPaginatedArkivdelList, isArkivdel } from './Arkivdel';
 import { NetworkError } from '../../common/error/EInnsynError';
 import type { GetParameters } from '../../common/queryparameters/GetParameters';
-import type { ListByArkivdelParameters } from './ListByArkivdelParameters';
+import type { ListParameters } from '../../common/queryparameters/ListParameters';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { Klasse, KlasseRequest } from '../klasse/Klasse';
-import { isPaginatedKlasseList, isKlasse } from '../klasse/Klasse';
+import { isKlasse, isPaginatedKlasseList } from '../klasse/Klasse';
 import type {
   Klassifikasjonssystem,
   KlassifikasjonssystemRequest,
 } from '../klassifikasjonssystem/Klassifikasjonssystem';
 import {
-  isPaginatedKlassifikasjonssystemList,
   isKlassifikasjonssystem,
+  isPaginatedKlassifikasjonssystemList,
 } from '../klassifikasjonssystem/Klassifikasjonssystem';
 import type { Moetemappe, MoetemappeRequest } from '../moetemappe/Moetemappe';
 import {
-  isPaginatedMoetemappeList,
   isMoetemappe,
+  isPaginatedMoetemappeList,
 } from '../moetemappe/Moetemappe';
 import type { Saksmappe, SaksmappeRequest } from '../saksmappe/Saksmappe';
 import { isPaginatedSaksmappeList, isSaksmappe } from '../saksmappe/Saksmappe';
+import type { Arkivdel, ArkivdelRequest } from './Arkivdel';
+import { isArkivdel, isPaginatedArkivdelList } from './Arkivdel';
+import type { ListByArkivdelParameters } from './ListByArkivdelParameters';
 
 export class ArkivdelResource extends Resource {
   async list(query?: ListParameters): Promise<PaginatedList<Arkivdel>> {

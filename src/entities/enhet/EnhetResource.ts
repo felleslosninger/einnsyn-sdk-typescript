@@ -2,19 +2,19 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
-import type { ListParameters } from '../../common/queryparameters/ListParameters';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
-import type { Enhet, EnhetRequest } from './Enhet';
-import { isPaginatedEnhetList, isEnhet } from './Enhet';
 import { NetworkError } from '../../common/error/EInnsynError';
 import type { GetParameters } from '../../common/queryparameters/GetParameters';
-import type { ListByEnhetParameters } from './ListByEnhetParameters';
+import type { ListParameters } from '../../common/queryparameters/ListParameters';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { ApiKey, ApiKeyRequest } from '../apikey/ApiKey';
-import { isPaginatedApiKeyList, isApiKey } from '../apikey/ApiKey';
+import { isApiKey, isPaginatedApiKeyList } from '../apikey/ApiKey';
 import type { Arkiv } from '../arkiv/Arkiv';
 import { isPaginatedArkivList } from '../arkiv/Arkiv';
 import type { Innsynskrav } from '../innsynskrav/Innsynskrav';
 import { isPaginatedInnsynskravList } from '../innsynskrav/Innsynskrav';
+import type { Enhet, EnhetRequest } from './Enhet';
+import { isEnhet, isPaginatedEnhetList } from './Enhet';
+import type { ListByEnhetParameters } from './ListByEnhetParameters';
 
 export class EnhetResource extends Resource {
   async list(query?: ListParameters): Promise<PaginatedList<Enhet>> {

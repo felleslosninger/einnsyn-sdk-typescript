@@ -1,5 +1,4 @@
 import { version } from '.';
-import type { EInnsynOptions } from './EInnsynOptions';
 import { Authenticator } from './auth/Authenticator';
 import { AuthenticatorApiKey } from './auth/AuthenticatorApiKey';
 import { AuthenticatorBruker } from './auth/AuthenticatorBruker';
@@ -10,6 +9,7 @@ import {
   isPaginatedList,
   type PaginatedList,
 } from './common/responses/PaginatedList';
+import type { EInnsynOptions } from './EInnsynOptions';
 import type { Base } from './entities/base/Base';
 import { searchQuerySerializer } from './utils/searchQuerySerializer';
 

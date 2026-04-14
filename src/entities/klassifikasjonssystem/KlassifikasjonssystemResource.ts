@@ -2,21 +2,21 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
+import { NetworkError } from '../../common/error/EInnsynError';
+import type { GetParameters } from '../../common/queryparameters/GetParameters';
 import type { ListParameters } from '../../common/queryparameters/ListParameters';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { Klasse, KlasseRequest } from '../klasse/Klasse';
+import { isKlasse, isPaginatedKlasseList } from '../klasse/Klasse';
 import type {
   Klassifikasjonssystem,
   KlassifikasjonssystemRequest,
 } from './Klassifikasjonssystem';
 import {
-  isPaginatedKlassifikasjonssystemList,
   isKlassifikasjonssystem,
+  isPaginatedKlassifikasjonssystemList,
 } from './Klassifikasjonssystem';
-import { NetworkError } from '../../common/error/EInnsynError';
-import type { GetParameters } from '../../common/queryparameters/GetParameters';
 import type { ListByKlassifikasjonssystemParameters } from './ListByKlassifikasjonssystemParameters';
-import type { Klasse, KlasseRequest } from '../klasse/Klasse';
-import { isPaginatedKlasseList, isKlasse } from '../klasse/Klasse';
 
 export class KlassifikasjonssystemResource extends Resource {
   async list(

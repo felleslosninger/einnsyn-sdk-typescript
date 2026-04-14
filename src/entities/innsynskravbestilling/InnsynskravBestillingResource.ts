@@ -2,21 +2,21 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
+import { NetworkError } from '../../common/error/EInnsynError';
+import type { GetParameters } from '../../common/queryparameters/GetParameters';
 import type { ListParameters } from '../../common/queryparameters/ListParameters';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { Innsynskrav } from '../innsynskrav/Innsynskrav';
+import { isPaginatedInnsynskravList } from '../innsynskrav/Innsynskrav';
 import type {
   InnsynskravBestilling,
   InnsynskravBestillingRequest,
 } from './InnsynskravBestilling';
 import {
-  isPaginatedInnsynskravBestillingList,
   isInnsynskravBestilling,
+  isPaginatedInnsynskravBestillingList,
 } from './InnsynskravBestilling';
-import { NetworkError } from '../../common/error/EInnsynError';
-import type { GetParameters } from '../../common/queryparameters/GetParameters';
 import type { ListByInnsynskravBestillingParameters } from './ListByInnsynskravBestillingParameters';
-import type { Innsynskrav } from '../innsynskrav/Innsynskrav';
-import { isPaginatedInnsynskravList } from '../innsynskrav/Innsynskrav';
 
 export class InnsynskravBestillingResource extends Resource {
   async list(

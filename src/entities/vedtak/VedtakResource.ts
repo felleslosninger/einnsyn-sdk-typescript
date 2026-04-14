@@ -2,23 +2,23 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
-import type { ListParameters } from '../../common/queryparameters/ListParameters';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
-import type { Vedtak, VedtakRequest } from './Vedtak';
-import { isPaginatedVedtakList, isVedtak } from './Vedtak';
 import { NetworkError } from '../../common/error/EInnsynError';
 import type { GetParameters } from '../../common/queryparameters/GetParameters';
-import type { ListByVedtakParameters } from './ListByVedtakParameters';
+import type { ListParameters } from '../../common/queryparameters/ListParameters';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type {
   Dokumentbeskrivelse,
   DokumentbeskrivelseRequest,
 } from '../dokumentbeskrivelse/Dokumentbeskrivelse';
 import {
-  isPaginatedDokumentbeskrivelseList,
   isDokumentbeskrivelse,
+  isPaginatedDokumentbeskrivelseList,
 } from '../dokumentbeskrivelse/Dokumentbeskrivelse';
 import type { Votering, VoteringRequest } from '../votering/Votering';
 import { isPaginatedVoteringList, isVotering } from '../votering/Votering';
+import type { ListByVedtakParameters } from './ListByVedtakParameters';
+import type { Vedtak, VedtakRequest } from './Vedtak';
+import { isPaginatedVedtakList, isVedtak } from './Vedtak';
 
 export class VedtakResource extends Resource {
   async list(query?: ListParameters): Promise<PaginatedList<Vedtak>> {

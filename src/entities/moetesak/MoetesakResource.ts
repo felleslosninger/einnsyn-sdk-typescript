@@ -2,26 +2,26 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
-import type { ListParameters } from '../../common/queryparameters/ListParameters';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
-import type { Moetesak, MoetesakRequest } from './Moetesak';
-import { isPaginatedMoetesakList, isMoetesak } from './Moetesak';
 import { NetworkError } from '../../common/error/EInnsynError';
 import type { GetParameters } from '../../common/queryparameters/GetParameters';
-import type { ListByMoetesakParameters } from './ListByMoetesakParameters';
+import type { ListParameters } from '../../common/queryparameters/ListParameters';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type {
   Dokumentbeskrivelse,
   DokumentbeskrivelseRequest,
 } from '../dokumentbeskrivelse/Dokumentbeskrivelse';
 import {
-  isPaginatedDokumentbeskrivelseList,
   isDokumentbeskrivelse,
+  isPaginatedDokumentbeskrivelseList,
 } from '../dokumentbeskrivelse/Dokumentbeskrivelse';
-import type { GetByMoetesakParameters } from './GetByMoetesakParameters';
 import type { Utredning, UtredningRequest } from '../utredning/Utredning';
 import { isUtredning } from '../utredning/Utredning';
 import type { Vedtak, VedtakRequest } from '../vedtak/Vedtak';
 import { isVedtak } from '../vedtak/Vedtak';
+import type { GetByMoetesakParameters } from './GetByMoetesakParameters';
+import type { ListByMoetesakParameters } from './ListByMoetesakParameters';
+import type { Moetesak, MoetesakRequest } from './Moetesak';
+import { isMoetesak, isPaginatedMoetesakList } from './Moetesak';
 
 export class MoetesakResource extends Resource {
   async list(query?: ListParameters): Promise<PaginatedList<Moetesak>> {

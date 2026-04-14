@@ -1,19 +1,27 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
+import { AuthInfoResource } from './common/authinfo/AuthInfoResource';
+import { SearchResource } from './common/search/SearchResource';
+import { StatisticsResource } from './common/statistics/StatisticsResource';
 import type { EInnsynRequester } from './EInnsynRequester';
 import { ApiKeyResource } from './entities/apikey/ApiKeyResource';
 import { ArkivResource } from './entities/arkiv/ArkivResource';
 import { ArkivdelResource } from './entities/arkivdel/ArkivdelResource';
 import { BehandlingsprotokollResource } from './entities/behandlingsprotokoll/BehandlingsprotokollResource';
+import { BrukerResource } from './entities/bruker/BrukerResource';
 import { DokumentbeskrivelseResource } from './entities/dokumentbeskrivelse/DokumentbeskrivelseResource';
 import { DokumentobjektResource } from './entities/dokumentobjekt/DokumentobjektResource';
 import { EnhetResource } from './entities/enhet/EnhetResource';
 import { IdentifikatorResource } from './entities/identifikator/IdentifikatorResource';
+import { InnsynskravResource } from './entities/innsynskrav/InnsynskravResource';
+import { InnsynskravBestillingResource } from './entities/innsynskravbestilling/InnsynskravBestillingResource';
 import { JournalpostResource } from './entities/journalpost/JournalpostResource';
 import { KlasseResource } from './entities/klasse/KlasseResource';
 import { KlassifikasjonssystemResource } from './entities/klassifikasjonssystem/KlassifikasjonssystemResource';
 import { KorrespondansepartResource } from './entities/korrespondansepart/KorrespondansepartResource';
+import { LagretSakResource } from './entities/lagretsak/LagretSakResource';
+import { LagretSoekResource } from './entities/lagretsoek/LagretSoekResource';
 import { MoetedeltakerResource } from './entities/moetedeltaker/MoetedeltakerResource';
 import { MoetedokumentResource } from './entities/moetedokument/MoetedokumentResource';
 import { MoetemappeResource } from './entities/moetemappe/MoetemappeResource';
@@ -21,18 +29,10 @@ import { MoetesakResource } from './entities/moetesak/MoetesakResource';
 import { MoetesaksbeskrivelseResource } from './entities/moetesaksbeskrivelse/MoetesaksbeskrivelseResource';
 import { SaksmappeResource } from './entities/saksmappe/SaksmappeResource';
 import { SkjermingResource } from './entities/skjerming/SkjermingResource';
+import { TilbakemeldingResource } from './entities/tilbakemelding/TilbakemeldingResource';
 import { UtredningResource } from './entities/utredning/UtredningResource';
 import { VedtakResource } from './entities/vedtak/VedtakResource';
 import { VoteringResource } from './entities/votering/VoteringResource';
-import { BrukerResource } from './entities/bruker/BrukerResource';
-import { InnsynskravResource } from './entities/innsynskrav/InnsynskravResource';
-import { InnsynskravBestillingResource } from './entities/innsynskravbestilling/InnsynskravBestillingResource';
-import { LagretSakResource } from './entities/lagretsak/LagretSakResource';
-import { LagretSoekResource } from './entities/lagretsoek/LagretSoekResource';
-import { TilbakemeldingResource } from './entities/tilbakemelding/TilbakemeldingResource';
-import { SearchResource } from './common/search/SearchResource';
-import { StatisticsResource } from './common/statistics/StatisticsResource';
-import { AuthInfoResource } from './common/authinfo/AuthInfoResource';
 
 export class EInnsynClientBase {
   readonly apikey: ApiKeyResource;

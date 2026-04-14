@@ -1,19 +1,19 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { Enhet } from '../enhet/Enhet';
-import type { Utredning, UtredningRequest } from '../utredning/Utredning';
+import type { Moetemappe, MoetemappeRequest } from '../moetemappe/Moetemappe';
 import type {
   Moetesaksbeskrivelse,
   MoetesaksbeskrivelseRequest,
 } from '../moetesaksbeskrivelse/Moetesaksbeskrivelse';
-import type { Vedtak, VedtakRequest } from '../vedtak/Vedtak';
-import type { Moetemappe, MoetemappeRequest } from '../moetemappe/Moetemappe';
 import type {
   Registrering,
   RegistreringRequest,
 } from '../registrering/Registrering';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { Utredning, UtredningRequest } from '../utredning/Utredning';
+import type { Vedtak, VedtakRequest } from '../vedtak/Vedtak';
 
 export interface Moetesak extends Registrering {
   readonly entity: 'Moetesak';

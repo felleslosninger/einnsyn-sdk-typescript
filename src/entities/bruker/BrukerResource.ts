@@ -2,13 +2,10 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
-import type { ListParameters } from '../../common/queryparameters/ListParameters';
-import type { PaginatedList } from '../../common/responses/PaginatedList';
-import type { Bruker, BrukerRequest } from './Bruker';
-import { isPaginatedBrukerList, isBruker } from './Bruker';
 import { NetworkError } from '../../common/error/EInnsynError';
 import type { GetParameters } from '../../common/queryparameters/GetParameters';
-import type { ListByBrukerParameters } from './ListByBrukerParameters';
+import type { ListParameters } from '../../common/queryparameters/ListParameters';
+import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { Innsynskrav } from '../innsynskrav/Innsynskrav';
 import { isPaginatedInnsynskravList } from '../innsynskrav/Innsynskrav';
 import type {
@@ -16,16 +13,19 @@ import type {
   InnsynskravBestillingRequest,
 } from '../innsynskravbestilling/InnsynskravBestilling';
 import {
-  isPaginatedInnsynskravBestillingList,
   isInnsynskravBestilling,
+  isPaginatedInnsynskravBestillingList,
 } from '../innsynskravbestilling/InnsynskravBestilling';
 import type { LagretSak, LagretSakRequest } from '../lagretsak/LagretSak';
-import { isPaginatedLagretSakList, isLagretSak } from '../lagretsak/LagretSak';
+import { isLagretSak, isPaginatedLagretSakList } from '../lagretsak/LagretSak';
 import type { LagretSoek, LagretSoekRequest } from '../lagretsoek/LagretSoek';
 import {
-  isPaginatedLagretSoekList,
   isLagretSoek,
+  isPaginatedLagretSoekList,
 } from '../lagretsoek/LagretSoek';
+import type { Bruker, BrukerRequest } from './Bruker';
+import { isBruker, isPaginatedBrukerList } from './Bruker';
+import type { ListByBrukerParameters } from './ListByBrukerParameters';
 
 export class BrukerResource extends Resource {
   async list(query?: ListParameters): Promise<PaginatedList<Bruker>> {

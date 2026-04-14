@@ -2,6 +2,8 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
+import { NetworkError } from '../../common/error/EInnsynError';
+import type { GetParameters } from '../../common/queryparameters/GetParameters';
 import type { ListParameters } from '../../common/queryparameters/ListParameters';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type {
@@ -9,11 +11,9 @@ import type {
   KorrespondansepartRequest,
 } from './Korrespondansepart';
 import {
-  isPaginatedKorrespondansepartList,
   isKorrespondansepart,
+  isPaginatedKorrespondansepartList,
 } from './Korrespondansepart';
-import { NetworkError } from '../../common/error/EInnsynError';
-import type { GetParameters } from '../../common/queryparameters/GetParameters';
 
 export class KorrespondansepartResource extends Resource {
   async list(

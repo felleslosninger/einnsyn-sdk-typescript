@@ -1,9 +1,9 @@
 // Auto-generated from our API specification
 // https://github.com/felleslosninger/einnsyn-api-spec
 
-import type { Arkivdel } from '../arkivdel/Arkivdel';
-import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
+import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
+import type { Arkivdel } from '../arkivdel/Arkivdel';
 
 export interface Klassifikasjonssystem extends ArkivBase {
   readonly entity: 'Klassifikasjonssystem';

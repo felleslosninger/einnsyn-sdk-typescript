@@ -2,6 +2,8 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
+import { NetworkError } from '../../common/error/EInnsynError';
+import type { GetParameters } from '../../common/queryparameters/GetParameters';
 import type { ListParameters } from '../../common/queryparameters/ListParameters';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { Tilbakemelding, TilbakemeldingRequest } from './Tilbakemelding';
@@ -9,8 +11,6 @@ import {
   isPaginatedTilbakemeldingList,
   isTilbakemelding,
 } from './Tilbakemelding';
-import { NetworkError } from '../../common/error/EInnsynError';
-import type { GetParameters } from '../../common/queryparameters/GetParameters';
 
 export class TilbakemeldingResource extends Resource {
   async list(query?: ListParameters): Promise<PaginatedList<Tilbakemelding>> {

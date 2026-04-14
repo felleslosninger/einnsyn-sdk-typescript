@@ -2,6 +2,8 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import { Resource } from '../../common/entity/Resource';
+import { NetworkError } from '../../common/error/EInnsynError';
+import type { GetParameters } from '../../common/queryparameters/GetParameters';
 import type { ListParameters } from '../../common/queryparameters/ListParameters';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type {
@@ -9,11 +11,9 @@ import type {
   BehandlingsprotokollRequest,
 } from './Behandlingsprotokoll';
 import {
-  isPaginatedBehandlingsprotokollList,
   isBehandlingsprotokoll,
+  isPaginatedBehandlingsprotokollList,
 } from './Behandlingsprotokoll';
-import { NetworkError } from '../../common/error/EInnsynError';
-import type { GetParameters } from '../../common/queryparameters/GetParameters';
 
 export class BehandlingsprotokollResource extends Resource {
   async list(

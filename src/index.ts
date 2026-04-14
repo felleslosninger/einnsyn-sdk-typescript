@@ -4,9 +4,8 @@ export const version = 'dev';
 import EInnsynClient from './EInnsynClient';
 export default EInnsynClient;
 
-export * from './typeUtils';
-
 export {
-  PaginatedList,
   isPaginatedList,
+  PaginatedList,
 } from './common/responses/PaginatedList';
+export * from './typeUtils';
