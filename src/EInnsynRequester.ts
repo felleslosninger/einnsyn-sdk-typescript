@@ -52,7 +52,7 @@ export class EInnsynRequester {
     const userAgent = appInfo ? `${appInfo} - ${userAgentBase}` : userAgentBase;
 
     const defaultRequestInit: RequestInit = {
-      method: method,
+      method: method.toUpperCase(),
       headers: {
         'Content-Type': 'application/json',
         'User-Agent': userAgent,
