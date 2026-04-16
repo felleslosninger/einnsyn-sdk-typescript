@@ -1,13 +1,12 @@
-import { version } from '..';
 import type { EInnsynOptions } from '../EInnsynOptions';
 
 export class Authenticator {
   constructor(protected eInnsynOptions: EInnsynOptions) {}
 
   public async addAuthHeaders(
-    method: string | undefined,
-    path: string,
-    query: string | undefined,
+    _method: string | undefined,
+    _path: string,
+    _query: string | undefined,
     requestInit: RequestInit,
   ): Promise<RequestInit> {
     if (this.eInnsynOptions.actingAs) {

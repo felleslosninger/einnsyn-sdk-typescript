@@ -1,5 +1,4 @@
-//export const version = __VERSION__ ?? 'dev';
-export const version = 'dev';
+export { version } from './version';
 
 import EInnsynClient from './EInnsynClient';
 export default EInnsynClient;

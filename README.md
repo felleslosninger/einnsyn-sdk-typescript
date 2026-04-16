@@ -5,6 +5,7 @@ TypeScript SDK for the eInnsyn API
 ## Table of Contents
 
 - [Installation](#installation)
+- [Testing](#testing)
 - [Authentication](#authentication)
 - [Usage](#usage)
   - [Creating a client instance](#creating-a-client-instance)
@@ -33,6 +34,20 @@ Import and use it in your TypeScript project:
 
 ```typescript
 import { EInnsynClient } from 'einnsyn-sdk';
+```
+
+## Testing
+
+Run the test suite with:
+
+```sh
+npm test
+```
+
+Generate a coverage report with:
+
+```sh
+npm run test:coverage
 ```
 
 ## Authentication

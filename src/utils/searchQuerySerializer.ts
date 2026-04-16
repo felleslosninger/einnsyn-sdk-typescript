@@ -1,27 +1,37 @@
 import type { QueryParameters } from '../common/queryparameters/QueryParameters';
 
-export function searchQuerySerializer(
-  params: QueryParameters = {},
-  prefix = '',
-): string[] {
+function serializeQueryParameterValue(params: unknown, prefix = ''): string[] {
   const str = [];
   if (Array.isArray(params)) {
     for (const param of params) {
-      str.push(...searchQuerySerializer(param, prefix));
+      str.push(...serializeQueryParameterValue(param, prefix));
     }
   } else if (typeof params === 'object' && params !== null) {
-    const keys = Object.keys(params).sort() as (keyof typeof params)[];
-    for (const paramName of keys) {
-      const param = params[paramName];
+    const record = params as Record<string, unknown>;
+    for (const paramName of Object.keys(record).sort()) {
+      const param = record[paramName];
       str.push(
-        ...searchQuerySerializer(
+        ...serializeQueryParameterValue(
           param,
           prefix ? `${prefix}[${paramName}]` : paramName,
         ),
       );
     }
-  } else if (typeof params === 'number' || typeof params === 'string') {
-    str.push(`${encodeURIComponent(prefix)}=${encodeURIComponent(params)}`);
+  } else if (
+    typeof params === 'boolean' ||
+    typeof params === 'number' ||
+    typeof params === 'string'
+  ) {
+    str.push(
+      `${encodeURIComponent(prefix)}=${encodeURIComponent(String(params))}`,
+    );
   }
   return str;
+}
+
+export function searchQuerySerializer(
+  params: QueryParameters = {},
+  prefix = '',
+): string[] {
+  return serializeQueryParameterValue(params, prefix);
 }

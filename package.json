@@ -19,9 +19,11 @@
   "sideEffects": false,
   "devDependencies": {
     "@biomejs/biome": "^2.4.11",
-    "@types/node": "25.5.2",
+    "@types/node": "^25.5.2",
+    "@vitest/coverage-v8": "^4.1.2",
     "tsup": "^8.5.0",
-    "typescript": "^6.0.2"
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.4"
   },
   "tsup": {
     "entry": [
@@ -39,8 +41,13 @@
   },
   "scripts": {
     "build": "tsup",
-    "lint": "biome check src .github/workflows package.json biome.json tsconfig.json",
-    "lint:fix": "biome check --write src .github/workflows package.json biome.json tsconfig.json",
+    "format": "biome format --write .",
+    "lint": "biome check src test .github/workflows package.json biome.json tsconfig.json tsconfig.test.json vitest.config.ts",
+    "lint:fix": "biome check --write src test .github/workflows package.json biome.json tsconfig.json tsconfig.test.json vitest.config.ts",
+    "test": "npm run test:typecheck && npm run test:run",
+    "test:run": "vitest run",
+    "test:typecheck": "tsc -p tsconfig.test.json --noEmit",
+    "test:coverage": "npm run test:typecheck && vitest run --coverage",
     "prepublishOnly": "npm run build",
     "prepare": "npm run build"
   },

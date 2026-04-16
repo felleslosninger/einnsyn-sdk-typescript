@@ -1,4 +1,3 @@
-import { version } from '.';
 import { Authenticator } from './auth/Authenticator';
 import { AuthenticatorApiKey } from './auth/AuthenticatorApiKey';
 import { AuthenticatorBruker } from './auth/AuthenticatorBruker';
@@ -12,6 +11,7 @@ import {
 import type { EInnsynOptions } from './EInnsynOptions';
 import type { Base } from './entities/base/Base';
 import { searchQuerySerializer } from './utils/searchQuerySerializer';
+import { version } from './version';
 
 type RequestOptions = {
   method?: 'get' | 'post' | 'patch' | 'delete';
@@ -108,7 +108,7 @@ export class EInnsynRequester {
       if (response.status === 429 && retries++ <= maxRetries) {
         const retryAfter = response.headers.get('Retry-After');
         if (retryAfter) {
-          const delay = Number.parseInt(retryAfter) * 1000;
+          const delay = Number.parseInt(retryAfter, 10) * 1000;
           await sleep(delay);
           return await attemptFetch();
         }
