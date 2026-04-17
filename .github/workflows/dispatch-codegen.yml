@@ -18,7 +18,7 @@ jobs:
         uses: actions/create-github-app-token@d72941d797fd3113feb6b93fd0dec494b13a2547 # v1.12.0
         id: app-token
         with:
-          app-id: ${{ secrets.EIN_CODEGEN_APP_ID }}
+          client-id: ${{ secrets.EIN_CODEGEN_CLIENT_ID }}
           private-key: ${{ secrets.EIN_CODEGEN_APP_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
           skip-token-revoke: true
@@ -31,10 +31,10 @@ jobs:
             PR_NUMBER=$(echo "${{ github.event.head_commit.message }}" | grep -oP '(?<=#)\d+')
             PR_TITLE=$(echo "${{ github.event.head_commit.message }}" | grep -oP '(?<=: ).*')
             echo "pr_body=Triggered from ${{ github.repository }} [#${PR_NUMBER}](https://github.com/${{ github.repository }}/pull/${PR_NUMBER}) ${PR_TITLE}" >> $GITHUB_ENV
-            echo "commit_message=Triggered from ${{ github.repository }}#${PR_NUMBER}"
+            echo "commit_message=feat(codegen): update sdk-typescript from ${{ github.repository }}#${PR_NUMBER}" >> $GITHUB_ENV
           else
             echo "pr_body=Triggered from ${{ github.repository }}" >> $GITHUB_ENV
-            echo "commit_message=Triggered from ${{ github.repository }}" >> $GITHUB_ENV
+            echo "commit_message=feat(codegen): update sdk-typescript from ${{ github.repository }}" >> $GITHUB_ENV
           fi
 
       - name: Dispatch workflow
