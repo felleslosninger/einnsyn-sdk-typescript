@@ -49,7 +49,7 @@ describe('search resource', () => {
     expect(getFetchUrl(url)).toBe(
       'https://example.com/search?entity=Journalpost&entity=Saksmappe&limit=2&query=budget&sortOrder=desc',
     );
-    expect(init?.method).toBe('get');
+    expect(init?.method).toBe('GET');
   });
 
   test('search rejects invalid paginated responses', async () => {

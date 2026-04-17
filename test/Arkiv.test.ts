@@ -61,7 +61,7 @@ defineEndpointCaseSuite({
           }),
         expectedUrl:
           'https://example.com/arkiv/ark_123/arkiv?arkivId=ark_123&id=ark_123&limit=5',
-        expectedMethod: 'get',
+        expectedMethod: 'GET',
       },
       {
         name: 'addArkivdel',
@@ -72,7 +72,7 @@ defineEndpointCaseSuite({
             tittel: 'Case archive',
           } satisfies ArkivdelRequest),
         expectedUrl: 'https://example.com/arkiv/ark_123/arkivdel',
-        expectedMethod: 'post',
+        expectedMethod: 'POST',
         expectedBody: JSON.stringify({
           tittel: 'Case archive',
         }),
