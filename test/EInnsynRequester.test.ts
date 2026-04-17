@@ -72,7 +72,7 @@ describe('EInnsynRequester request', () => {
       'https://example.com/journalpost/journalpost_123?limit=5&query=budget',
     );
     expect(init).toMatchObject({
-      method: 'patch',
+      method: 'PATCH',
       body: JSON.stringify({
         title: 'Updated title',
       }),

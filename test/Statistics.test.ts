@@ -83,7 +83,7 @@ test('statistics endpoint requests /statistics with serialized query params', as
   expect(getFetchUrl(url)).toBe(
     'https://example.com/statistics?aggregateFrom=2026-03-01&aggregateTo=2026-03-31&entity=Journalpost&entity=Moetemappe&query=budget',
   );
-  expect(init?.method).toBe('get');
+  expect(init?.method).toBe('GET');
   expect(init?.body).toBeUndefined();
   expect(init?.headers).toStrictEqual({
     'Content-Type': 'application/json',
