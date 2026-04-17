@@ -31,10 +31,10 @@ jobs:
             PR_NUMBER=$(echo "${{ github.event.head_commit.message }}" | grep -oP '(?<=#)\d+')
             PR_TITLE=$(echo "${{ github.event.head_commit.message }}" | grep -oP '(?<=: ).*')
             echo "pr_body=Triggered from ${{ github.repository }} [#${PR_NUMBER}](https://github.com/${{ github.repository }}/pull/${PR_NUMBER}) ${PR_TITLE}" >> $GITHUB_ENV
-            echo "commit_message=Triggered from ${{ github.repository }}#${PR_NUMBER}"
+            echo "commit_message=feat(codegen): update sdk-typescript from ${{ github.repository }}#${PR_NUMBER}" >> $GITHUB_ENV
           else
             echo "pr_body=Triggered from ${{ github.repository }}" >> $GITHUB_ENV
-            echo "commit_message=Triggered from ${{ github.repository }}" >> $GITHUB_ENV
+            echo "commit_message=feat(codegen): update sdk-typescript from ${{ github.repository }}" >> $GITHUB_ENV
           fi
 
       - name: Dispatch workflow
