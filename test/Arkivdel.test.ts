@@ -21,7 +21,7 @@ defineEndpointCaseSuite({
           }),
         expectedUrl:
           'https://example.com/arkivdel/arkivdel_123/klasse?arkivdelId=arkivdel_123&id=arkivdel_123&limit=5',
-        expectedMethod: 'get',
+        expectedMethod: 'GET',
       },
       {
         name: 'addSaksmappe',
@@ -35,7 +35,7 @@ defineEndpointCaseSuite({
             sakssekvensnummer: 7,
           } satisfies SaksmappeRequest),
         expectedUrl: 'https://example.com/arkivdel/arkivdel_123/saksmappe',
-        expectedMethod: 'post',
+        expectedMethod: 'POST',
         expectedBody: JSON.stringify({
           offentligTittel: 'Case ****',
           offentligTittelSensitiv: 'Case title',

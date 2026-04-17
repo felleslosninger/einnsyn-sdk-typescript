@@ -13,7 +13,7 @@ defineEndpointCaseSuite({
         run: () => harness.client.bruker.activate('bruker_123', 'secret_123'),
         expectedUrl:
           'https://example.com/bruker/bruker_123/activate/secret_123',
-        expectedMethod: 'patch',
+        expectedMethod: 'PATCH',
       },
       {
         name: 'updatePasswordWithSecret',
@@ -29,7 +29,7 @@ defineEndpointCaseSuite({
           ),
         expectedUrl:
           'https://example.com/bruker/bruker_123/updatePassword/secret_123',
-        expectedMethod: 'patch',
+        expectedMethod: 'PATCH',
         expectedBody: JSON.stringify({
           newPassword: 'new-password',
         }),

@@ -29,6 +29,6 @@ describe('authinfo resource', () => {
 
     const [url, init] = harness.fetchMock.mock.calls[0];
     expect(getFetchUrl(url)).toBe('https://example.com/me');
-    expect(init?.method).toBe('get');
+    expect(init?.method).toBe('GET');
   });
 });

@@ -17,7 +17,7 @@ defineEndpointCaseSuite({
           ),
         expectedUrl:
           'https://example.com/innsynskravBestilling/innsynskravBestilling_123/verify/secret_123',
-        expectedMethod: 'patch',
+        expectedMethod: 'PATCH',
       },
     ] as const,
 });

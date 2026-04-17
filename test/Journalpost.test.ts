@@ -47,7 +47,7 @@ defineEndpointCaseSuite({
           }),
         expectedUrl:
           'https://example.com/journalpost/jp_123/dokumentbeskrivelse',
-        expectedMethod: 'post',
+        expectedMethod: 'POST',
         expectedBody: JSON.stringify({
           tittel: 'Attachment ****',
           tittelSensitiv: 'Attachment no 1',
@@ -66,7 +66,7 @@ defineEndpointCaseSuite({
           ),
         expectedUrl:
           'https://example.com/journalpost/jp_123/dokumentbeskrivelse/db_124',
-        expectedMethod: 'delete',
+        expectedMethod: 'DELETE',
       },
       {
         name: 'listKorrespondansepart',
@@ -82,7 +82,7 @@ defineEndpointCaseSuite({
           }),
         expectedUrl:
           'https://example.com/journalpost/jp_123/korrespondansepart?id=jp_123&journalpostId=jp_123&limit=5',
-        expectedMethod: 'get',
+        expectedMethod: 'GET',
       },
       {
         name: 'addSkjerming',
@@ -93,7 +93,7 @@ defineEndpointCaseSuite({
             tilgangsrestriksjon: 'restricted',
           } satisfies SkjermingRequest),
         expectedUrl: 'https://example.com/journalpost/jp_123/skjerming',
-        expectedMethod: 'post',
+        expectedMethod: 'POST',
         expectedBody: JSON.stringify({
           tilgangsrestriksjon: 'restricted',
         }),
