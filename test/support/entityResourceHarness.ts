@@ -211,7 +211,7 @@ export const defineStandardEntityResourceSuite = (
         },
         run: () => descriptor.getResource(harness.client).list(),
         expectedUrl: `https://example.com${descriptor.basePath}`,
-        expectedMethod: 'get',
+        expectedMethod: 'GET',
       },
       {
         name: 'get',
@@ -221,7 +221,7 @@ export const defineStandardEntityResourceSuite = (
         bogusResponseBody: INVALID_ENTITY,
         run: () => descriptor.getResource(harness.client).get(descriptor.id),
         expectedUrl: `https://example.com${descriptor.basePath}/${descriptor.id}`,
-        expectedMethod: 'get',
+        expectedMethod: 'GET',
       },
       {
         name: 'update',
@@ -234,7 +234,7 @@ export const defineStandardEntityResourceSuite = (
             .getResource(harness.client)
             .update(descriptor.id, updateBody),
         expectedUrl: `https://example.com${descriptor.basePath}/${descriptor.id}`,
-        expectedMethod: 'patch',
+        expectedMethod: 'PATCH',
         expectedBody: JSON.stringify(updateBody),
       },
       {
@@ -245,7 +245,7 @@ export const defineStandardEntityResourceSuite = (
         bogusResponseBody: INVALID_ENTITY,
         run: () => descriptor.getResource(harness.client).delete(descriptor.id),
         expectedUrl: `https://example.com${descriptor.basePath}/${descriptor.id}`,
-        expectedMethod: 'delete',
+        expectedMethod: 'DELETE',
       },
     ];
 
@@ -264,7 +264,7 @@ export const defineStandardEntityResourceSuite = (
           return resource.add(descriptor.addBody);
         },
         expectedUrl: `https://example.com${descriptor.basePath}`,
-        expectedMethod: 'post',
+        expectedMethod: 'POST',
         expectedBody: JSON.stringify(descriptor.addBody),
       });
     }
