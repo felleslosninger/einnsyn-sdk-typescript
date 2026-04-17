@@ -9,9 +9,8 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-      time: "06:00"
-      timezone: "Europe/Oslo"
     cooldown:
+      default-days: 7
       semver-patch-days: 3
       semver-minor-days: 7
       semver-major-days: 14
@@ -22,11 +21,9 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "06:15"
-      timezone: "Europe/Oslo"
+      interval: "daily"
     cooldown:
+      default-days: 7
       semver-patch-days: 3
       semver-minor-days: 7
       semver-major-days: 14
