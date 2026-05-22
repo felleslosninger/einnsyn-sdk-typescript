@@ -29,6 +29,7 @@ export function isPaginatedArkivList(
 ): obj is PaginatedList<Arkiv> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Arkiv>)?.items.every((i) => isArkiv(i))
+    Array.isArray((obj as PaginatedList<Arkiv>)?.items) &&
+    (obj as PaginatedList<Arkiv>).items.every((i) => isArkiv(i))
   );
 }

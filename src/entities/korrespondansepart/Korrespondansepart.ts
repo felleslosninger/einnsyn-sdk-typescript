@@ -47,7 +47,8 @@ export function isPaginatedKorrespondansepartList(
 ): obj is PaginatedList<Korrespondansepart> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Korrespondansepart>)?.items.every((i) =>
+    Array.isArray((obj as PaginatedList<Korrespondansepart>)?.items) &&
+    (obj as PaginatedList<Korrespondansepart>).items.every((i) =>
       isKorrespondansepart(i),
     )
   );

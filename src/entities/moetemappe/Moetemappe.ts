@@ -50,6 +50,7 @@ export function isPaginatedMoetemappeList(
 ): obj is PaginatedList<Moetemappe> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Moetemappe>)?.items.every((i) => isMoetemappe(i))
+    Array.isArray((obj as PaginatedList<Moetemappe>)?.items) &&
+    (obj as PaginatedList<Moetemappe>).items.every((i) => isMoetemappe(i))
   );
 }

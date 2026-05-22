@@ -48,6 +48,7 @@ export function isPaginatedVedtakList(
 ): obj is PaginatedList<Vedtak> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Vedtak>)?.items.every((i) => isVedtak(i))
+    Array.isArray((obj as PaginatedList<Vedtak>)?.items) &&
+    (obj as PaginatedList<Vedtak>).items.every((i) => isVedtak(i))
   );
 }

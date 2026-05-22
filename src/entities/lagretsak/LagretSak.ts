@@ -35,6 +35,7 @@ export function isPaginatedLagretSakList(
 ): obj is PaginatedList<LagretSak> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<LagretSak>)?.items.every((i) => isLagretSak(i))
+    Array.isArray((obj as PaginatedList<LagretSak>)?.items) &&
+    (obj as PaginatedList<LagretSak>).items.every((i) => isLagretSak(i))
   );
 }

@@ -29,6 +29,7 @@ export function isPaginatedSkjermingList(
 ): obj is PaginatedList<Skjerming> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Skjerming>)?.items.every((i) => isSkjerming(i))
+    Array.isArray((obj as PaginatedList<Skjerming>)?.items) &&
+    (obj as PaginatedList<Skjerming>).items.every((i) => isSkjerming(i))
   );
 }

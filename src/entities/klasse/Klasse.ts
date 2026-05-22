@@ -38,6 +38,7 @@ export function isPaginatedKlasseList(
 ): obj is PaginatedList<Klasse> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Klasse>)?.items.every((i) => isKlasse(i))
+    Array.isArray((obj as PaginatedList<Klasse>)?.items) &&
+    (obj as PaginatedList<Klasse>).items.every((i) => isKlasse(i))
   );
 }

@@ -31,7 +31,8 @@ export function isPaginatedBehandlingsprotokollList(
 ): obj is PaginatedList<Behandlingsprotokoll> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Behandlingsprotokoll>)?.items.every((i) =>
+    Array.isArray((obj as PaginatedList<Behandlingsprotokoll>)?.items) &&
+    (obj as PaginatedList<Behandlingsprotokoll>).items.every((i) =>
       isBehandlingsprotokoll(i),
     )
   );

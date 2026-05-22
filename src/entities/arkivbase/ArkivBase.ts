@@ -48,6 +48,7 @@ export function isPaginatedArkivBaseList(
 ): obj is PaginatedList<ArkivBase> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<ArkivBase>)?.items.every((i) => isArkivBase(i))
+    Array.isArray((obj as PaginatedList<ArkivBase>)?.items) &&
+    (obj as PaginatedList<ArkivBase>).items.every((i) => isArkivBase(i))
   );
 }

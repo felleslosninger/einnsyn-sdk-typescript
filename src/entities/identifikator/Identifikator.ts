@@ -33,8 +33,7 @@ export function isPaginatedIdentifikatorList(
 ): obj is PaginatedList<Identifikator> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Identifikator>)?.items.every((i) =>
-      isIdentifikator(i),
-    )
+    Array.isArray((obj as PaginatedList<Identifikator>)?.items) &&
+    (obj as PaginatedList<Identifikator>).items.every((i) => isIdentifikator(i))
   );
 }

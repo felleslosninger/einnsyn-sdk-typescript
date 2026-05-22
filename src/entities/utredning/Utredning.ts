@@ -39,6 +39,7 @@ export function isPaginatedUtredningList(
 ): obj is PaginatedList<Utredning> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Utredning>)?.items.every((i) => isUtredning(i))
+    Array.isArray((obj as PaginatedList<Utredning>)?.items) &&
+    (obj as PaginatedList<Utredning>).items.every((i) => isUtredning(i))
   );
 }
