@@ -55,7 +55,8 @@ export function isPaginatedTilbakemeldingList(
 ): obj is PaginatedList<Tilbakemelding> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Tilbakemelding>)?.items.every((i) =>
+    Array.isArray((obj as PaginatedList<Tilbakemelding>)?.items) &&
+    (obj as PaginatedList<Tilbakemelding>).items.every((i) =>
       isTilbakemelding(i),
     )
   );

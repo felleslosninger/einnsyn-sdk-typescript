@@ -37,6 +37,7 @@ export function isPaginatedLagretSoekList(
 ): obj is PaginatedList<LagretSoek> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<LagretSoek>)?.items.every((i) => isLagretSoek(i))
+    Array.isArray((obj as PaginatedList<LagretSoek>)?.items) &&
+    (obj as PaginatedList<LagretSoek>).items.every((i) => isLagretSoek(i))
   );
 }

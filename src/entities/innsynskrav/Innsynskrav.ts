@@ -43,6 +43,7 @@ export function isPaginatedInnsynskravList(
 ): obj is PaginatedList<Innsynskrav> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Innsynskrav>)?.items.every((i) => isInnsynskrav(i))
+    Array.isArray((obj as PaginatedList<Innsynskrav>)?.items) &&
+    (obj as PaginatedList<Innsynskrav>).items.every((i) => isInnsynskrav(i))
   );
 }

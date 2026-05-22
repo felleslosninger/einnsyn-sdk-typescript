@@ -38,6 +38,7 @@ export function isPaginatedSaksmappeList(
 ): obj is PaginatedList<Saksmappe> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Saksmappe>)?.items.every((i) => isSaksmappe(i))
+    Array.isArray((obj as PaginatedList<Saksmappe>)?.items) &&
+    (obj as PaginatedList<Saksmappe>).items.every((i) => isSaksmappe(i))
   );
 }

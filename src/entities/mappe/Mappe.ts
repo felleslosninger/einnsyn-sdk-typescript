@@ -48,6 +48,7 @@ export function isPaginatedMappeList(
 ): obj is PaginatedList<Mappe> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Mappe>)?.items.every((i) => isMappe(i))
+    Array.isArray((obj as PaginatedList<Mappe>)?.items) &&
+    (obj as PaginatedList<Mappe>).items.every((i) => isMappe(i))
   );
 }

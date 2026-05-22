@@ -32,6 +32,7 @@ export function isPaginatedBrukerList(
 ): obj is PaginatedList<Bruker> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Bruker>)?.items.every((i) => isBruker(i))
+    Array.isArray((obj as PaginatedList<Bruker>)?.items) &&
+    (obj as PaginatedList<Bruker>).items.every((i) => isBruker(i))
   );
 }

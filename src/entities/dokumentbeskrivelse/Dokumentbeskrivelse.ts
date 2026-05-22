@@ -43,7 +43,8 @@ export function isPaginatedDokumentbeskrivelseList(
 ): obj is PaginatedList<Dokumentbeskrivelse> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Dokumentbeskrivelse>)?.items.every((i) =>
+    Array.isArray((obj as PaginatedList<Dokumentbeskrivelse>)?.items) &&
+    (obj as PaginatedList<Dokumentbeskrivelse>).items.every((i) =>
       isDokumentbeskrivelse(i),
     )
   );
