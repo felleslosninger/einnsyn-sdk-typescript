@@ -75,6 +75,7 @@ export function isPaginatedMoetesakList(
 ): obj is PaginatedList<Moetesak> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Moetesak>)?.items.every((i) => isMoetesak(i))
+    Array.isArray((obj as PaginatedList<Moetesak>)?.items) &&
+    (obj as PaginatedList<Moetesak>).items.every((i) => isMoetesak(i))
   );
 }

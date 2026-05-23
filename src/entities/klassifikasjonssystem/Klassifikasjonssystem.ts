@@ -31,7 +31,8 @@ export function isPaginatedKlassifikasjonssystemList(
 ): obj is PaginatedList<Klassifikasjonssystem> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Klassifikasjonssystem>)?.items.every((i) =>
+    Array.isArray((obj as PaginatedList<Klassifikasjonssystem>)?.items) &&
+    (obj as PaginatedList<Klassifikasjonssystem>).items.every((i) =>
       isKlassifikasjonssystem(i),
     )
   );

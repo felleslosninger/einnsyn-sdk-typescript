@@ -53,6 +53,7 @@ export function isPaginatedRegistreringList(
 ): obj is PaginatedList<Registrering> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Registrering>)?.items.every((i) => isRegistrering(i))
+    Array.isArray((obj as PaginatedList<Registrering>)?.items) &&
+    (obj as PaginatedList<Registrering>).items.every((i) => isRegistrering(i))
   );
 }

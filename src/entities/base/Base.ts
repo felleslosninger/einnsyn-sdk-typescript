@@ -54,6 +54,7 @@ export function isBase(obj: unknown): obj is Base {
 export function isPaginatedBaseList(obj: unknown): obj is PaginatedList<Base> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Base>)?.items.every((i) => isBase(i))
+    Array.isArray((obj as PaginatedList<Base>)?.items) &&
+    (obj as PaginatedList<Base>).items.every((i) => isBase(i))
   );
 }

@@ -40,7 +40,8 @@ export function isPaginatedInnsynskravBestillingList(
 ): obj is PaginatedList<InnsynskravBestilling> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<InnsynskravBestilling>)?.items.every((i) =>
+    Array.isArray((obj as PaginatedList<InnsynskravBestilling>)?.items) &&
+    (obj as PaginatedList<InnsynskravBestilling>).items.every((i) =>
       isInnsynskravBestilling(i),
     )
   );

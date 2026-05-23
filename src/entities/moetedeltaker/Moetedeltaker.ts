@@ -29,8 +29,7 @@ export function isPaginatedMoetedeltakerList(
 ): obj is PaginatedList<Moetedeltaker> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Moetedeltaker>)?.items.every((i) =>
-      isMoetedeltaker(i),
-    )
+    Array.isArray((obj as PaginatedList<Moetedeltaker>)?.items) &&
+    (obj as PaginatedList<Moetedeltaker>).items.every((i) => isMoetedeltaker(i))
   );
 }

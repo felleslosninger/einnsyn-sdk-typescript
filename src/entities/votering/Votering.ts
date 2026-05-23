@@ -39,6 +39,7 @@ export function isPaginatedVoteringList(
 ): obj is PaginatedList<Votering> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Votering>)?.items.every((i) => isVotering(i))
+    Array.isArray((obj as PaginatedList<Votering>)?.items) &&
+    (obj as PaginatedList<Votering>).items.every((i) => isVotering(i))
   );
 }

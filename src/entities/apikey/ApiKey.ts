@@ -36,6 +36,7 @@ export function isPaginatedApiKeyList(
 ): obj is PaginatedList<ApiKey> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<ApiKey>)?.items.every((i) => isApiKey(i))
+    Array.isArray((obj as PaginatedList<ApiKey>)?.items) &&
+    (obj as PaginatedList<ApiKey>).items.every((i) => isApiKey(i))
   );
 }

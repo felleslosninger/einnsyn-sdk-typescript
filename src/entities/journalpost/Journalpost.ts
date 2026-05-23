@@ -73,6 +73,7 @@ export function isPaginatedJournalpostList(
 ): obj is PaginatedList<Journalpost> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Journalpost>)?.items.every((i) => isJournalpost(i))
+    Array.isArray((obj as PaginatedList<Journalpost>)?.items) &&
+    (obj as PaginatedList<Journalpost>).items.every((i) => isJournalpost(i))
   );
 }

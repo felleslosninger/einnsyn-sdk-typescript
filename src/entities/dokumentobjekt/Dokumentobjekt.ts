@@ -40,7 +40,8 @@ export function isPaginatedDokumentobjektList(
 ): obj is PaginatedList<Dokumentobjekt> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Dokumentobjekt>)?.items.every((i) =>
+    Array.isArray((obj as PaginatedList<Dokumentobjekt>)?.items) &&
+    (obj as PaginatedList<Dokumentobjekt>).items.every((i) =>
       isDokumentobjekt(i),
     )
   );

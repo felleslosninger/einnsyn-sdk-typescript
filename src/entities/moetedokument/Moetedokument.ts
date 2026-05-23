@@ -37,8 +37,7 @@ export function isPaginatedMoetedokumentList(
 ): obj is PaginatedList<Moetedokument> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Moetedokument>)?.items.every((i) =>
-      isMoetedokument(i),
-    )
+    Array.isArray((obj as PaginatedList<Moetedokument>)?.items) &&
+    (obj as PaginatedList<Moetedokument>).items.every((i) => isMoetedokument(i))
   );
 }

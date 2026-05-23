@@ -91,6 +91,7 @@ export function isPaginatedEnhetList(
 ): obj is PaginatedList<Enhet> {
   return (
     obj !== undefined &&
-    (obj as PaginatedList<Enhet>)?.items.every((i) => isEnhet(i))
+    Array.isArray((obj as PaginatedList<Enhet>)?.items) &&
+    (obj as PaginatedList<Enhet>).items.every((i) => isEnhet(i))
   );
 }
