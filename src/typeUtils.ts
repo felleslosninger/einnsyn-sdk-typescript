@@ -64,6 +64,7 @@ export {
   isDokumentobjekt,
 } from './entities/dokumentobjekt/Dokumentobjekt';
 export { type Enhet, type EnhetRequest, isEnhet } from './entities/enhet/Enhet';
+export type { EnhetFilterParameters } from './entities/enhet/EnhetFilterParameters';
 export type { ListByEnhetParameters } from './entities/enhet/ListByEnhetParameters';
 export {
   type Identifikator,
