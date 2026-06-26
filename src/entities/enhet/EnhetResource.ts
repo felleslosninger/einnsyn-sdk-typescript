@@ -4,7 +4,6 @@
 import { Resource } from '../../common/entity/Resource';
 import { NetworkError } from '../../common/error/EInnsynError';
 import type { GetParameters } from '../../common/queryparameters/GetParameters';
-import type { ListParameters } from '../../common/queryparameters/ListParameters';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { ApiKey, ApiKeyRequest } from '../apikey/ApiKey';
 import { isApiKey, isPaginatedApiKeyList } from '../apikey/ApiKey';
@@ -14,10 +13,11 @@ import type { Innsynskrav } from '../innsynskrav/Innsynskrav';
 import { isPaginatedInnsynskravList } from '../innsynskrav/Innsynskrav';
 import type { Enhet, EnhetRequest } from './Enhet';
 import { isEnhet, isPaginatedEnhetList } from './Enhet';
+import type { EnhetFilterParameters } from './EnhetFilterParameters';
 import type { ListByEnhetParameters } from './ListByEnhetParameters';
 
 export class EnhetResource extends Resource {
-  async list(query?: ListParameters): Promise<PaginatedList<Enhet>> {
+  async list(query?: EnhetFilterParameters): Promise<PaginatedList<Enhet>> {
     const response = await this.requester.request({
       method: 'get',
       path: '/enhet',
