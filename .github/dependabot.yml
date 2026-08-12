@@ -12,3 +12,11 @@ updates:
     commit-message:
       prefix: "deps"
       prefix-development: "chore(deps-dev)"
+    ignore:
+      # `npm run build` generates .d.ts files through tsup's `dts` option, which
+      # is backed by rollup-plugin-dts and drives the TypeScript JS compiler API.
+      # TypeScript 6 rejects the compiler options that plugin passes, and the
+      # native TypeScript 7 package no longer ships the JS API at all, so either
+      # major breaks the build. Drop this once tsup supports TypeScript 7.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
