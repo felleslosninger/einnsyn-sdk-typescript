@@ -9,6 +9,11 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    cooldown:
+      default-days: 7
+      semver-patch-days: 3
+      semver-minor-days: 7
+      semver-major-days: 14
     commit-message:
       prefix: "deps"
       prefix-development: "chore(deps-dev)"
@@ -20,3 +25,10 @@ updates:
       # major breaks the build. Drop this once tsup supports TypeScript 7.
       - dependency-name: "typescript"
         update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    cooldown:
+      default-days: 7
