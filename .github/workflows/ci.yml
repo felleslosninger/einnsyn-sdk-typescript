@@ -59,3 +59,11 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Build package
+        run: npm run build
+
+      - name: Smoke test package exports
+        run: |
+          node -e "const sdk = require('@digdir/einnsyn-sdk'); if (typeof sdk.default !== 'function') throw new Error('CommonJS default export is not a constructor')"
+          node --input-type=module -e "import Client from '@digdir/einnsyn-sdk'; if (typeof Client !== 'function') throw new Error('ES module default export is not a constructor')"
