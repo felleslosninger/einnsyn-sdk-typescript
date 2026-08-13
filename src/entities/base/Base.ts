@@ -40,6 +40,7 @@ export function isBase(obj: unknown): obj is Base {
     case 'Moetedeltaker':
     case 'Identifikator':
     case 'Behandlingsprotokoll':
+    case 'Matrikkelnummer':
     case 'Innsynskrav':
     case 'InnsynskravBestilling':
     case 'LagretSak':

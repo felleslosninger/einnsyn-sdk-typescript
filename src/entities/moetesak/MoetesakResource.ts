@@ -14,6 +14,14 @@ import {
   isDokumentbeskrivelse,
   isPaginatedDokumentbeskrivelseList,
 } from '../dokumentbeskrivelse/Dokumentbeskrivelse';
+import type {
+  Matrikkelnummer,
+  MatrikkelnummerRequest,
+} from '../matrikkelnummer/Matrikkelnummer';
+import {
+  isMatrikkelnummer,
+  isPaginatedMatrikkelnummerList,
+} from '../matrikkelnummer/Matrikkelnummer';
 import type { Utredning, UtredningRequest } from '../utredning/Utredning';
 import { isUtredning } from '../utredning/Utredning';
 import type { Vedtak, VedtakRequest } from '../vedtak/Vedtak';
@@ -122,6 +130,36 @@ export class MoetesakResource extends Resource {
       path: `/moetesak/${id}/dokumentbeskrivelse/${dokumentbeskrivelseId}`,
     });
     if (isDokumentbeskrivelse(response)) {
+      return response;
+    }
+    throw new NetworkError('Unknown response type');
+  }
+
+  async listMatrikkelnummer(
+    id: string,
+    query?: ListByMoetesakParameters,
+  ): Promise<PaginatedList<Matrikkelnummer>> {
+    const response = await this.requester.request({
+      method: 'get',
+      path: `/moetesak/${id}/matrikkelnummer`,
+      query: query,
+    });
+    if (isPaginatedMatrikkelnummerList(response)) {
+      return response;
+    }
+    throw new NetworkError('Unknown response type');
+  }
+
+  async addMatrikkelnummer(
+    id: string,
+    body: MatrikkelnummerRequest,
+  ): Promise<Matrikkelnummer> {
+    const response = await this.requester.request({
+      method: 'post',
+      path: `/moetesak/${id}/matrikkelnummer`,
+      body: body,
+    });
+    if (isMatrikkelnummer(response)) {
       return response;
     }
     throw new NetworkError('Unknown response type');

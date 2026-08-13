@@ -21,6 +21,7 @@ export type { GetParameters } from './common/queryparameters/GetParameters';
 export type { ListParameters } from './common/queryparameters/ListParameters';
 export type { QueryParameters } from './common/queryparameters/QueryParameters';
 export type { PaginatedList } from './common/responses/PaginatedList';
+export type { SavedSearchParameters } from './common/search/SavedSearchParameters';
 export type { SearchParameters } from './common/search/SearchParameters';
 export type { StatisticsParameters } from './common/statistics/StatisticsParameters';
 export {
@@ -117,6 +118,11 @@ export {
   type LagretSoekRequest,
 } from './entities/lagretsoek/LagretSoek';
 export { isMappe, type Mappe, type MappeRequest } from './entities/mappe/Mappe';
+export {
+  isMatrikkelnummer,
+  type Matrikkelnummer,
+  type MatrikkelnummerRequest,
+} from './entities/matrikkelnummer/Matrikkelnummer';
 export {
   isMoetedeltaker,
   type Moetedeltaker,
