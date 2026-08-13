@@ -12,6 +12,10 @@ import type {
   Korrespondansepart,
   KorrespondansepartRequest,
 } from '../korrespondansepart/Korrespondansepart';
+import type {
+  Matrikkelnummer,
+  MatrikkelnummerRequest,
+} from '../matrikkelnummer/Matrikkelnummer';
 
 export interface Registrering extends ArkivBase {
   readonly slug?: string;
@@ -22,6 +26,7 @@ export interface Registrering extends ArkivBase {
   readonly oppdatertDato?: string;
   readonly korrespondansepart?: Array<Korrespondansepart | string>;
   readonly dokumentbeskrivelse?: Array<Dokumentbeskrivelse | string>;
+  readonly matrikkelnummer?: Array<Matrikkelnummer | string>;
   readonly avhendetTil?: Enhet | string;
 }
 
@@ -34,6 +39,7 @@ export interface RegistreringRequest extends ArkivBaseRequest {
   oppdatertDato?: string;
   korrespondansepart?: Array<KorrespondansepartRequest | string>;
   dokumentbeskrivelse?: Array<DokumentbeskrivelseRequest | string>;
+  matrikkelnummer?: Array<MatrikkelnummerRequest | string>;
   avhendetTil?: EnhetRequest | string;
 }
 

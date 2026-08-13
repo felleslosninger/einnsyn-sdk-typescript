@@ -22,6 +22,14 @@ import {
   isKorrespondansepart,
   isPaginatedKorrespondansepartList,
 } from '../korrespondansepart/Korrespondansepart';
+import type {
+  Matrikkelnummer,
+  MatrikkelnummerRequest,
+} from '../matrikkelnummer/Matrikkelnummer';
+import {
+  isMatrikkelnummer,
+  isPaginatedMatrikkelnummerList,
+} from '../matrikkelnummer/Matrikkelnummer';
 import type { Skjerming, SkjermingRequest } from '../skjerming/Skjerming';
 import { isSkjerming } from '../skjerming/Skjerming';
 import type { Journalpost, JournalpostRequest } from './Journalpost';
@@ -148,6 +156,36 @@ export class JournalpostResource extends Resource {
       body: body,
     });
     if (isKorrespondansepart(response)) {
+      return response;
+    }
+    throw new NetworkError('Unknown response type');
+  }
+
+  async listMatrikkelnummer(
+    id: string,
+    query?: ListByJournalpostParameters,
+  ): Promise<PaginatedList<Matrikkelnummer>> {
+    const response = await this.requester.request({
+      method: 'get',
+      path: `/journalpost/${id}/matrikkelnummer`,
+      query: query,
+    });
+    if (isPaginatedMatrikkelnummerList(response)) {
+      return response;
+    }
+    throw new NetworkError('Unknown response type');
+  }
+
+  async addMatrikkelnummer(
+    id: string,
+    body: MatrikkelnummerRequest,
+  ): Promise<Matrikkelnummer> {
+    const response = await this.requester.request({
+      method: 'post',
+      path: `/journalpost/${id}/matrikkelnummer`,
+      body: body,
+    });
+    if (isMatrikkelnummer(response)) {
       return response;
     }
     throw new NetworkError('Unknown response type');
