@@ -161,36 +161,40 @@ export const defineEntityValidatorTests = (
     expect(testCase.validator(undefined)).toBe(false);
   });
 
-  test.each(
-    cases,
-  )('isPaginated$entityNameList accepts matching entity lists', (testCase) => {
-    const cursorKey = testCase.cursor ?? 'next';
+  test.each(cases)(
+    'isPaginated$entityNameList accepts matching entity lists',
+    (testCase) => {
+      const cursorKey = testCase.cursor ?? 'next';
 
-    expect(
-      testCase.listValidator({
-        items: [testCase.valid],
-        [cursorKey]: '/page/2',
-      }),
-    ).toBe(true);
-  });
+      expect(
+        testCase.listValidator({
+          items: [testCase.valid],
+          [cursorKey]: '/page/2',
+        }),
+      ).toBe(true);
+    },
+  );
 
-  test.each(
-    cases,
-  )('isPaginated$entityNameList accepts empty lists', (testCase) => {
-    expect(testCase.listValidator({ items: [] })).toBe(true);
-  });
+  test.each(cases)(
+    'isPaginated$entityNameList accepts empty lists',
+    (testCase) => {
+      expect(testCase.listValidator({ items: [] })).toBe(true);
+    },
+  );
 
-  test.each(
-    cases,
-  )('isPaginated$entityNameList rejects mismatched entity lists', (testCase) => {
-    expect(testCase.listValidator({ items: [testCase.invalid] })).toBe(false);
-  });
+  test.each(cases)(
+    'isPaginated$entityNameList rejects mismatched entity lists',
+    (testCase) => {
+      expect(testCase.listValidator({ items: [testCase.invalid] })).toBe(false);
+    },
+  );
 
-  test.each(
-    cases,
-  )('isPaginated$entityNameList rejects undefined', (testCase) => {
-    expect(testCase.listValidator(undefined)).toBe(false);
-  });
+  test.each(cases)(
+    'isPaginated$entityNameList rejects undefined',
+    (testCase) => {
+      expect(testCase.listValidator(undefined)).toBe(false);
+    },
+  );
 };
 
 export const defineStandardEntityResourceSuite = (

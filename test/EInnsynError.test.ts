@@ -63,20 +63,19 @@ describe('resolveError', () => {
       expectedClass: TooManyUnverifiedOrdersError,
       expectedType: 'tooManyUnverifiedOrders',
     },
-  ])('maps $type to the expected SDK error class', ({
-    type,
-    expectedClass,
-    expectedType,
-  }) => {
-    const error = resolveError({
-      type,
-      message: `Message for ${type}`,
-    });
+  ])(
+    'maps $type to the expected SDK error class',
+    ({ type, expectedClass, expectedType }) => {
+      const error = resolveError({
+        type,
+        message: `Message for ${type}`,
+      });
 
-    expect(error).toBeInstanceOf(expectedClass);
-    expect(error.message).toBe(`Message for ${type}`);
-    expect(error.type).toBe(expectedType);
-  });
+      expect(error).toBeInstanceOf(expectedClass);
+      expect(error.message).toBe(`Message for ${type}`);
+      expect(error.type).toBe(expectedType);
+    },
+  );
 
   test('maps validation errors to ValidationError instances', () => {
     const error = resolveError({
