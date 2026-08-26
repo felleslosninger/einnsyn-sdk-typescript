@@ -2,7 +2,7 @@
 // https://github.com/felleslosninger/einnsyn-api-spec
 
 import type { PaginatedList } from '../../common/responses/PaginatedList';
-import type { SearchParameters } from '../../common/search/SearchParameters';
+import type { SavedSearchParameters } from '../../common/search/SavedSearchParameters';
 import type { Base, BaseRequest } from '../base/Base';
 import type { Bruker, BrukerRequest } from '../bruker/Bruker';
 
@@ -11,7 +11,7 @@ export interface LagretSoek extends Base {
   readonly bruker?: Bruker | string;
   readonly label: string;
   readonly subscribe?: boolean;
-  readonly searchParameters?: SearchParameters;
+  readonly searchParameters?: SavedSearchParameters;
   readonly legacyQuery?: string;
 }
 
@@ -19,7 +19,7 @@ export interface LagretSoekRequest extends BaseRequest {
   bruker?: BrukerRequest | string;
   label: string;
   subscribe?: boolean;
-  searchParameters?: SearchParameters;
+  searchParameters?: SavedSearchParameters;
   legacyQuery?: string;
 }
 
