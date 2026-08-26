@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.0](https://github.com/felleslosninger/einnsyn-sdk-typescript/compare/einnsyn-sdk-v1.4.0...einnsyn-sdk-v1.5.0) (2026-08-26)
+
+
+### Features
+
+* add support for Matrikkelnummer ([2a2136f](https://github.com/felleslosninger/einnsyn-sdk-typescript/commit/2a2136fa80f18dbe779217caf1f1b772e1e3785c))
+* add support for Matrikkelnummer ([e58cac0](https://github.com/felleslosninger/einnsyn-sdk-typescript/commit/e58cac0d2476fb6f9c1765fc0d6db8c7b516afdf))
+
 ## [1.4.0](https://github.com/felleslosninger/einnsyn-sdk-typescript/compare/einnsyn-sdk-v1.3.1...einnsyn-sdk-v1.4.0) (2026-08-12)
 
 
