@@ -7,6 +7,14 @@ import type { GetParameters } from '../../common/queryparameters/GetParameters';
 import type { ListParameters } from '../../common/queryparameters/ListParameters';
 import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type {
+  Matrikkelnummer,
+  MatrikkelnummerRequest,
+} from '../matrikkelnummer/Matrikkelnummer';
+import {
+  isMatrikkelnummer,
+  isPaginatedMatrikkelnummerList,
+} from '../matrikkelnummer/Matrikkelnummer';
+import type {
   Moetedokument,
   MoetedokumentRequest,
 } from '../moetedokument/Moetedokument';
@@ -66,6 +74,36 @@ export class MoetemappeResource extends Resource {
       body: body,
     });
     if (isMoetemappe(response)) {
+      return response;
+    }
+    throw new NetworkError('Unknown response type');
+  }
+
+  async listMatrikkelnummer(
+    id: string,
+    query?: ListByMoetemappeParameters,
+  ): Promise<PaginatedList<Matrikkelnummer>> {
+    const response = await this.requester.request({
+      method: 'get',
+      path: `/moetemappe/${id}/matrikkelnummer`,
+      query: query,
+    });
+    if (isPaginatedMatrikkelnummerList(response)) {
+      return response;
+    }
+    throw new NetworkError('Unknown response type');
+  }
+
+  async addMatrikkelnummer(
+    id: string,
+    body: MatrikkelnummerRequest,
+  ): Promise<Matrikkelnummer> {
+    const response = await this.requester.request({
+      method: 'post',
+      path: `/moetemappe/${id}/matrikkelnummer`,
+      body: body,
+    });
+    if (isMatrikkelnummer(response)) {
       return response;
     }
     throw new NetworkError('Unknown response type');

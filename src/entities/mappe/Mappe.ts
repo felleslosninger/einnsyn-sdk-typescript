@@ -5,6 +5,10 @@ import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
 import type { Arkivdel } from '../arkivdel/Arkivdel';
 import type { Klasse, KlasseRequest } from '../klasse/Klasse';
+import type {
+  Matrikkelnummer,
+  MatrikkelnummerRequest,
+} from '../matrikkelnummer/Matrikkelnummer';
 import type { Moetemappe } from '../moetemappe/Moetemappe';
 import type { Saksmappe } from '../saksmappe/Saksmappe';
 
@@ -20,6 +24,7 @@ export interface Mappe extends ArkivBase {
   readonly saksmappe?: Saksmappe | string;
   readonly moetemappe?: Moetemappe | string;
   readonly arkivdel?: Arkivdel | string;
+  readonly matrikkelnummer?: Array<Matrikkelnummer | string>;
 }
 
 export interface MappeRequest extends ArkivBaseRequest {
@@ -31,6 +36,7 @@ export interface MappeRequest extends ArkivBaseRequest {
   publisertDato?: string;
   oppdatertDato?: string;
   klasse?: KlasseRequest | string;
+  matrikkelnummer?: Array<MatrikkelnummerRequest | string>;
 }
 
 export function isMappe(obj: unknown): obj is Mappe {

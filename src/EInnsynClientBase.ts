@@ -22,6 +22,7 @@ import { KlassifikasjonssystemResource } from './entities/klassifikasjonssystem/
 import { KorrespondansepartResource } from './entities/korrespondansepart/KorrespondansepartResource';
 import { LagretSakResource } from './entities/lagretsak/LagretSakResource';
 import { LagretSoekResource } from './entities/lagretsoek/LagretSoekResource';
+import { MatrikkelnummerResource } from './entities/matrikkelnummer/MatrikkelnummerResource';
 import { MoetedeltakerResource } from './entities/moetedeltaker/MoetedeltakerResource';
 import { MoetedokumentResource } from './entities/moetedokument/MoetedokumentResource';
 import { MoetemappeResource } from './entities/moetemappe/MoetemappeResource';
@@ -47,6 +48,7 @@ export class EInnsynClientBase {
   readonly klasse: KlasseResource;
   readonly klassifikasjonssystem: KlassifikasjonssystemResource;
   readonly korrespondansepart: KorrespondansepartResource;
+  readonly matrikkelnummer: MatrikkelnummerResource;
   readonly moetedeltaker: MoetedeltakerResource;
   readonly moetedokument: MoetedokumentResource;
   readonly moetemappe: MoetemappeResource;
@@ -80,6 +82,7 @@ export class EInnsynClientBase {
     this.klasse = new KlasseResource(requester);
     this.klassifikasjonssystem = new KlassifikasjonssystemResource(requester);
     this.korrespondansepart = new KorrespondansepartResource(requester);
+    this.matrikkelnummer = new MatrikkelnummerResource(requester);
     this.moetedeltaker = new MoetedeltakerResource(requester);
     this.moetedokument = new MoetedokumentResource(requester);
     this.moetemappe = new MoetemappeResource(requester);

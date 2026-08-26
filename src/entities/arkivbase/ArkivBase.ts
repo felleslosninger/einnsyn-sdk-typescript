@@ -37,6 +37,7 @@ export function isArkivBase(obj: unknown): obj is ArkivBase {
     case 'Moetedeltaker':
     case 'Identifikator':
     case 'Behandlingsprotokoll':
+    case 'Matrikkelnummer':
       return true;
     default:
       return false;
