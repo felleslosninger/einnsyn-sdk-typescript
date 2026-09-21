@@ -17,6 +17,11 @@ updates:
     commit-message:
       prefix: "deps"
       prefix-development: "chore(deps-dev)"
+    groups:
+      vitest:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
     ignore:
       # `npm run build` generates .d.ts files through tsup's `dts` option, which
       # is backed by rollup-plugin-dts and drives the TypeScript JS compiler API.
