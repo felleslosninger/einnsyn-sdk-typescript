@@ -31,7 +31,15 @@ import type { ListByMoetesakParameters } from './ListByMoetesakParameters';
 import type { Moetesak, MoetesakRequest } from './Moetesak';
 import { isMoetesak, isPaginatedMoetesakList } from './Moetesak';
 
+/**
+ * Operations on the `Moetesak` resource.
+ */
 export class MoetesakResource extends Resource {
+  /**
+   * List all objects.
+   *
+   * @param query Optional query parameters.
+   */
   async list(query?: ListParameters): Promise<PaginatedList<Moetesak>> {
     const response = await this.requester.request({
       method: 'get',
@@ -44,6 +52,9 @@ export class MoetesakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param body The request body.
+   */
   async add(body: MoetesakRequest): Promise<Moetesak> {
     const response = await this.requester.request({
       method: 'post',
@@ -56,6 +67,12 @@ export class MoetesakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<Moetesak> {
     const response = await this.requester.request({
       method: 'delete',
@@ -67,6 +84,13 @@ export class MoetesakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<Moetesak> {
     const response = await this.requester.request({
       method: 'get',
@@ -79,6 +103,13 @@ export class MoetesakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(id: string, body: Partial<MoetesakRequest>): Promise<Moetesak> {
     const response = await this.requester.request({
       method: 'patch',
@@ -91,6 +122,10 @@ export class MoetesakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the moetesak.
+   * @param query Optional query parameters.
+   */
   async listDokumentbeskrivelse(
     id: string,
     query?: ListByMoetesakParameters,
@@ -106,6 +141,10 @@ export class MoetesakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the moetesak.
+   * @param body The request body.
+   */
   async addDokumentbeskrivelse(
     id: string,
     body: DokumentbeskrivelseRequest | string | 'string',
@@ -121,6 +160,10 @@ export class MoetesakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the moetesak.
+   * @param dokumentbeskrivelseId The ID of the dokumentbeskrivelse.
+   */
   async deleteDokumentbeskrivelse(
     id: string,
     dokumentbeskrivelseId: string,
@@ -135,6 +178,10 @@ export class MoetesakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the moetesak.
+   * @param query Optional query parameters.
+   */
   async listMatrikkelnummer(
     id: string,
     query?: ListByMoetesakParameters,
@@ -150,6 +197,10 @@ export class MoetesakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the moetesak.
+   * @param body The request body.
+   */
   async addMatrikkelnummer(
     id: string,
     body: MatrikkelnummerRequest,
@@ -165,6 +216,10 @@ export class MoetesakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the moetesak.
+   * @param query Optional query parameters.
+   */
   async getUtredning(
     id: string,
     query?: GetByMoetesakParameters,
@@ -180,6 +235,10 @@ export class MoetesakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the moetesak.
+   * @param body The request body.
+   */
   async addUtredning(id: string, body: UtredningRequest): Promise<Utredning> {
     const response = await this.requester.request({
       method: 'post',
@@ -192,6 +251,10 @@ export class MoetesakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the moetesak.
+   * @param query Optional query parameters.
+   */
   async getVedtak(
     id: string,
     query?: GetByMoetesakParameters,
@@ -207,6 +270,10 @@ export class MoetesakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the moetesak.
+   * @param body The request body.
+   */
   async addVedtak(id: string, body: VedtakRequest): Promise<Vedtak> {
     const response = await this.requester.request({
       method: 'post',

@@ -4,6 +4,9 @@
 import { Resource } from '../entity/Resource';
 import type { AuthInfo } from './AuthInfo';
 
+/**
+ * Operations on the `AuthInfo` resource.
+ */
 export class AuthInfoResource extends Resource {
   async get(): Promise<AuthInfo> {
     const response = await this.requester.request({

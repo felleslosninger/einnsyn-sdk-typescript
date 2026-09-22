@@ -35,40 +35,144 @@ import { UtredningResource } from './entities/utredning/UtredningResource';
 import { VedtakResource } from './entities/vedtak/VedtakResource';
 import { VoteringResource } from './entities/votering/VoteringResource';
 
+/**
+ * Base client exposing one resource accessor per API namespace.
+ */
 export class EInnsynClientBase {
+  /**
+   * Operations on the `ApiKey` resource.
+   */
   readonly apikey: ApiKeyResource;
+  /**
+   * Operations on the `Arkiv` resource.
+   */
   readonly arkiv: ArkivResource;
+  /**
+   * Operations on the `Arkivdel` resource.
+   */
   readonly arkivdel: ArkivdelResource;
+  /**
+   * Operations on the `Behandlingsprotokoll` resource.
+   */
   readonly behandlingsprotokoll: BehandlingsprotokollResource;
+  /**
+   * Operations on the `Dokumentbeskrivelse` resource.
+   */
   readonly dokumentbeskrivelse: DokumentbeskrivelseResource;
+  /**
+   * Operations on the `Dokumentobjekt` resource.
+   */
   readonly dokumentobjekt: DokumentobjektResource;
+  /**
+   * Operations on the `Enhet` resource.
+   */
   readonly enhet: EnhetResource;
+  /**
+   * Operations on the `Identifikator` resource.
+   */
   readonly identifikator: IdentifikatorResource;
+  /**
+   * Operations on the `Journalpost` resource.
+   */
   readonly journalpost: JournalpostResource;
+  /**
+   * Operations on the `Klasse` resource.
+   */
   readonly klasse: KlasseResource;
+  /**
+   * Operations on the `Klassifikasjonssystem` resource.
+   */
   readonly klassifikasjonssystem: KlassifikasjonssystemResource;
+  /**
+   * Operations on the `Korrespondansepart` resource.
+   */
   readonly korrespondansepart: KorrespondansepartResource;
+  /**
+   * Operations on the `Matrikkelnummer` resource.
+   */
   readonly matrikkelnummer: MatrikkelnummerResource;
+  /**
+   * Operations on the `Moetedeltaker` resource.
+   */
   readonly moetedeltaker: MoetedeltakerResource;
+  /**
+   * Operations on the `Moetedokument` resource.
+   */
   readonly moetedokument: MoetedokumentResource;
+  /**
+   * Operations on the `Moetemappe` resource.
+   */
   readonly moetemappe: MoetemappeResource;
+  /**
+   * Operations on the `Moetesak` resource.
+   */
   readonly moetesak: MoetesakResource;
+  /**
+   * Operations on the `Moetesaksbeskrivelse` resource.
+   */
   readonly moetesaksbeskrivelse: MoetesaksbeskrivelseResource;
+  /**
+   * Operations on the `Saksmappe` resource.
+   */
   readonly saksmappe: SaksmappeResource;
+  /**
+   * Operations on the `Skjerming` resource.
+   */
   readonly skjerming: SkjermingResource;
+  /**
+   * Operations on the `Utredning` resource.
+   */
   readonly utredning: UtredningResource;
+  /**
+   * Operations on the `Vedtak` resource.
+   */
   readonly vedtak: VedtakResource;
+  /**
+   * Operations on the `Votering` resource.
+   */
   readonly votering: VoteringResource;
+  /**
+   * Operations on the `Bruker` resource.
+   */
   readonly bruker: BrukerResource;
+  /**
+   * Operations on the `Innsynskrav` resource.
+   */
   readonly innsynskrav: InnsynskravResource;
+  /**
+   * Operations on the `InnsynskravBestilling` resource.
+   */
   readonly innsynskravbestilling: InnsynskravBestillingResource;
+  /**
+   * Operations on the `LagretSak` resource.
+   */
   readonly lagretsak: LagretSakResource;
+  /**
+   * Operations on the `LagretSoek` resource.
+   */
   readonly lagretsoek: LagretSoekResource;
+  /**
+   * Operations on the `Tilbakemelding` resource.
+   */
   readonly tilbakemelding: TilbakemeldingResource;
+  /**
+   * Operations on the `Search` resource.
+   */
   readonly search: SearchResource;
+  /**
+   * Statistics namespace for querying usage and activity metrics
+   */
   readonly statistics: StatisticsResource;
+  /**
+   * Operations on the `AuthInfo` resource.
+   */
   readonly authinfo: AuthInfoResource;
 
+  /**
+   * Create a new eInnsyn client.
+   *
+   * @param requester The transport used to perform the HTTP requests.
+   */
   constructor(requester: EInnsynRequester) {
     this.apikey = new ApiKeyResource(requester);
     this.arkiv = new ArkivResource(requester);

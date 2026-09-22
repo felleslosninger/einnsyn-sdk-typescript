@@ -16,7 +16,15 @@ import { isEnhet, isPaginatedEnhetList } from './Enhet';
 import type { EnhetFilterParameters } from './EnhetFilterParameters';
 import type { ListByEnhetParameters } from './ListByEnhetParameters';
 
+/**
+ * Operations on the `Enhet` resource.
+ */
 export class EnhetResource extends Resource {
+  /**
+   * List all enhets, with optional filtering by orgnummer or free-text query.
+   *
+   * @param query Optional query parameters.
+   */
   async list(query?: EnhetFilterParameters): Promise<PaginatedList<Enhet>> {
     const response = await this.requester.request({
       method: 'get',
@@ -29,6 +37,9 @@ export class EnhetResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param body The request body.
+   */
   async add(body: EnhetRequest): Promise<Enhet> {
     const response = await this.requester.request({
       method: 'post',
@@ -41,6 +52,12 @@ export class EnhetResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<Enhet> {
     const response = await this.requester.request({
       method: 'delete',
@@ -52,6 +69,13 @@ export class EnhetResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<Enhet> {
     const response = await this.requester.request({
       method: 'get',
@@ -64,6 +88,13 @@ export class EnhetResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(id: string, body: Partial<EnhetRequest>): Promise<Enhet> {
     const response = await this.requester.request({
       method: 'patch',
@@ -76,6 +107,10 @@ export class EnhetResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the enhet.
+   * @param query Optional query parameters.
+   */
   async listApiKey(
     id: string,
     query?: ListByEnhetParameters,
@@ -91,6 +126,10 @@ export class EnhetResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the enhet.
+   * @param body The request body.
+   */
   async addApiKey(id: string, body: ApiKeyRequest): Promise<ApiKey> {
     const response = await this.requester.request({
       method: 'post',
@@ -103,6 +142,10 @@ export class EnhetResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the enhet.
+   * @param query Optional query parameters.
+   */
   async listArkiv(
     id: string,
     query?: ListByEnhetParameters,
@@ -118,6 +161,10 @@ export class EnhetResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the enhet.
+   * @param query Optional query parameters.
+   */
   async listInnsynskrav(
     id: string,
     query?: ListByEnhetParameters,
@@ -133,6 +180,10 @@ export class EnhetResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the enhet.
+   * @param query Optional query parameters.
+   */
   async listUnderenhet(
     id: string,
     query?: ListByEnhetParameters,
@@ -148,6 +199,10 @@ export class EnhetResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the enhet.
+   * @param body The request body.
+   */
   async addUnderenhet(
     id: string,
     body: EnhetRequest | string | 'string',

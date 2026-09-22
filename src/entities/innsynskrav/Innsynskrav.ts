@@ -13,22 +13,63 @@ import type {
   JournalpostRequest,
 } from '../journalpost/Journalpost';
 
+/**
+ * Represents a request for access to a specific registry entry (Journalpost).
+ */
 export interface Innsynskrav extends Base {
   readonly entity: 'Innsynskrav';
+  /**
+   * The order containing this access request.
+   */
   readonly innsynskravBestilling?: InnsynskravBestilling | string;
+  /**
+   * The registry entry being requested.
+   */
   readonly journalpost: Journalpost | string;
+  /**
+   * The public authority responsible for handling the request.
+   */
   readonly enhet?: Enhet | string;
+  /**
+   * The email address of the requester.
+   */
   readonly email?: string;
+  /**
+   * The timestamp when the request was sent to the public authority.
+   */
   readonly sent?: string;
 }
 
+/**
+ * Represents a request for access to a specific registry entry (Journalpost).
+ *
+ * The writable variant of {@link Innsynskrav}, used as the request body when creating or updating a Innsynskrav.
+ */
 export interface InnsynskravRequest extends BaseRequest {
+  /**
+   * The order containing this access request.
+   */
   innsynskravBestilling?: InnsynskravBestillingRequest | string;
+  /**
+   * The registry entry being requested.
+   */
   journalpost: JournalpostRequest | string;
+  /**
+   * The public authority responsible for handling the request.
+   */
   enhet?: EnhetRequest | string;
+  /**
+   * The timestamp when the request was sent to the public authority.
+   */
   sent?: string;
 }
 
+/**
+ * Type guard that narrows an unknown value to {@link Innsynskrav}, by checking its `entity` discriminator.
+ *
+ * @param obj The value to check.
+ * @returns `true` if `obj` is a Innsynskrav.
+ */
 export function isInnsynskrav(obj: unknown): obj is Innsynskrav {
   switch ((obj as { entity: string })?.entity) {
     case 'Innsynskrav':
@@ -38,6 +79,12 @@ export function isInnsynskrav(obj: unknown): obj is Innsynskrav {
   }
 }
 
+/**
+ * Type guard that narrows an unknown value to a paginated list of {@link Innsynskrav}.
+ *
+ * @param obj The value to check.
+ * @returns `true` if `obj` is a `PaginatedList` where every item is a Innsynskrav.
+ */
 export function isPaginatedInnsynskravList(
   obj: unknown,
 ): obj is PaginatedList<Innsynskrav> {

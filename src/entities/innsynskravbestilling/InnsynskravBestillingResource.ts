@@ -18,7 +18,15 @@ import {
 } from './InnsynskravBestilling';
 import type { ListByInnsynskravBestillingParameters } from './ListByInnsynskravBestillingParameters';
 
+/**
+ * Operations on the `InnsynskravBestilling` resource.
+ */
 export class InnsynskravBestillingResource extends Resource {
+  /**
+   * List all objects.
+   *
+   * @param query Optional query parameters.
+   */
   async list(
     query?: ListParameters,
   ): Promise<PaginatedList<InnsynskravBestilling>> {
@@ -33,6 +41,9 @@ export class InnsynskravBestillingResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param body The request body.
+   */
   async add(
     body: InnsynskravBestillingRequest,
   ): Promise<InnsynskravBestilling> {
@@ -47,6 +58,12 @@ export class InnsynskravBestillingResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<InnsynskravBestilling> {
     const response = await this.requester.request({
       method: 'delete',
@@ -58,6 +75,13 @@ export class InnsynskravBestillingResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<InnsynskravBestilling> {
     const response = await this.requester.request({
       method: 'get',
@@ -70,6 +94,13 @@ export class InnsynskravBestillingResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(
     id: string,
     body: Partial<InnsynskravBestillingRequest>,
@@ -85,6 +116,10 @@ export class InnsynskravBestillingResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the innsynskravBestilling.
+   * @param query Optional query parameters.
+   */
   async listInnsynskrav(
     id: string,
     query?: ListByInnsynskravBestillingParameters,
@@ -100,6 +135,10 @@ export class InnsynskravBestillingResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the innsynskravBestilling.
+   * @param secret The ID of the verify.
+   */
   async verify(id: string, secret: string): Promise<InnsynskravBestilling> {
     const response = await this.requester.request({
       method: 'patch',

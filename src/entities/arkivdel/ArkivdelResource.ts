@@ -27,7 +27,15 @@ import type { Arkivdel, ArkivdelRequest } from './Arkivdel';
 import { isArkivdel, isPaginatedArkivdelList } from './Arkivdel';
 import type { ListByArkivdelParameters } from './ListByArkivdelParameters';
 
+/**
+ * Operations on the `Arkivdel` resource.
+ */
 export class ArkivdelResource extends Resource {
+  /**
+   * List all objects.
+   *
+   * @param query Optional query parameters.
+   */
   async list(query?: ListParameters): Promise<PaginatedList<Arkivdel>> {
     const response = await this.requester.request({
       method: 'get',
@@ -40,6 +48,12 @@ export class ArkivdelResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<Arkivdel> {
     const response = await this.requester.request({
       method: 'delete',
@@ -51,6 +65,13 @@ export class ArkivdelResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<Arkivdel> {
     const response = await this.requester.request({
       method: 'get',
@@ -63,6 +84,13 @@ export class ArkivdelResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(id: string, body: Partial<ArkivdelRequest>): Promise<Arkivdel> {
     const response = await this.requester.request({
       method: 'patch',
@@ -75,6 +103,10 @@ export class ArkivdelResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the arkivdel.
+   * @param query Optional query parameters.
+   */
   async listKlasse(
     id: string,
     query?: ListByArkivdelParameters,
@@ -90,6 +122,10 @@ export class ArkivdelResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the arkivdel.
+   * @param body The request body.
+   */
   async addKlasse(id: string, body: KlasseRequest): Promise<Klasse> {
     const response = await this.requester.request({
       method: 'post',
@@ -102,6 +138,10 @@ export class ArkivdelResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the arkivdel.
+   * @param query Optional query parameters.
+   */
   async listKlassifikasjonssystem(
     id: string,
     query?: ListByArkivdelParameters,
@@ -117,6 +157,10 @@ export class ArkivdelResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the arkivdel.
+   * @param body The request body.
+   */
   async addKlassifikasjonssystem(
     id: string,
     body: KlassifikasjonssystemRequest,
@@ -132,6 +176,10 @@ export class ArkivdelResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the arkivdel.
+   * @param query Optional query parameters.
+   */
   async listMoetemappe(
     id: string,
     query?: ListByArkivdelParameters,
@@ -147,6 +195,10 @@ export class ArkivdelResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the arkivdel.
+   * @param body The request body.
+   */
   async addMoetemappe(
     id: string,
     body: MoetemappeRequest,
@@ -162,6 +214,10 @@ export class ArkivdelResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the arkivdel.
+   * @param query Optional query parameters.
+   */
   async listSaksmappe(
     id: string,
     query?: ListByArkivdelParameters,
@@ -177,6 +233,10 @@ export class ArkivdelResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the arkivdel.
+   * @param body The request body.
+   */
   async addSaksmappe(id: string, body: SaksmappeRequest): Promise<Saksmappe> {
     const response = await this.requester.request({
       method: 'post',

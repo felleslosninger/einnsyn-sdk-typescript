@@ -8,7 +8,13 @@ import { NetworkError } from '../error/EInnsynError';
 import type { PaginatedList } from '../responses/PaginatedList';
 import type { SearchParameters } from './SearchParameters';
 
+/**
+ * Operations on the `Search` resource.
+ */
 export class SearchResource extends Resource {
+  /**
+   * @param query Optional query parameters.
+   */
   async search(query?: SearchParameters): Promise<PaginatedList<Base>> {
     const response = await this.requester.request({
       method: 'get',
