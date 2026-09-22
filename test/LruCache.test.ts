@@ -100,6 +100,13 @@ describe('LruCache', () => {
     expect(cache.count).toBe(1);
   });
 
+  test.each([0, -1, Number.NaN, Number.POSITIVE_INFINITY])(
+    'rejects maxSize %s',
+    (maxSize) => {
+      expect(() => new LruCache<string>(maxSize)).toThrow(RangeError);
+    },
+  );
+
   test('rejects sizes that are not non-negative finite numbers', () => {
     const cache = new LruCache<string>(100);
     cache.set('a', 'a', 10);

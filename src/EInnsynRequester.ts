@@ -58,13 +58,8 @@ export class EInnsynRequester {
 
     if (options.cache) {
       const cacheOptions = options.cache === true ? {} : options.cache;
-      const maxBytes = cacheOptions.maxBytes ?? defaultCacheMaxBytes;
-      if (!Number.isFinite(maxBytes) || maxBytes <= 0) {
-        throw new RangeError(
-          `cache.maxBytes must be a positive number, got ${maxBytes}`,
-        );
-      }
-      this.cache = new LruCache(maxBytes);
+      // LruCache rejects bounds that are not positive finite numbers.
+      this.cache = new LruCache(cacheOptions.maxBytes ?? defaultCacheMaxBytes);
     }
 
     this.options = options;

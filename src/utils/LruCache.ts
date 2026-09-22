@@ -12,7 +12,16 @@ export class LruCache<V> {
   private entries = new Map<string, Entry<V>>();
   private currentSize = 0;
 
-  constructor(private readonly maxSize: number) {}
+  /**
+   * @param maxSize - Maximum combined size of all entries. Must be a positive
+   *   finite number: NaN or a negative bound would silently keep the cache
+   *   empty, since every entry would be rejected or evicted on insert.
+   */
+  constructor(private readonly maxSize: number) {
+    if (!Number.isFinite(maxSize) || maxSize <= 0) {
+      throw new RangeError(`maxSize must be a positive number, got ${maxSize}`);
+    }
+  }
 
   public get(key: string): V | undefined {
     const entry = this.entries.get(key);
