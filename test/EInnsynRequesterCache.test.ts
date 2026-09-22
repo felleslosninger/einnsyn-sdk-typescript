@@ -220,7 +220,7 @@ describe('EInnsynRequester caching', () => {
   });
 
   test('sizes entries by byte length, not string length', async () => {
-    // 'Blåbærsyltetøy' is 14 characters but 18 bytes in UTF-8.
+    // 'Blåbærsyltetøy' is 14 characters but 17 bytes in UTF-8.
     const body = { entity: 'Enhet', navn: 'Blåbærsyltetøy' };
     const json = JSON.stringify(body);
     const byteLength = new TextEncoder().encode(json).byteLength;
