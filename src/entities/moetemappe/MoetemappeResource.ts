@@ -28,7 +28,15 @@ import type { ListByMoetemappeParameters } from './ListByMoetemappeParameters';
 import type { Moetemappe, MoetemappeRequest } from './Moetemappe';
 import { isMoetemappe, isPaginatedMoetemappeList } from './Moetemappe';
 
+/**
+ * Operations on the `Moetemappe` resource.
+ */
 export class MoetemappeResource extends Resource {
+  /**
+   * List all objects.
+   *
+   * @param query Optional query parameters.
+   */
   async list(query?: ListParameters): Promise<PaginatedList<Moetemappe>> {
     const response = await this.requester.request({
       method: 'get',
@@ -41,6 +49,12 @@ export class MoetemappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<Moetemappe> {
     const response = await this.requester.request({
       method: 'delete',
@@ -52,6 +66,13 @@ export class MoetemappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<Moetemappe> {
     const response = await this.requester.request({
       method: 'get',
@@ -64,6 +85,13 @@ export class MoetemappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(
     id: string,
     body: Partial<MoetemappeRequest>,
@@ -79,6 +107,10 @@ export class MoetemappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the moetemappe.
+   * @param query Optional query parameters.
+   */
   async listMatrikkelnummer(
     id: string,
     query?: ListByMoetemappeParameters,
@@ -94,6 +126,10 @@ export class MoetemappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the moetemappe.
+   * @param body The request body.
+   */
   async addMatrikkelnummer(
     id: string,
     body: MatrikkelnummerRequest,
@@ -109,6 +145,10 @@ export class MoetemappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the moetemappe.
+   * @param query Optional query parameters.
+   */
   async listMoetedokument(
     id: string,
     query?: ListByMoetemappeParameters,
@@ -124,6 +164,10 @@ export class MoetemappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the moetemappe.
+   * @param body The request body.
+   */
   async addMoetedokument(
     id: string,
     body: MoetedokumentRequest,
@@ -139,6 +183,10 @@ export class MoetemappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the moetemappe.
+   * @param query Optional query parameters.
+   */
   async listMoetesak(
     id: string,
     query?: ListByMoetemappeParameters,
@@ -154,6 +202,10 @@ export class MoetemappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the moetemappe.
+   * @param body The request body.
+   */
   async addMoetesak(id: string, body: MoetesakRequest): Promise<Moetesak> {
     const response = await this.requester.request({
       method: 'post',

@@ -26,7 +26,15 @@ import type { ListBySaksmappeParameters } from './ListBySaksmappeParameters';
 import type { Saksmappe, SaksmappeRequest } from './Saksmappe';
 import { isPaginatedSaksmappeList, isSaksmappe } from './Saksmappe';
 
+/**
+ * Operations on the `Saksmappe` resource.
+ */
 export class SaksmappeResource extends Resource {
+  /**
+   * List all objects.
+   *
+   * @param query Optional query parameters.
+   */
   async list(query?: ListParameters): Promise<PaginatedList<Saksmappe>> {
     const response = await this.requester.request({
       method: 'get',
@@ -39,6 +47,12 @@ export class SaksmappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<Saksmappe> {
     const response = await this.requester.request({
       method: 'delete',
@@ -50,6 +64,13 @@ export class SaksmappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<Saksmappe> {
     const response = await this.requester.request({
       method: 'get',
@@ -62,6 +83,13 @@ export class SaksmappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(
     id: string,
     body: Partial<SaksmappeRequest>,
@@ -77,6 +105,10 @@ export class SaksmappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the saksmappe.
+   * @param query Optional query parameters.
+   */
   async listJournalpost(
     id: string,
     query?: ListBySaksmappeParameters,
@@ -92,6 +124,10 @@ export class SaksmappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the saksmappe.
+   * @param body The request body.
+   */
   async addJournalpost(
     id: string,
     body: JournalpostRequest,
@@ -107,6 +143,10 @@ export class SaksmappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the saksmappe.
+   * @param query Optional query parameters.
+   */
   async listMatrikkelnummer(
     id: string,
     query?: ListBySaksmappeParameters,
@@ -122,6 +162,10 @@ export class SaksmappeResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the saksmappe.
+   * @param body The request body.
+   */
   async addMatrikkelnummer(
     id: string,
     body: MatrikkelnummerRequest,

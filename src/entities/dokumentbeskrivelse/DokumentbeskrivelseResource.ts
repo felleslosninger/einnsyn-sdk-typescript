@@ -20,7 +20,15 @@ import {
   isPaginatedDokumentbeskrivelseList,
 } from './Dokumentbeskrivelse';
 
+/**
+ * Operations on the `Dokumentbeskrivelse` resource.
+ */
 export class DokumentbeskrivelseResource extends Resource {
+  /**
+   * List all objects.
+   *
+   * @param query Optional query parameters.
+   */
   async list(
     query?: ListParameters,
   ): Promise<PaginatedList<Dokumentbeskrivelse>> {
@@ -35,6 +43,12 @@ export class DokumentbeskrivelseResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<Dokumentbeskrivelse> {
     const response = await this.requester.request({
       method: 'delete',
@@ -46,6 +60,13 @@ export class DokumentbeskrivelseResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<Dokumentbeskrivelse> {
     const response = await this.requester.request({
       method: 'get',
@@ -58,6 +79,13 @@ export class DokumentbeskrivelseResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(
     id: string,
     body: Partial<DokumentbeskrivelseRequest>,
@@ -73,6 +101,10 @@ export class DokumentbeskrivelseResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the dokumentbeskrivelse.
+   * @param body The request body.
+   */
   async addDokumentobjekt(
     id: string,
     body: DokumentobjektRequest | string | 'string',

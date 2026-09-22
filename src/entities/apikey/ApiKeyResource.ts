@@ -9,7 +9,15 @@ import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { ApiKey, ApiKeyRequest } from './ApiKey';
 import { isApiKey, isPaginatedApiKeyList } from './ApiKey';
 
+/**
+ * Operations on the `ApiKey` resource.
+ */
 export class ApiKeyResource extends Resource {
+  /**
+   * List all objects.
+   *
+   * @param query Optional query parameters.
+   */
   async list(query?: ListParameters): Promise<PaginatedList<ApiKey>> {
     const response = await this.requester.request({
       method: 'get',
@@ -22,6 +30,12 @@ export class ApiKeyResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<ApiKey> {
     const response = await this.requester.request({
       method: 'delete',
@@ -33,6 +47,13 @@ export class ApiKeyResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<ApiKey> {
     const response = await this.requester.request({
       method: 'get',
@@ -45,6 +66,13 @@ export class ApiKeyResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(id: string, body: Partial<ApiKeyRequest>): Promise<ApiKey> {
     const response = await this.requester.request({
       method: 'patch',

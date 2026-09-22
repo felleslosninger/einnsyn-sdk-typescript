@@ -18,7 +18,15 @@ import {
 } from './Klassifikasjonssystem';
 import type { ListByKlassifikasjonssystemParameters } from './ListByKlassifikasjonssystemParameters';
 
+/**
+ * Operations on the `Klassifikasjonssystem` resource.
+ */
 export class KlassifikasjonssystemResource extends Resource {
+  /**
+   * List all objects.
+   *
+   * @param query Optional query parameters.
+   */
   async list(
     query?: ListParameters,
   ): Promise<PaginatedList<Klassifikasjonssystem>> {
@@ -33,6 +41,12 @@ export class KlassifikasjonssystemResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<Klassifikasjonssystem> {
     const response = await this.requester.request({
       method: 'delete',
@@ -44,6 +58,13 @@ export class KlassifikasjonssystemResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<Klassifikasjonssystem> {
     const response = await this.requester.request({
       method: 'get',
@@ -56,6 +77,13 @@ export class KlassifikasjonssystemResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(
     id: string,
     body: Partial<KlassifikasjonssystemRequest>,
@@ -71,6 +99,10 @@ export class KlassifikasjonssystemResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the klassifikasjonssystem.
+   * @param query Optional query parameters.
+   */
   async listKlasse(
     id: string,
     query?: ListByKlassifikasjonssystemParameters,
@@ -86,6 +118,10 @@ export class KlassifikasjonssystemResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the klassifikasjonssystem.
+   * @param body The request body.
+   */
   async addKlasse(id: string, body: KlasseRequest): Promise<Klasse> {
     const response = await this.requester.request({
       method: 'post',

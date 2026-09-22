@@ -27,7 +27,15 @@ import type { Bruker, BrukerRequest } from './Bruker';
 import { isBruker, isPaginatedBrukerList } from './Bruker';
 import type { ListByBrukerParameters } from './ListByBrukerParameters';
 
+/**
+ * Operations on the `Bruker` resource.
+ */
 export class BrukerResource extends Resource {
+  /**
+   * List all objects.
+   *
+   * @param query Optional query parameters.
+   */
   async list(query?: ListParameters): Promise<PaginatedList<Bruker>> {
     const response = await this.requester.request({
       method: 'get',
@@ -40,6 +48,9 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param body The request body.
+   */
   async add(body: BrukerRequest): Promise<Bruker> {
     const response = await this.requester.request({
       method: 'post',
@@ -52,6 +63,12 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<Bruker> {
     const response = await this.requester.request({
       method: 'delete',
@@ -63,6 +80,13 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<Bruker> {
     const response = await this.requester.request({
       method: 'get',
@@ -75,6 +99,13 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(id: string, body: Partial<BrukerRequest>): Promise<Bruker> {
     const response = await this.requester.request({
       method: 'patch',
@@ -87,6 +118,10 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the bruker.
+   * @param secret The ID of the activate.
+   */
   async activate(id: string, secret: string): Promise<Bruker> {
     const response = await this.requester.request({
       method: 'patch',
@@ -98,6 +133,10 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the bruker.
+   * @param query Optional query parameters.
+   */
   async listInnsynskrav(
     id: string,
     query?: ListByBrukerParameters,
@@ -113,6 +152,10 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the bruker.
+   * @param query Optional query parameters.
+   */
   async listInnsynskravBestilling(
     id: string,
     query?: ListByBrukerParameters,
@@ -128,6 +171,10 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the bruker.
+   * @param body The request body.
+   */
   async addInnsynskravBestilling(
     id: string,
     body: InnsynskravBestillingRequest,
@@ -143,6 +190,10 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the bruker.
+   * @param query Optional query parameters.
+   */
   async listLagretSak(
     id: string,
     query?: ListByBrukerParameters,
@@ -158,6 +209,10 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the bruker.
+   * @param body The request body.
+   */
   async addLagretSak(id: string, body: LagretSakRequest): Promise<LagretSak> {
     const response = await this.requester.request({
       method: 'post',
@@ -170,6 +225,10 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the bruker.
+   * @param query Optional query parameters.
+   */
   async listLagretSoek(
     id: string,
     query?: ListByBrukerParameters,
@@ -185,6 +244,10 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the bruker.
+   * @param body The request body.
+   */
   async addLagretSoek(
     id: string,
     body: LagretSoekRequest,
@@ -200,6 +263,9 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the bruker.
+   */
   async requestPasswordReset(id: string): Promise<Bruker> {
     const response = await this.requester.request({
       method: 'patch',
@@ -211,6 +277,10 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the bruker.
+   * @param body The request body.
+   */
   async updatePassword(
     id: string,
     body: {
@@ -229,6 +299,11 @@ export class BrukerResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the bruker.
+   * @param secret The ID of the updatePassword.
+   * @param body The request body.
+   */
   async updatePasswordWithSecret(
     id: string,
     secret: string,
@@ -248,11 +323,17 @@ export class BrukerResource extends Resource {
   }
 }
 
+/**
+ * Request body for {@link BrukerResource.updatePassword}.
+ */
 export interface UpdatePasswordRequest {
   oldPassword: string;
   newPassword: string;
 }
 
+/**
+ * Request body for {@link BrukerResource.updatePasswordWithSecret}.
+ */
 export interface UpdatePasswordWithSecretRequest {
   newPassword: string;
 }

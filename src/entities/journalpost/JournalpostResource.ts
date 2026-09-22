@@ -36,7 +36,15 @@ import type { Journalpost, JournalpostRequest } from './Journalpost';
 import { isJournalpost, isPaginatedJournalpostList } from './Journalpost';
 import type { ListByJournalpostParameters } from './ListByJournalpostParameters';
 
+/**
+ * Operations on the `Journalpost` resource.
+ */
 export class JournalpostResource extends Resource {
+  /**
+   * List all objects.
+   *
+   * @param query Optional query parameters.
+   */
   async list(query?: ListParameters): Promise<PaginatedList<Journalpost>> {
     const response = await this.requester.request({
       method: 'get',
@@ -49,6 +57,12 @@ export class JournalpostResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<Journalpost> {
     const response = await this.requester.request({
       method: 'delete',
@@ -60,6 +74,13 @@ export class JournalpostResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<Journalpost> {
     const response = await this.requester.request({
       method: 'get',
@@ -72,6 +93,13 @@ export class JournalpostResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(
     id: string,
     body: Partial<JournalpostRequest>,
@@ -87,6 +115,10 @@ export class JournalpostResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the journalpost.
+   * @param query Optional query parameters.
+   */
   async listDokumentbeskrivelse(
     id: string,
     query?: ListByJournalpostParameters,
@@ -102,6 +134,10 @@ export class JournalpostResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the journalpost.
+   * @param body The request body.
+   */
   async addDokumentbeskrivelse(
     id: string,
     body: DokumentbeskrivelseRequest | string | 'string',
@@ -117,6 +153,10 @@ export class JournalpostResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the journalpost.
+   * @param dokumentbeskrivelseId The ID of the dokumentbeskrivelse.
+   */
   async deleteDokumentbeskrivelse(
     id: string,
     dokumentbeskrivelseId: string,
@@ -131,6 +171,10 @@ export class JournalpostResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the journalpost.
+   * @param query Optional query parameters.
+   */
   async listKorrespondansepart(
     id: string,
     query?: ListByJournalpostParameters,
@@ -146,6 +190,10 @@ export class JournalpostResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the journalpost.
+   * @param body The request body.
+   */
   async addKorrespondansepart(
     id: string,
     body: KorrespondansepartRequest,
@@ -161,6 +209,10 @@ export class JournalpostResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the journalpost.
+   * @param query Optional query parameters.
+   */
   async listMatrikkelnummer(
     id: string,
     query?: ListByJournalpostParameters,
@@ -176,6 +228,10 @@ export class JournalpostResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the journalpost.
+   * @param body The request body.
+   */
   async addMatrikkelnummer(
     id: string,
     body: MatrikkelnummerRequest,
@@ -191,6 +247,10 @@ export class JournalpostResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the journalpost.
+   * @param body The request body.
+   */
   async addSkjerming(
     id: string,
     body: SkjermingRequest | string | 'string',
@@ -206,6 +266,10 @@ export class JournalpostResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the journalpost.
+   * @param skjermingId The ID of the skjerming.
+   */
   async deleteSkjerming(id: string, skjermingId: string): Promise<Skjerming> {
     const response = await this.requester.request({
       method: 'delete',

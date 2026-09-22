@@ -9,7 +9,15 @@ import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { LagretSak, LagretSakRequest } from './LagretSak';
 import { isLagretSak, isPaginatedLagretSakList } from './LagretSak';
 
+/**
+ * Operations on the `LagretSak` resource.
+ */
 export class LagretSakResource extends Resource {
+  /**
+   * List all objects.
+   *
+   * @param query Optional query parameters.
+   */
   async list(query?: ListParameters): Promise<PaginatedList<LagretSak>> {
     const response = await this.requester.request({
       method: 'get',
@@ -22,6 +30,12 @@ export class LagretSakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<LagretSak> {
     const response = await this.requester.request({
       method: 'delete',
@@ -33,6 +47,13 @@ export class LagretSakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<LagretSak> {
     const response = await this.requester.request({
       method: 'get',
@@ -45,6 +66,13 @@ export class LagretSakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(
     id: string,
     body: Partial<LagretSakRequest>,

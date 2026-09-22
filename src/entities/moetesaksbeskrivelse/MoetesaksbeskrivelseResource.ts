@@ -15,7 +15,15 @@ import {
   isPaginatedMoetesaksbeskrivelseList,
 } from './Moetesaksbeskrivelse';
 
+/**
+ * Operations on the `Moetesaksbeskrivelse` resource.
+ */
 export class MoetesaksbeskrivelseResource extends Resource {
+  /**
+   * List all objects.
+   *
+   * @param query Optional query parameters.
+   */
   async list(
     query?: ListParameters,
   ): Promise<PaginatedList<Moetesaksbeskrivelse>> {
@@ -30,6 +38,12 @@ export class MoetesaksbeskrivelseResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<Moetesaksbeskrivelse> {
     const response = await this.requester.request({
       method: 'delete',
@@ -41,6 +55,13 @@ export class MoetesaksbeskrivelseResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<Moetesaksbeskrivelse> {
     const response = await this.requester.request({
       method: 'get',
@@ -53,6 +74,13 @@ export class MoetesaksbeskrivelseResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(
     id: string,
     body: Partial<MoetesaksbeskrivelseRequest>,

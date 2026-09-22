@@ -20,7 +20,15 @@ import type { ListByVedtakParameters } from './ListByVedtakParameters';
 import type { Vedtak, VedtakRequest } from './Vedtak';
 import { isPaginatedVedtakList, isVedtak } from './Vedtak';
 
+/**
+ * Operations on the `Vedtak` resource.
+ */
 export class VedtakResource extends Resource {
+  /**
+   * List all objects.
+   *
+   * @param query Optional query parameters.
+   */
   async list(query?: ListParameters): Promise<PaginatedList<Vedtak>> {
     const response = await this.requester.request({
       method: 'get',
@@ -33,6 +41,12 @@ export class VedtakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<Vedtak> {
     const response = await this.requester.request({
       method: 'delete',
@@ -44,6 +58,13 @@ export class VedtakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<Vedtak> {
     const response = await this.requester.request({
       method: 'get',
@@ -56,6 +77,13 @@ export class VedtakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(id: string, body: Partial<VedtakRequest>): Promise<Vedtak> {
     const response = await this.requester.request({
       method: 'patch',
@@ -68,6 +96,10 @@ export class VedtakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the vedtak.
+   * @param query Optional query parameters.
+   */
   async listVedtaksdokument(
     id: string,
     query?: ListByVedtakParameters,
@@ -83,6 +115,10 @@ export class VedtakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the vedtak.
+   * @param body The request body.
+   */
   async addVedtaksdokument(
     id: string,
     body: DokumentbeskrivelseRequest | string | 'string',
@@ -98,6 +134,10 @@ export class VedtakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the vedtak.
+   * @param vedtaksdokumentId The ID of the vedtaksdokument.
+   */
   async deleteVedtaksdokument(
     id: string,
     vedtaksdokumentId: string,
@@ -112,6 +152,10 @@ export class VedtakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the vedtak.
+   * @param query Optional query parameters.
+   */
   async listVotering(
     id: string,
     query?: ListByVedtakParameters,
@@ -127,6 +171,10 @@ export class VedtakResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the vedtak.
+   * @param body The request body.
+   */
   async addVotering(id: string, body: VoteringRequest): Promise<Votering> {
     const response = await this.requester.request({
       method: 'post',

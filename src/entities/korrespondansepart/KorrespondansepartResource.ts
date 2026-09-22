@@ -15,7 +15,15 @@ import {
   isPaginatedKorrespondansepartList,
 } from './Korrespondansepart';
 
+/**
+ * Operations on the `Korrespondansepart` resource.
+ */
 export class KorrespondansepartResource extends Resource {
+  /**
+   * List all objects.
+   *
+   * @param query Optional query parameters.
+   */
   async list(
     query?: ListParameters,
   ): Promise<PaginatedList<Korrespondansepart>> {
@@ -30,6 +38,12 @@ export class KorrespondansepartResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<Korrespondansepart> {
     const response = await this.requester.request({
       method: 'delete',
@@ -41,6 +55,13 @@ export class KorrespondansepartResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<Korrespondansepart> {
     const response = await this.requester.request({
       method: 'get',
@@ -53,6 +74,13 @@ export class KorrespondansepartResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(
     id: string,
     body: Partial<KorrespondansepartRequest>,

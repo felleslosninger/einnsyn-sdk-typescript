@@ -14,7 +14,15 @@ import type { Klasse, KlasseRequest } from './Klasse';
 import { isKlasse, isPaginatedKlasseList } from './Klasse';
 import type { ListByKlasseParameters } from './ListByKlasseParameters';
 
+/**
+ * Operations on the `Klasse` resource.
+ */
 export class KlasseResource extends Resource {
+  /**
+   * List all objects.
+   *
+   * @param query Optional query parameters.
+   */
   async list(query?: ListParameters): Promise<PaginatedList<Klasse>> {
     const response = await this.requester.request({
       method: 'get',
@@ -27,6 +35,12 @@ export class KlasseResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Delete an object.
+   *
+   * @param id The ID of the object.
+   * @returns The deleted object.
+   */
   async delete(id: string): Promise<Klasse> {
     const response = await this.requester.request({
       method: 'delete',
@@ -38,6 +52,13 @@ export class KlasseResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Get an object.
+   *
+   * @param id The ID of the object.
+   * @param query Optional query parameters.
+   * @returns The object.
+   */
   async get(id: string, query?: GetParameters): Promise<Klasse> {
     const response = await this.requester.request({
       method: 'get',
@@ -50,6 +71,13 @@ export class KlasseResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * Update an object.
+   *
+   * @param id The ID of the object.
+   * @param body The request body.
+   * @returns The updated object.
+   */
   async update(id: string, body: Partial<KlasseRequest>): Promise<Klasse> {
     const response = await this.requester.request({
       method: 'patch',
@@ -62,6 +90,10 @@ export class KlasseResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the klasse.
+   * @param query Optional query parameters.
+   */
   async listKlasse(
     id: string,
     query?: ListByKlasseParameters,
@@ -77,6 +109,10 @@ export class KlasseResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the klasse.
+   * @param body The request body.
+   */
   async addKlasse(id: string, body: KlasseRequest): Promise<Klasse> {
     const response = await this.requester.request({
       method: 'post',
@@ -89,6 +125,10 @@ export class KlasseResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the klasse.
+   * @param query Optional query parameters.
+   */
   async listMoetemappe(
     id: string,
     query?: ListByKlasseParameters,
@@ -104,6 +144,10 @@ export class KlasseResource extends Resource {
     throw new NetworkError('Unknown response type');
   }
 
+  /**
+   * @param id The ID of the klasse.
+   * @param query Optional query parameters.
+   */
   async listSaksmappe(
     id: string,
     query?: ListByKlasseParameters,
