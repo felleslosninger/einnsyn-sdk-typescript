@@ -27,13 +27,13 @@ TypeScript SDK for the eInnsyn API
 Install the package via npm:
 
 ```sh
-npm install https://github.com/felleslosninger/einnsyn-sdk-typescript
+npm install @digdir/einnsyn-sdk
 ```
 
 Import and use it in your TypeScript project:
 
 ```typescript
-import { EInnsynClient } from 'einnsyn-sdk';
+import { EInnsynClient } from '@digdir/einnsyn-sdk';
 ```
 
 ## Testing
@@ -69,7 +69,7 @@ const client = new EInnsynClient({
   appInfo: 'My eInnsyn client',
   username: 'eInnsynUser@example.com',
   password: 'myPassword',
-  jwtToken: '...',
+  jwt: '...',
   apiKey: 'secret_apikey',
 });
 ```
