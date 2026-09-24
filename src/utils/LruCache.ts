@@ -56,18 +56,18 @@ export class LruCache<V> {
       return;
     }
 
-    this.entries.set(key, { value, size });
-    this.currentSize += size;
-
     // Deleting during Map iteration is well-defined: keys after the deleted
     // one are still visited.
     for (const [oldestKey, oldestEntry] of this.entries) {
-      if (this.currentSize <= this.maxSize) {
+      if (this.currentSize <= this.maxSize - size) {
         break;
       }
       this.entries.delete(oldestKey);
       this.currentSize -= oldestEntry.size;
     }
+
+    this.entries.set(key, { value, size });
+    this.currentSize += size;
   }
 
   public delete(key: string) {
