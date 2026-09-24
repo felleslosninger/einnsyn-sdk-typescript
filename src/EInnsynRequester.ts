@@ -121,7 +121,7 @@ export class EInnsynRequester {
     if (response.status === 304) {
       if (!cached) {
         throw new NetworkError(
-          `Got an unexpected 304 response from ${baseUrl}`,
+          `Got an unexpected 304 response from ${url}`,
           baseUrl,
         );
       }

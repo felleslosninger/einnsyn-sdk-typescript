@@ -256,7 +256,7 @@ describe('EInnsynRequester caching', () => {
 
     await expect(promise).rejects.toBeInstanceOf(NetworkError);
     await expect(promise).rejects.toThrow(
-      'Got an unexpected 304 response from https://example.com',
+      'Got an unexpected 304 response from https://example.com/enhet/enhet_123',
     );
   });
 
