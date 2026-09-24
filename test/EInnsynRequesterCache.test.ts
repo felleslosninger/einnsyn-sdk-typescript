@@ -481,6 +481,34 @@ describe('EInnsynRequester caching', () => {
     );
   });
 
+  test('drops the cached entry when a 304 is marked Cache-Control: no-store', async () => {
+    const requester = new EInnsynRequester({
+      baseUrl: 'https://example.com',
+      cache: true,
+    });
+
+    fetchMock.mockResolvedValueOnce(createEtagResponse({ ok: true }, '"v1"'));
+    fetchMock.mockResolvedValueOnce(
+      new Response(null, {
+        status: 304,
+        headers: { ETag: '"v1"', 'Cache-Control': 'private, no-store' },
+      }),
+    );
+    fetchMock.mockResolvedValueOnce(createEtagResponse({ ok: true }, '"v2"'));
+
+    await requester.request({ path: '/enhet/enhet_123' });
+    const revalidated = await requester.request({ path: '/enhet/enhet_123' });
+    await requester.request({ path: '/enhet/enhet_123' });
+
+    expect(revalidated).toStrictEqual({ ok: true });
+    expect(headersOf(fetchMock.mock.calls[1]?.[1])).toMatchObject({
+      'If-None-Match': '"v1"',
+    });
+    expect(headersOf(fetchMock.mock.calls[2]?.[1])).not.toHaveProperty(
+      'If-None-Match',
+    );
+  });
+
   test('drops the cached entry when the server stops sending an ETag', async () => {
     const requester = new EInnsynRequester({
       baseUrl: 'https://example.com',

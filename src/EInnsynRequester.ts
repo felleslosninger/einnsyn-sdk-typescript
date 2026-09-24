@@ -125,6 +125,10 @@ export class EInnsynRequester {
           baseUrl,
         );
       }
+      if (isNoStore(response.headers.get('Cache-Control'))) {
+        cache?.delete(url);
+        return JSON.parse(cached.body);
+      }
       // A 304 may carry a new validator for the same content (RFC 9110
       // §15.4.5). The entry captured before the request may have been evicted
       // or replaced while the request was in flight, so look it up again
