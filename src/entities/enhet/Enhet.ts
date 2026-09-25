@@ -30,7 +30,7 @@ export interface Enhet extends Base {
    */
   readonly navnSami?: string;
   /**
-   * The 9-digit organization number from the Brønnøysund Register Centre.
+   * The 9-digit organization number from the Brønnøysund Register Centre. Only admins can change it after creation.
    */
   readonly orgnummer: string;
   /**
@@ -54,7 +54,7 @@ export interface Enhet extends Base {
    */
   readonly innsynskravEpost: string;
   /**
-   * The type of the organizational unit.
+   * The type of the organizational unit. Only admins can create top nodes, that is `DUMMYENHET` units whose ancestors are all `DUMMYENHET`.
    */
   readonly enhetstype:
     | 'ADMINISTRATIVENHET'
@@ -75,6 +75,10 @@ export interface Enhet extends Base {
    * If true, this unit should be hidden from public view.
    */
   readonly skjult?: boolean;
+  /**
+   * Whether an admin has verified this unit. Unverified units are listed only for admins, can be fetched by id or orgnummer by admins and the unit itself, and cannot publish data or create API keys. Only admins can read or set this field.
+   */
+  readonly verified?: boolean;
   /**
    * If true, this unit is configured to use the eFormidling platform for digital communication.
    */
@@ -140,7 +144,7 @@ export interface EnhetRequest extends BaseRequest {
    */
   navnSami?: string;
   /**
-   * The 9-digit organization number from the Brønnøysund Register Centre.
+   * The 9-digit organization number from the Brønnøysund Register Centre. Only admins can change it after creation.
    */
   orgnummer: string;
   /**
@@ -164,7 +168,7 @@ export interface EnhetRequest extends BaseRequest {
    */
   innsynskravEpost: string;
   /**
-   * The type of the organizational unit.
+   * The type of the organizational unit. Only admins can create top nodes, that is `DUMMYENHET` units whose ancestors are all `DUMMYENHET`.
    */
   enhetstype:
     | 'ADMINISTRATIVENHET'
@@ -185,6 +189,10 @@ export interface EnhetRequest extends BaseRequest {
    * If true, this unit should be hidden from public view.
    */
   skjult?: boolean;
+  /**
+   * Whether an admin has verified this unit. Unverified units are listed only for admins, can be fetched by id or orgnummer by admins and the unit itself, and cannot publish data or create API keys. Only admins can read or set this field.
+   */
+  verified?: boolean;
   /**
    * If true, this unit is configured to use the eFormidling platform for digital communication.
    */
