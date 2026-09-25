@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/felleslosninger/einnsyn-sdk-typescript/compare/einnsyn-sdk-v1.5.0...einnsyn-sdk-v1.6.0) (2026-09-25)
+
+
+### Features
+
+* sync einnsyn-sdk-typescript [#222](https://github.com/felleslosninger/einnsyn-sdk-typescript/issues/222) ([0e1dfcc](https://github.com/felleslosninger/einnsyn-sdk-typescript/commit/0e1dfccb72fe69f34c587e87cd34d5059ecdeb8c))
+
 ## [1.5.0](https://github.com/felleslosninger/einnsyn-sdk-typescript/compare/einnsyn-sdk-v1.4.0...einnsyn-sdk-v1.5.0) (2026-08-26)
 
 
