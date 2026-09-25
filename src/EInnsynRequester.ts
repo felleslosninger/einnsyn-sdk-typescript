@@ -8,10 +8,24 @@ import {
   isPaginatedList,
   type PaginatedList,
 } from './common/responses/PaginatedList';
-import type { EInnsynOptions } from './EInnsynOptions';
+import { defaultCacheMaxBytes, type EInnsynOptions } from './EInnsynOptions';
 import type { Base } from './entities/base/Base';
+import { LruCache } from './utils/LruCache';
 import { searchQuerySerializer } from './utils/searchQuerySerializer';
 import { version } from './version';
+
+type CachedResponse = {
+  etag: string;
+  /** Unparsed response body, reparsed on each hit to give callers a fresh object. */
+  body: string;
+};
+
+/** True when a Cache-Control header forbids storing the response. */
+const isNoStore = (cacheControl: string | null) =>
+  cacheControl
+    ?.split(',')
+    .some((directive) => directive.trim().toLowerCase() === 'no-store') ??
+  false;
 
 type RequestOptions = {
   method?: 'get' | 'post' | 'patch' | 'delete';
@@ -23,6 +37,13 @@ type RequestOptions = {
 export class EInnsynRequester {
   private authenticator: Authenticator;
 
+  /**
+   * Cache of ETagged GET responses, scoped to this requester. The authenticator
+   * is fixed for the lifetime of a requester, so entries always belong to a
+   * single identity and cannot leak between users. Keyed by request URL.
+   */
+  private cache?: LruCache<CachedResponse>;
+
   constructor(private options: EInnsynOptions) {
     if (options.apiKey !== undefined) {
       this.authenticator = new AuthenticatorApiKey(options);
@@ -33,6 +54,12 @@ export class EInnsynRequester {
     } else {
       // Anonymous authenticator
       this.authenticator = new Authenticator(options);
+    }
+
+    if (options.cache) {
+      const cacheOptions = options.cache === true ? {} : options.cache;
+      // LruCache rejects bounds that are not positive finite numbers.
+      this.cache = new LruCache(cacheOptions.maxBytes ?? defaultCacheMaxBytes);
     }
 
     this.options = options;
@@ -51,11 +78,21 @@ export class EInnsynRequester {
     const appInfo = this.options.appInfo;
     const userAgent = appInfo ? `${appInfo} - ${userAgentBase}` : userAgentBase;
 
+    const baseUrl = this.options.baseUrl;
+    const url = baseUrl + path + queryString;
+
+    // Only GETs are cached. A cached entry is never served without asking the
+    // server first, so there is nothing to invalidate after a write: a stale
+    // entry simply gets a 200 with fresh content instead of a 304.
+    const cache = method === 'get' ? this.cache : undefined;
+    const cached = cache?.get(url);
+
     const defaultRequestInit: RequestInit = {
       method: method.toUpperCase(),
       headers: {
         'Content-Type': 'application/json',
         'User-Agent': userAgent,
+        ...(cached ? { 'If-None-Match': cached.etag } : {}),
       },
       body: JSON.stringify(body),
     };
@@ -66,8 +103,6 @@ export class EInnsynRequester {
       defaultRequestInit,
     );
 
-    const baseUrl = this.options.baseUrl;
-    const url = baseUrl + path + queryString;
     let response: Response;
     try {
       response = await this.fetchWithRetry(url, requestInit);
@@ -81,12 +116,65 @@ export class EInnsynRequester {
       throw new NetworkError(`Could not fetch ${baseUrl}`, baseUrl);
     }
 
+    // 304 responses have no body, so they must be handled before any read of
+    // the response. Parsing the stored body gives every caller its own copy.
+    if (response.status === 304) {
+      if (!cached) {
+        throw new NetworkError(
+          `Got an unexpected 304 response from ${url}`,
+          baseUrl,
+        );
+      }
+      if (isNoStore(response.headers.get('Cache-Control'))) {
+        cache?.delete(url);
+        return JSON.parse(cached.body);
+      }
+      // A 304 may carry a new validator for the same content (RFC 9110
+      // §15.4.5). The entry captured before the request may have been evicted
+      // or replaced while the request was in flight, so look it up again
+      // rather than writing to a possibly detached object.
+      const refreshedEtag = response.headers.get('ETag');
+      if (refreshedEtag && cache?.get(url) === cached) {
+        cached.etag = refreshedEtag;
+      }
+      return JSON.parse(cached.body);
+    }
+
     if (response.status >= 400) {
+      // A 4xx (other than throttling) says the cached entity is gone or no
+      // longer accessible, so drop it. Without this, a deleted entity would
+      // keep its body in the cache and keep sending If-None-Match until
+      // evicted. Throttling and server errors are transient: the entity has
+      // not changed, so the entry stays valid for the next revalidation.
+      if (response.status < 500 && response.status !== 429) {
+        cache?.delete(url);
+      }
       const error = resolveError(await response.json());
       throw error;
     }
 
-    return await response.json();
+    if (!cache) {
+      return await response.json();
+    }
+
+    const etag = response.headers.get('ETag');
+    if (!etag || isNoStore(response.headers.get('Cache-Control'))) {
+      // Either the server stopped sending validators for this URL, so a stale
+      // entry would never be revalidated successfully again, or it asked us
+      // not to store the response at all.
+      cache.delete(url);
+      return await response.json();
+    }
+
+    // Read the raw bytes so the entry can be sized by the body's byte length
+    // rather than by string length, which counts UTF-16 code units. Parse
+    // before storing, so a body that is not valid JSON never gets into the
+    // cache. If it did, every later 304 would rethrow the same error.
+    const bytes = await response.arrayBuffer();
+    const text = new TextDecoder().decode(bytes);
+    const parsed = JSON.parse(text);
+    cache.set(url, { etag, body: text }, bytes.byteLength);
+    return parsed;
   }
 
   /**
