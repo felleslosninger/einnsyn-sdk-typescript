@@ -18,6 +18,7 @@ TypeScript SDK for the eInnsyn API
   - [Adding / updating content](#adding--updating-content)
   - [Deleting content](#deleting-content)
   - [Search](#search)
+  - [Caching](#caching)
 - [API Documentation](#api-documentation)
 - [License](#license)
 - [References](#references)
@@ -27,13 +28,13 @@ TypeScript SDK for the eInnsyn API
 Install the package via npm:
 
 ```sh
-npm install https://github.com/felleslosninger/einnsyn-sdk-typescript
+npm install @digdir/einnsyn-sdk
 ```
 
 Import and use it in your TypeScript project:
 
 ```typescript
-import { EInnsynClient } from 'einnsyn-sdk';
+import { EInnsynClient } from '@digdir/einnsyn-sdk';
 ```
 
 ## Testing
@@ -69,8 +70,9 @@ const client = new EInnsynClient({
   appInfo: 'My eInnsyn client',
   username: 'eInnsynUser@example.com',
   password: 'myPassword',
-  jwtToken: '...',
+  jwt: '...',
   apiKey: 'secret_apikey',
+  cache: true,
 });
 ```
 
@@ -273,6 +275,33 @@ const advancedSearch = client.search({
   sortOrder: 'asc',
 });
 ```
+
+### Caching
+
+The client can cache `GET` responses that carry an `ETag`, and revalidate them
+with `If-None-Match` on later requests. When the content is unchanged the server
+answers `304 Not Modified` with an empty body, and the cached response is
+returned instead.
+
+```typescript
+// Cache with the default 8 MiB limit
+const client = new EInnsynClient({ cache: true });
+
+// Or set your own limit
+const client = new EInnsynClient({ cache: { maxBytes: 32 * 1024 * 1024 } });
+```
+
+Caching is disabled by default. When the cache grows past `maxBytes`, the least
+recently used responses are evicted. A response larger than `maxBytes` on its
+own is not cached.
+
+Nothing is ever served without asking the server first, so cached content cannot
+go stale: if an entity has changed, the revalidation returns the new version. The
+cache belongs to the client instance and is scoped to the credentials that
+instance was created with.
+
+Note that revalidation is still a round trip. Responses marked
+`Cache-Control: no-store` are never cached.
 
 ## API Documentation
 
