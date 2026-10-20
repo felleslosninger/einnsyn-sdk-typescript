@@ -35,6 +35,33 @@ describe('isPaginatedList', () => {
     expect(isPaginatedList({ items: [], previous: false })).toBe(false);
   });
 
+  test('accepts lists with a total', () => {
+    expect(
+      isPaginatedList({
+        items: [],
+        total: { value: 42, capped: false },
+      }),
+    ).toBe(true);
+    expect(
+      isPaginatedList({
+        items: [],
+        total: { value: 10000, capped: true },
+      }),
+    ).toBe(true);
+  });
+
+  test('rejects malformed total values', () => {
+    expect(isPaginatedList({ items: [], total: null })).toBe(false);
+    expect(isPaginatedList({ items: [], total: 42 })).toBe(false);
+    expect(isPaginatedList({ items: [], total: {} })).toBe(false);
+    expect(
+      isPaginatedList({ items: [], total: { value: '42', capped: false } }),
+    ).toBe(false);
+    expect(
+      isPaginatedList({ items: [], total: { value: 42, capped: 'false' } }),
+    ).toBe(false);
+  });
+
   test('does not validate individual item shapes', () => {
     expect(
       isPaginatedList({
