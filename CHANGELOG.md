@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.7.0](https://github.com/felleslosninger/einnsyn-sdk-typescript/compare/einnsyn-sdk-v1.6.0...einnsyn-sdk-v1.7.0) (2026-10-23)
+
+
+### Features
+
+* add optional `total`-property to paginated lists ([d126980](https://github.com/felleslosninger/einnsyn-sdk-typescript/commit/d1269801aa781d9f1e4a66d0797135fa8705b089))
+* add optional `total`-property to paginated lists (EIN-5053) ([94d7cd9](https://github.com/felleslosninger/einnsyn-sdk-typescript/commit/94d7cd93591e4d084a6ecfe394736db017b43b9c))
+
 ## [1.6.0](https://github.com/felleslosninger/einnsyn-sdk-typescript/compare/einnsyn-sdk-v1.5.0...einnsyn-sdk-v1.6.0) (2026-09-25)
 
 
