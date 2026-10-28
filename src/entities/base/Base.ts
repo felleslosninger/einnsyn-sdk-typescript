@@ -11,7 +11,7 @@ export interface Base {
   /**
    * This field is only present if the resource has been deleted. If present, it will always be `true`.
    */
-  readonly deleted: boolean;
+  readonly deleted?: boolean;
   /**
    * An external ID for the resource. This is similar to "systemId", but will be used for legacy IRIs that were used in earlier eInnsyn versions.
    *
