@@ -25,6 +25,14 @@ export interface FilterParameters extends QueryParameters {
    */
   excludeAdministrativEnhetExact?: Array<string>;
   /**
+   * A list of Saksmappe IDs. Matches the Journalposts that belong to them.
+   */
+  saksmappe?: Array<string>;
+  /**
+   * A list of Moetemappe IDs. Matches the Moetesaker that belong to them.
+   */
+  moetemappe?: Array<string>;
+  /**
    * Filter by title. This is a free text search.
    */
   tittel?: Array<string>;
