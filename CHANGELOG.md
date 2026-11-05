@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.7.0](https://github.com/felleslosninger/einnsyn-sdk-typescript/compare/einnsyn-sdk-v1.6.0...einnsyn-sdk-v1.7.0) (2026-11-05)
+
+
+### Features
+
+* add optional `total`-property to paginated lists ([d126980](https://github.com/felleslosninger/einnsyn-sdk-typescript/commit/d1269801aa781d9f1e4a66d0797135fa8705b089))
+* add optional `total`-property to paginated lists (EIN-5053) ([94d7cd9](https://github.com/felleslosninger/einnsyn-sdk-typescript/commit/94d7cd93591e4d084a6ecfe394736db017b43b9c))
+* **codegen:** sync einnsyn-api-spec [#68](https://github.com/felleslosninger/einnsyn-sdk-typescript/issues/68) ([007c813](https://github.com/felleslosninger/einnsyn-sdk-typescript/commit/007c8133d5965f1e7e37301f8090a2fd0045379e))
+* **codegen:** sync einnsyn-api-spec [#68](https://github.com/felleslosninger/einnsyn-sdk-typescript/issues/68) ([9a2bea0](https://github.com/felleslosninger/einnsyn-sdk-typescript/commit/9a2bea0cf4eb48cdd6a25cfcfe4acb25fe135a3e))
+
+
+### Bug Fixes
+
+* **codegen:** sync einnsyn-api-spec [#69](https://github.com/felleslosninger/einnsyn-sdk-typescript/issues/69) ([70b074b](https://github.com/felleslosninger/einnsyn-sdk-typescript/commit/70b074b4fe657cb0cd8eb137523cee2a147b5621))
+* **codegen:** sync einnsyn-api-spec [#69](https://github.com/felleslosninger/einnsyn-sdk-typescript/issues/69) ([0dc9289](https://github.com/felleslosninger/einnsyn-sdk-typescript/commit/0dc9289d70301ffd1c26a4f9c0e3f0adab42349c))
+
 ## [1.6.0](https://github.com/felleslosninger/einnsyn-sdk-typescript/compare/einnsyn-sdk-v1.5.0...einnsyn-sdk-v1.6.0) (2026-09-25)
 
 
