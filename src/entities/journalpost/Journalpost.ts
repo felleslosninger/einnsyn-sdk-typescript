@@ -3,6 +3,7 @@
 
 import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { Enhet, EnhetRequest } from '../enhet/Enhet';
+import type { Innsynskrav } from '../innsynskrav/Innsynskrav';
 import type {
   Registrering,
   RegistreringRequest,
@@ -72,6 +73,10 @@ export interface Journalpost extends Registrering {
    * The case this record belongs to.
    */
   readonly saksmappe?: Saksmappe | string;
+  /**
+   * The authenticated user's own requests for access to this record. Only set for logged-in users.
+   */
+  readonly innsynskrav?: Array<Innsynskrav | string>;
 }
 
 /**

@@ -5,6 +5,7 @@ import type { PaginatedList } from '../../common/responses/PaginatedList';
 import type { ArkivBase, ArkivBaseRequest } from '../arkivbase/ArkivBase';
 import type { Arkivdel } from '../arkivdel/Arkivdel';
 import type { Klasse, KlasseRequest } from '../klasse/Klasse';
+import type { LagretSak } from '../lagretsak/LagretSak';
 import type {
   Matrikkelnummer,
   MatrikkelnummerRequest,
@@ -58,6 +59,10 @@ export interface Mappe extends ArkivBase {
    * Property identifiers (matrikkelnummer) associated with this Mappe.
    */
   readonly matrikkelnummer?: Array<Matrikkelnummer | string>;
+  /**
+   * The authenticated user's LagretSak for this Mappe, if they have saved it. Only set for logged-in users.
+   */
+  readonly lagretSak?: LagretSak | string;
 }
 
 /**
